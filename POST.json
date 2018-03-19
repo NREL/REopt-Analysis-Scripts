@@ -1,0 +1,21 @@
+{
+    "Scenario": {
+
+        "Site": {
+            "latitude": 34.5794343,
+            "longitude": -118.1164613,
+
+            "LoadProfile": {
+                "doe_reference_name": "MidriseApartment",
+                "annual_kwh": 200000,
+                "year": 2018
+            },
+
+            "ElectricTariff": {
+                "urdb_rate_name": "custom",
+                "blended_monthly_rates_us_dollars_per_kwh": [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1],
+                "blended_monthly_demand_charges_us_dollars_per_kw": [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
+            }
+        }
+    }
+}

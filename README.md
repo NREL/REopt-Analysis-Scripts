@@ -1,7 +1,7 @@
 Example python scripts for using REopt API
 ==========================================
 
-# File Descriptions
+## File Descriptions
 
 ### POST.json
 An example POST
