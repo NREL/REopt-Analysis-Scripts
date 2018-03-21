@@ -9,9 +9,8 @@ from logger import log
 
 def poller(url, poll_interval=2):
     """
-
+    Function for polling the REopt API results URL until status is not "Optimizing..."
     :param url: results url to poll
-    :param run_id: str, uuid
     :param poll_interval: seconds
     :return: dictionary response (once status is not "Optimizing...")
     """
