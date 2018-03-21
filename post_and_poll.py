@@ -5,10 +5,11 @@ from logger import log
 from results_poller import poller
 
 results_file = 'results.json'
+API_KEY = 'my_api_key'  # REPLACE WITH YOUR API KEY
 
-root_url = 'https://developer.nrel.gov/reopt'
-post_url = root_url + '/api/v1/'
-results_url = root_url + '/results/'
+root_url = 'https://developer.nrel.gov/api/reopt'
+post_url = root_url + '/v1/job/?api_key=' + API_KEY
+results_url = root_url + '/v1/job/<run_uuid>/results/?api_key=' + API_KEY
 
 post = json.load(open('POST.json'))
 
@@ -28,5 +29,9 @@ else:
         log.error(msg)
         raise KeyError(msg)
 
-    results = poller(url=results_url, run_id=run_id)
-    json.dump(results, results_file)
+    results = poller(url=results_url.replace('<run_uuid>', run_id))
+
+    with open(results_file, 'wb') as fp:
+        json.dump(obj=results, fp=fp)
+
+    log.info("Saved results to {}".format(results_file))

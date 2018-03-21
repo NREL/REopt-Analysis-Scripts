@@ -7,7 +7,7 @@ import time
 from logger import log
 
 
-def poller(url, run_id, poll_interval=2):
+def poller(url, poll_interval=2):
     """
 
     :param url: results url to poll
@@ -21,7 +21,7 @@ def poller(url, run_id, poll_interval=2):
     log.info("Polling {} for results with interval of {}s...".format(url, poll_interval))
     while True:
 
-        resp = requests.get(url=url, params={'run_uuid': run_id})
+        resp = requests.get(url=url)
         resp_dict = json.loads(resp.content)
 
         try:
