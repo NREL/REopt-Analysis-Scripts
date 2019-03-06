@@ -15,7 +15,7 @@ def poller(url, poll_interval=2):
     :return: dictionary response (once status is not "Optimizing...")
     """
     key_error_count = 0
-    key_error_threshold = 3
+    key_error_threshold = 4
     status = "Optimizing..."
     log.info("Polling {} for results with interval of {}s...".format(url, poll_interval))
     while True:
