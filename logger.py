@@ -1,3 +1,5 @@
+import logging
+
 """
 Custom logging set up, with handlers for writing to .log file and console.
 
@@ -12,12 +14,12 @@ INFO	    20
 DEBUG	    10
 NOTSET	    0
 """
-import logging
+
 
 log = logging.getLogger('my_log_file')
 log.setLevel(logging.DEBUG)
 
-file_handler = logging.FileHandler(filename='tests.log', mode='w')
+file_handler = logging.FileHandler(filename='test_scenario.log', mode='w')
 file_formatter = logging.Formatter('%(asctime)s %(name)-12s %(levelname)-8s %(message)s')
 file_handler.setFormatter(file_formatter)
 file_handler.setLevel(logging.INFO)
