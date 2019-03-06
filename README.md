@@ -10,6 +10,8 @@ This is a guide to use REopt's Application Programming Interface for running REo
 
 ### File Descriptions
 
+**Note**: in the script  named post\_and\_poll.py replace "my_API_KEY" with your API key. You can obtain your API key from developer.nrel.gov/signup/ (no cost). 
+
 #### POST.json
 The inputs to the model are sent in json format. POST.json contains an example post where the assessment of economic feasibiity of photovoltaic generation and battery storage is being done for a given location with a custom electric tariff.
 
