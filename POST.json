@@ -13,19 +13,20 @@
 
             "ElectricTariff": {
                 "urdb_rate_name": "custom",
-                "blended_monthly_rates_us_dollars_per_kwh": [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1],
-                "blended_monthly_demand_charges_us_dollars_per_kw": [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
+                "blended_monthly_rates_us_dollars_per_kwh": [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.12, 0.12, 0.12, 0.1, 0.1, 0.1],
+                "blended_monthly_demand_charges_us_dollars_per_kw": [10, 10, 10, 10, 15, 15, 15, 15, 10, 10, 10, 10]
             },
 
             "Financial": {
-                "analysis_years": 20,
+                "analysis_years": 25,
                 "offtaker_discount_pct": 0.081,
                 "offtaker_tax_pct": 0.4
             },
 
             "PV": {
                 "federal_itc_pct": 0.30,
-                "tilt": 34
+                "tilt": 34,
+                "max_kw": 1000
             },
 
             "Storage": {
