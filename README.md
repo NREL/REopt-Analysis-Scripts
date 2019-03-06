@@ -21,6 +21,8 @@ A scenario is posted at [https://developer.nrel.gov/api/reopt/v1/job/](https://d
 A polling function for retrieving results. This function is utilized in the post\_and\_poll.py. 
 
 
-### logger.py
+#### logger.py
 Configurable logging for console and log file
+
+The results will get saved in results.json. 
 
