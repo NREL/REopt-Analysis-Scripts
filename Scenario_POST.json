@@ -1,38 +1,36 @@
-{
-    "Scenario": {
+{"Scenario": {
+            "time_steps_per_hour": 1,
+            "Site": {
+                "latitude": 35.2468,
+                "longitude": -91.7337,
 
-        "Site": {
-            "latitude": 34.5794343,
-            "longitude": -118.1164613,
+                "LoadProfile": {
+                    "doe_reference_name": "MidriseApartment",
+                    "annual_kwh": 259525,
+                    "year": 2017
+                },
 
-            "LoadProfile": {
-                "doe_reference_name": "MidriseApartment",
-                "annual_kwh": 200000,
-                "year": 2019
-            },
+                "ElectricTariff": {
+                    "urdb_rate_name": "custom",
+                    "blended_monthly_rates_us_dollars_per_kwh": [0.15, 0.2, 0.21, 0.23, 0.27, 0.19, 0.22, 0.17, 0.24, 0.26, 0.18,0.2],
+                    "blended_monthly_demand_charges_us_dollars_per_kw": [0.08, 0.11, 0, 0, 0.15, 0.14, 0.09, 0.06, 0, 0, 0.05, 0]
+                },
 
-            "ElectricTariff": {
-                "urdb_rate_name": "custom",
-                "blended_monthly_rates_us_dollars_per_kwh": [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.12, 0.12, 0.12, 0.1, 0.1, 0.1],
-                "blended_monthly_demand_charges_us_dollars_per_kw": [10, 10, 10, 10, 15, 15, 15, 15, 10, 10, 10, 10]
-            },
+                "PV": {
+                    "max_kw": "200",
+                    "existing_kw" : "0"
 
-            "Financial": {
-                "analysis_years": 25,
-                "offtaker_discount_pct": 0.081,
-                "offtaker_tax_pct": 0.4
-            },
+                },
 
-            "PV": {
-                "federal_itc_pct": 0.30,
-                "tilt": 34,
-                "max_kw": 1000
-            },
+                "Storage": {
+                    "max_kw": 0,
+                    "max_kwh": 0
+                },
 
-            "Storage": {
-                "installed_cost_us_dollars_per_kw": 1000,
-                "installed_cost_us_dollars_per_kwh": 500
+                "Wind": {
+                    "max_kw": 0,
+                    "max_kwh": 0
+                }
             }
         }
-    }
-}
+        }
