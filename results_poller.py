@@ -21,7 +21,7 @@ def poller(url, poll_interval=2):
     while True:
 
         resp = requests.get(url=url)
-        resp_dict = json.loads(resp.content)
+        resp_dict = json.loads(resp.text)
 
         try:
             status = resp_dict['outputs']['Scenario']['status']
