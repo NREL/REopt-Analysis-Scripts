@@ -1,7 +1,7 @@
-Python scripts for using REopt API
+Running REopt API Analysis using Python
 ==========================================
 
-[REopt](https://reopt.nrel.gov/) is a techno-economic decision support model from NREL which is used for optimizing energy systems for buildings, campuses, communities, and microgrids. [REopt Lite](https://reopt.nrel.gov/tool) offers a no-cost subset of features from NREL's more comprehensive REopt model. REopt Lite also offers an application programming interface (API). This is a guide to use REopt's Application Programming Interface for running REopt analysis programmatically. 
+[REopt](https://reopt.nrel.gov/) is a techno-economic decision support model from NREL which is used for optimizing energy systems for buildings, campuses, communities, and microgrids. [REopt Lite](https://reopt.nrel.gov/tool) offers a no-cost subset of features from NREL's more comprehensive REopt model. REopt Lite also offers an application programming interface (API). This is a guide to use REopt's Application Programming Interface for running REopt analysis programmatically. Detailed documentation of REopt Lite API is available [here](https://developer.nrel.gov/docs/energy-optimization/reopt-v1/). 
 
 ## How to run?
   ### Prerequisites 
@@ -39,6 +39,13 @@ A polling function for retrieving results. This function is utilized in the post
 Configurable logging for console and log file
 
 
-**The results will get saved in results.json. **
+**The results will get saved in results.json.**
+
+## Running different Scenarios
+- In the script named _post\_and\_poll.py_ replace the file name 'Scenario_POST.json' to {Scenario_POST1, Scenario_POST2 etc.} in the following line of the code:
+  `post = json.load(open('Scenario_POST.json'))`
+
+- In the same script, for saving the results in different files, replace the file name 'results.json' to a different name in the following line of the code:
+ ` results_file = 'results.json'`
 
 
