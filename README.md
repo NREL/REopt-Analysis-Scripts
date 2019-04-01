@@ -7,14 +7,18 @@ Running REopt API Analysis using Python
 
 ## How to run?
   ### Prerequisites 
-  You will need a python 2.7/3 interpreter 
-  - Ubuntu: `sudo apt get install python3-dev`
+  You will need a python 2.7/3 interpreter:   
+  - Ubuntu: `sudo apt-get install python3-dev`
   - Mac OSX: [Refer this page if you need help](https://docs.python-guide.org/starting/install3/osx/)
-  - Windows: [Download and install from here](https://www.python.org/downloads/windows/)
+  - Windows: [Download and install version 3.5.5 from here](https://www.python.org/downloads/windows/)
+      _**Note** that Python 3.5.5 cannot be used on Windows XP or earlier._
   - Install [pip](https://pip.pypa.io/en/stable/installing/)
   
   And add the following packages:
   - `pip install requests json time logging`  
+  
+  Install git:
+  - https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
   
   ### Running the code
   1. Clone (or download) the repository: 
