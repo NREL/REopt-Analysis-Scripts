@@ -23,7 +23,7 @@ Running REopt API Analysis using Python
   ### Running the code
   1. Clone (or download) the repository: 
   
-  `git clone https://github.com/nrel/REopt-API-Examples.git`
+  `git clone https://github.com/nrel/REopt-API-Analysis.git`
   
   2. Open/Run the python script [post\_and\_poll.py](post\_and\_poll.py)
   
