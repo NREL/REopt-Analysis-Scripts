@@ -5,16 +5,15 @@ from logger import log
 from results_poller import poller
 
 results_file = 'results.json'
-API_KEY = 'my_API_KEY'  # REPLACE WITH YOUR API KEY
-
-
-root_url = 'https://developer.nrel.gov/api/reopt'
-post_url = root_url + '/v1/job/?api_key=' + API_KEY
-results_url = root_url + '/v1/job/<run_uuid>/results/?api_key=' + API_KEY
+root_url = 'http://127.0.0.1:8000'
+post_url = root_url + '/v1/job/'
+results_url = root_url + '/v1/job/<run_uuid>/results'
 
 post = json.load(open('Scenario_POST.json'))
 
-resp = requests.post(post_url, json=post)
+session = requests.Session()
+session.verify = False
+resp = session.post(url=post_url, json=post)
 
 if not resp.ok:
     log.error("Status code {}. {}".format(resp.status_code, resp.content))
