@@ -1,9 +1,9 @@
 import requests
 import json
-from logger import log
-from results_poller import poller
+from src.logger import log
+from src.results_poller import poller
 
-results_file = 'results.json'
+results_file = 'results_S1.json'
 API_KEY = 'my_API_KEY'  # REPLACE WITH YOUR API KEY
 
 
@@ -11,7 +11,7 @@ root_url = 'https://developer.nrel.gov/api/reopt'
 post_url = root_url + '/v1/job/?api_key=' + API_KEY
 results_url = root_url + '/v1/job/<run_uuid>/results/?api_key=' + API_KEY
 
-post = json.load(open('Scenario_POST.json'))
+post = json.load(open('Scenario_POST1.json'))
 
 resp = requests.post(post_url, json=post)
 

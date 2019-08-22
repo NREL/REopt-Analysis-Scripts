@@ -1,0 +1,7 @@
+.**
+!.gitignore
+env/
+*.log
+venv/
+ENV/
+**.pyc
