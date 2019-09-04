@@ -61,7 +61,11 @@ def make_nested_dict(flat_dict, nested_dict, obj=None):
                 if pd.isnull(flat_dict[piped_key]):  # empty cell in input csv file
                     set_default(nested_dict, k)
                 else:  # use value from input csv
-                    nested_dict[k] = flat_dict[piped_key]
+                    input_val = flat_dict[piped_key]
+                    # work-around for pd.df.to_dict() converting to numpy types, yargh.
+                    if type(input_val) is np.int64:
+                        input_val = int(input_val)
+                    nested_dict[k] = input_val
 
             else:  # no column in input csv
                 set_default(nested_dict, k)
