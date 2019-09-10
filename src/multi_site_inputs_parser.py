@@ -31,8 +31,8 @@ def set_default(d, k):
 def make_nested_dict(flat_dict, nested_dict, obj=None):
     """
     Use flat_dict, with key:value pairs from csv, and create a dict for posting to reopt api
-    :param defaults_dict: nested_input_definitions from help endpoint
     :param flat_dict: key:value pairs for one site
+    :param nested_dict: nested_input_definitions from help endpoint
     :param obj: upper case key in nested_dict, represents reopt api class and used for '|' parameters from input csv
     :return:
     """
@@ -43,7 +43,7 @@ def make_nested_dict(flat_dict, nested_dict, obj=None):
         if isinstance(obj, str):
             piped_key = obj + '|' + k
 
-        if k[0].islower() and isinstance(v, dict):
+        if k[0].islower() and isinstance(v, dict):  # then this key represents an input value
 
             if k in flat_dict.keys():
 
@@ -54,6 +54,8 @@ def make_nested_dict(flat_dict, nested_dict, obj=None):
                     # work-around for pd.df.to_dict() converting to numpy types, yargh.
                     if type(input_val) is np.int64:
                         input_val = int(input_val)
+                    if isinstance(input_val, np.bool_):
+                        input_val = bool(input_val)
                     nested_dict[k] = input_val
 
             elif piped_key in flat_dict.keys() and piped_key is not None:  # eg. PV|max_kw  NOTE: NO SPACES IN piped_key
@@ -65,6 +67,8 @@ def make_nested_dict(flat_dict, nested_dict, obj=None):
                     # work-around for pd.df.to_dict() converting to numpy types, yargh.
                     if type(input_val) is np.int64:
                         input_val = int(input_val)
+                    if isinstance(input_val, np.bool_):
+                        input_val = bool(input_val)
                     nested_dict[k] = input_val
 
             else:  # no column in input csv
