@@ -3,7 +3,7 @@ import json
 import pandas as pd
 from src.logger import log
 from collections import OrderedDict
-API_KEY = 'X3Fd4msuCdRGpgelMSjr8FYXfgdjWSuHHMdZE8Ta'
+API_KEY = 'DEMO_KEY'
 api_url = 'https://developer.nrel.gov/api/reopt/v1'
 
 
