@@ -1,0 +1,15 @@
+backports.functools-lru-cache==1.5
+certifi==2019.9.11
+chardet==3.0.4
+cycler==0.10.0
+idna==2.8
+kiwisolver==1.1.0
+matplotlib==2.2.4
+numpy==1.16.5
+pyparsing==2.4.2
+python-dateutil==2.8.0
+pytz==2019.3
+requests==2.22.0
+six==1.12.0
+subprocess32==3.5.4
+urllib3==1.25.6
