@@ -20,8 +20,6 @@ repositoris has a `README.md` file in them that describes the analysis workflow.
 
 ## Usage
 
-> All of the analysis options require you obtain an *API\_key* from
-> [here](https://developer.nrel.gov/signup/)
 
 The easiest way to get started using the **REopt Lite API** it to access it
 through the
@@ -31,7 +29,9 @@ below.
 
 ### Prerequisites
 
-You will need a python 3.6+ interpreter:
+1. Obtain *API\_key* from [here](https://developer.nrel.gov/signup/)
+
+2. Install Python 3.6+ interpreter:
 
   - Ubuntu: `sudo apt-get install python3-dev`
 
@@ -46,17 +46,17 @@ You will need a python 3.6+ interpreter:
   - Recommended: use a [virtual
     environment](https://virtualenv.pypa.io/en/stable/installation/)
 
-And add the required python packages:
+3. Add the required python packages:
 
-- (if using `virtualenv` first [activate
-  the environment](https://virtualenv.pypa.io/en/stable/userguide/))
+    - (if using `virtualenv` first [activate
+      the environment](https://virtualenv.pypa.io/en/stable/userguide/))
 
-- `pip install -r requirements.txt`
+    - `pip install -r requirements.txt`
 
-> NOTE: The `requirements.txt` does not include dependecies for the *jupyter
-> notebooks*
+    > NOTE: The `requirements.txt` does not include dependecies for the *jupyter
+    > notebooks*
 
-Install git: - https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+4. Install git: - https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 
 ### Running the code
 
