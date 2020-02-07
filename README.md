@@ -1,3 +1,5 @@
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/NREL/REopt-API-Analysis/class_updates?urlpath=https%3A%2F%2Fgithub.com%2FNREL%2FREopt-API-Analysis%2Fblob%2Fclass_updates%2Fnotebooks%2FREopt_Lite_API_Demo.ipynb)
+
 Running REopt API Analysis using Python
 ==========================================
 
