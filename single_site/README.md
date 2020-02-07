@@ -5,5 +5,5 @@
 
 To perfom a single site analysis, run the `post_and_poll.py` python script.
 This command will send the will `post` json scenario to the API. Your results will be saved in
-results.json. You can change the `post` varible to point a different `Scenario_POST?.json` file or
+`results.json`. You can change the `post` varible to point a different `Scenario_POSTX.json` file or
 create a post scenario yourself.

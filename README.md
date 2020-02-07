@@ -46,9 +46,12 @@ You will need a python 3.6+ interpreter:
   - Recommended: use a [virtual
     environment](https://virtualenv.pypa.io/en/stable/installation/)
 
-And add the required python packages: - (if using `virtualenv` first [activate
-the environment](https://virtualenv.pypa.io/en/stable/userguide/)) - `pip
-install -r requirements.txt`
+And add the required python packages:
+
+- (if using `virtualenv` first [activate
+  the environment](https://virtualenv.pypa.io/en/stable/userguide/))
+
+- `pip install -r requirements.txt`
 
 > NOTE: The `requirements.txt` does not include dependecies for the *jupyter
 > notebooks*
