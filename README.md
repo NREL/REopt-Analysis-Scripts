@@ -20,12 +20,12 @@ repositoris has a `README.md` file in them that describes the analysis workflow.
 
 ## Usage
 
-
-The easiest way to get started using the **REopt Lite API** it to access it
+**The easiest way to get started using the REopt Lite API it to access it
 through the
 [Binder](https://mybinder.org/v2/gh/NREL/REopt-API-Analysis/class_updates?urlpath=https%3A%2F%2Fgithub.com%2FNREL%2FREopt-API-Analysis%2Fblob%2Fclass_updates%2Fnotebooks%2FREopt_Lite_API_Demo.ipynb)
 notebook. Otherwise you will need to set up your environment following the steps
-below.
+below.**
+
 
 ### Prerequisites
 
@@ -33,30 +33,31 @@ below.
 
 2. Install Python 3.6+ interpreter:
 
-  - Ubuntu: `sudo apt-get install python3-dev`
+    - Ubuntu: `sudo apt-get install python3-dev`
 
-  - Mac OSX: Download and install version 3.6+ from
-    [here](https://www.python.org/downloads/mac-osx/)
+    - Mac OSX: Download and install version 3.6+ from
+      [here](https://www.python.org/downloads/mac-osx/)
 
-  - Windows: Download and install version 3.6+ from
-    [here](https://www.python.org/downloads/windows/)
+    - Windows: Download and install version 3.6+ from
+      [here](https://www.python.org/downloads/windows/)
 
-  - Install [pip](https://pip.pypa.io/en/stable/installing/)
+3. Install [pip](https://pip.pypa.io/en/stable/installing/)
 
-  - Recommended: use a [virtual
-    environment](https://virtualenv.pypa.io/en/stable/installation/)
+    > Recommended: use a [virtual
+    > environment](https://virtualenv.pypa.io/en/stable/installation/)
 
-3. Add the required python packages:
+4. Add the required python packages:
 
-    - (if using `virtualenv` first [activate
-      the environment](https://virtualenv.pypa.io/en/stable/userguide/))
+    - *If using `virtualenv`*: [activate
+      the environment](https://virtualenv.pypa.io/en/stable/userguide/)
 
     - `pip install -r requirements.txt`
 
     > NOTE: The `requirements.txt` does not include dependecies for the *jupyter
     > notebooks*
 
-4. Install git: - https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+5. (OPTIONAL) Install git: - https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+
 
 ### Running the code
 
