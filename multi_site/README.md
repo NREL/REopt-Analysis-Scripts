@@ -1,8 +1,8 @@
 # Usage
 
-In the script named `run_scenarios_and_save_results.py` replace “my\_API\_KEY”
-with your API key. You can obtain your API key from
-[here](developer.nrel.gov/signup/) (no cost).
+> In the script named `run_scenarios_and_save_results.py` replace “my\_API\_KEY”
+> with your API key. You can obtain your API key from
+> [here](developer.nrel.gov/signup/) (no cost).
 
   - There are two options, both of which run using examples in
     `run_scenarios_and_save_results.py`

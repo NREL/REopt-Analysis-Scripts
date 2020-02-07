@@ -17,10 +17,11 @@ This repository has three different ways of interfacing with the api through the
 directories `single_site`, `multi_site` and `notebooks`. Each of these
 repositoris has a `README.md` file in them that describes the analysis workflow.
 
-> All of the analysis options require you obtain an *API\_key* from
-> [here](https://developer.nrel.gov/signup/)
 
 ## Usage
+
+> All of the analysis options require you obtain an *API\_key* from
+> [here](https://developer.nrel.gov/signup/)
 
 The easiest way to get started using the **REopt Lite API** it to access it
 through the
@@ -28,19 +29,19 @@ through the
 notebook. Otherwise you will need to set up your environment following the steps
 below.
 
-### Prerequisites (If you aren’t using Binder)
+### Prerequisites
 
 You will need a python 3.6+ interpreter:
 
   - Ubuntu: `sudo apt-get install python3-dev`
 
-  - Mac OSX: [Download and install version 3.6+ from
-    here](https://www.python.org/downloads/mac-osx/)
+  - Mac OSX: Download and install version 3.6+ from
+    [here](https://www.python.org/downloads/mac-osx/)
 
-  - Windows: [Download andinstall version 3.6+ from
-    here](https://www.python.org/downloads/windows/)
+  - Windows: Download and install version 3.6+ from
+    [here](https://www.python.org/downloads/windows/)
 
-  - Install[pip](https://pip.pypa.io/en/stable/installing/)
+  - Install [pip](https://pip.pypa.io/en/stable/installing/)
 
   - Recommended: use a [virtual
     environment](https://virtualenv.pypa.io/en/stable/installation/)
@@ -57,10 +58,11 @@ Install git: - https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 ### Running the code
 
 1.  Clone (or download) the repository:
-    
+
     ``` bash
     git clone https://github.com/nrel/REopt-API-Analysis.git
     ```
 
-2.  Follow the `README.md` instructions in the `multi_site` or `single_site`
-    directories
+2.  Follow the `README.md` instructions in the
+    [multi\_site](https://github.com/NREL/REopt-API-Analysis/blob/class_updates/multi_site/README.md) or
+    [single\_site](https://github.com/NREL/REopt-API-Analysis/blob/class_updates/single_site/README.md) directories
