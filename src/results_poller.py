@@ -16,7 +16,6 @@ def poller(url, poll_interval=2):
     :return: dictionary response (once status is not "Optimizing...")
     """
 
-    os.environ['PYTHONWARNINGS'] = "ignore:Unverified HTTPS request"
     key_error_count = 0
     key_error_threshold = 3
     status = "Optimizing..."
