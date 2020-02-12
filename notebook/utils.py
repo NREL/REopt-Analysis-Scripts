@@ -1,6 +1,7 @@
 import requests
 import json
 import time
+import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
 from src.results_poller import poller
@@ -106,7 +107,7 @@ def LCCbreakdown(results_fetched):
 
     for scen in results_fetched.keys():
 
-        pie_vals = OrderedDict()
+        pie_vals = dict()
         lcc = results_fetched[scen]['outputs']['Scenario']['Site']\
                                                ['Financial']['lcc_us_dollars']
         pie_vals[labels[0]] = results_fetched[scen]['outputs']['Scenario']['Site']\
@@ -124,7 +125,7 @@ def LCCbreakdown(results_fetched):
 
         df_results = pd.DataFrame(pie_vals, index = [1])
 
-        print(scen, ": LCC = ", lc)
+        print(scen, ": LCC = ", lcc)
         print(df_results)
 
         plt.pie(list(pie_vals.values()), labels=labels, autopct='%1.1f%%',
