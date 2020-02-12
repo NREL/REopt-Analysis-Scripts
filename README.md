@@ -1,4 +1,4 @@
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/NREL/REopt-API-Analysis/class_updates?filepath=notebook%2FREopt_Lite_API_Demo.ipynb)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/NREL/REopt-API-Analysis/master?filepath=notebook%2FREopt_Lite_API_Demo.ipynb)
 
 # REopt API Analysis using Python
 
@@ -22,7 +22,7 @@ repositoris has a `README.md` file in them that describes the analysis workflow.
 
 **The easiest way to get started using the REopt Lite API it to access it
 through the
-[Binder](https://mybinder.org/v2/gh/NREL/REopt-API-Analysis/class_updates?filepath=notebook%2FREopt_Lite_API_Demo.ipynb)
+[Binder](https://mybinder.org/v2/gh/NREL/REopt-API-Analysis/master?filepath=notebook%2FREopt_Lite_API_Demo.ipynb)
 notebook. Otherwise you will need to set up your environment following the steps
 below.**
 
@@ -68,5 +68,5 @@ below.**
     ```
 
 2.  Follow the `README.md` instructions in the
-    [multi\_site](https://github.com/NREL/REopt-API-Analysis/blob/class_updates/multi_site/README.md) or
-    [single\_site](https://github.com/NREL/REopt-API-Analysis/blob/class_updates/single_site/README.md) directories
+    [multi\_site](https://github.com/NREL/REopt-API-Analysis/multi_site/README.md) or
+    [single\_site](https://github.com/NREL/REopt-API-Analysis/single_site/README.md) directories
