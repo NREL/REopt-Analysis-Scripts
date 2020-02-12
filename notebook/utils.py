@@ -92,3 +92,41 @@ def results_plots(results_dict):
         tech_storage_stack.bar(*zip(*bar_stor_data[name].items()), color=['black'])
 
         plt.show()
+        
+def LCCbreakdown(results_fetched):
+    pd.set_option('display.float_format', lambda x: '%.0f' % x)
+    tariff_fin_keys = ['total_energy_cost_us_dollars',
+                         'total_fixed_cost_us_dollars',
+                         'total_demand_cost_us_dollars']
+
+    labels = ['Capital Cost and O&M',
+              'Energy Charge',
+              'Fixed Cost',
+              'Demand Charge']
+
+    for scen in results_fetched.keys():
+
+        pie_vals = OrderedDict()
+        lcc = results_fetched[scen]['outputs']['Scenario']['Site']\
+                                               ['Financial']['lcc_us_dollars']
+        pie_vals[labels[0]] = results_fetched[scen]['outputs']['Scenario']['Site']\
+                                               ['Financial']['net_capital_costs_plus_om_us_dollars']
+        tariff = results_fetched[scen]['outputs']['Scenario']['Site']['ElectricTariff']
+
+        tariff_costs = 0.0
+        l = 1
+        for k in tariff_fin_keys:
+            tariff_costs += tariff[k]
+            pie_vals[labels[l]] = tariff[k]
+            l += 1
+
+        tariff_costs -=tariff[u'total_export_benefit_us_dollars']
+
+        df_results = pd.DataFrame(pie_vals, index = [1])
+
+        print(scen, ": LCC = ", lc)
+        print(df_results)
+
+        plt.pie(list(pie_vals.values()), labels=labels, autopct='%1.1f%%',
+            shadow=True, startangle=90)
+        plt.show()
