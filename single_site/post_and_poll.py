@@ -4,7 +4,7 @@ from src.logger import log
 from src.results_poller import poller
 
 results_file = 'results_S1.json'
-API_KEY = 'yOODa4jmZy1q3Wd6lkQcne6izi3nq2YSIIlCQkOg'  # REPLACE WITH YOUR API KEY
+API_KEY = 'DEMO_KEY'  # REPLACE WITH YOUR API KEY
 
 
 root_url = 'https://developer.nrel.gov/api/reopt'
