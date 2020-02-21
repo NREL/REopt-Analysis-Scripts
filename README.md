@@ -68,5 +68,5 @@ below.**
     ```
 
 2.  Follow the `README.md` instructions in the
-    [multi\_site](https://github.com/NREL/REopt-API-Analysis/multi_site/README.md) or
-    [single\_site](https://github.com/NREL/REopt-API-Analysis/single_site/README.md) directories
+    [multi\_site](multi_site/README.md) or
+    [single\_site](single_site/README.md) directories
