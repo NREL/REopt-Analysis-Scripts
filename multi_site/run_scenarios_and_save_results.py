@@ -8,7 +8,7 @@ from src.parse_api_responses_to_excel import parse_api_responses_to_excel
 Change these values
 """
 ##############################################################################################################
-API_KEY = 'yOODa4jmZy1q3Wd6lkQcne6izi3nq2YSIIlCQkOg'  # REPLACE WITH YOUR API KEY
+API_KEY = 'DEMO KEY'  # REPLACE WITH YOUR API KEY
 inputs_path = os.path.join('inputs')
 outputs_path = os.path.join('outputs')
 output_template = os.path.join(outputs_path, 'results_template.csv')
