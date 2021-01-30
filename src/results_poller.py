@@ -4,7 +4,8 @@ function for polling reopt api results url
 import requests
 import json
 import time
-from logger import log
+import os
+from src.logger import log
 
 
 def poller(url, poll_interval=2):
@@ -14,14 +15,15 @@ def poller(url, poll_interval=2):
     :param poll_interval: seconds
     :return: dictionary response (once status is not "Optimizing...")
     """
+
     key_error_count = 0
-    key_error_threshold = 4
+    key_error_threshold = 3
     status = "Optimizing..."
     log.info("Polling {} for results with interval of {}s...".format(url, poll_interval))
     while True:
 
-        resp = requests.get(url=url)
-        resp_dict = json.loads(resp.text)
+        resp = requests.get(url=url, verify=False)
+        resp_dict = json.loads(resp.content)
 
         try:
             status = resp_dict['outputs']['Scenario']['status']

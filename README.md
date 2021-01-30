@@ -1,24 +1,72 @@
-Python scripts for using REopt API
-==========================================
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/NREL/REopt-API-Analysis/master?filepath=notebook%2FREopt_Lite_API_Demo.ipynb)
 
-[REopt](https://reopt.nrel.gov/) is a techno-economic decision support model from NREL which is used for optimizing energy systems for buildings, campuses, communities, and microgrids. [REopt Lite](https://reopt.nrel.gov/tool) offers a no-cost subset of features from NREL's more comprehensive REopt model. REopt Lite also offers an application programming interface (API). This is a guide to use REopt's Application Programming Interface for running REopt analysis programmatically. 
+# REopt API Analysis using Python
 
-### File Descriptions
+[REopt](https://reopt.nrel.gov/) is a techno-economic decision support model
+from NREL which is used for optimizing energy systems for buildings, campuses,
+communities, and microgrids. [REopt Lite](https://reopt.nrel.gov/tool) offers a
+no-cost subset of features from NREL’s more comprehensive REopt model. REopt
+Lite also offers an application programming interface (API). This is a guide to
+use REopt’s Application Programming Interface for running REopt analysis
+programmatically.
 
-**Note**: in the script  named post\_and\_poll.py replace "my_API_KEY" with your API key. You can obtain your API key from developer.nrel.gov/signup/ (no cost). 
+**Detailed documentation of REopt Lite API is available
+[here](https://developer.nrel.gov/docs/energy-optimization/reopt-v1/).**
 
-#### Scenario_POST.json
-The inputs to the model are sent in json format. POST.json contains an example post where the assessment of economic feasibiity of photovoltaic generation and battery storage is being done for a given location with a custom electric tariff.
-
-#### post\_and\_poll.py
-A scenario is posted at [https://developer.nrel.gov/api/reopt/v1/job/](https://developer.nrel.gov/api/reopt/v1/job/) to get a **Universal Unique ID** (run_uuid) back. This script is for posting inputs to the API, receive the run_uuid and then polling for results using the run_uuid.
-
-#### results\_poller.py
-A polling function for retrieving results. This function is utilized in the post\_and\_poll.py. 
-
-#### logger.py
-Configurable logging for console and log file
+This repository has three different ways of interfacing with the api through the
+directories `single_site`, `multi_site` and `notebooks`. Each of these
+repositoris has a `README.md` file in them that describes the analysis workflow.
 
 
-The results will get saved in results.json. 
+## Usage
 
+**The easiest way to get started using the REopt Lite API it to access it
+through the
+[Binder](https://mybinder.org/v2/gh/NREL/REopt-API-Analysis/master?filepath=notebook%2FREopt_Lite_API_Demo.ipynb)
+notebook. Otherwise you will need to set up your environment following the steps
+below.**
+
+
+### Prerequisites
+
+1. Obtain *API\_key* from [here](https://developer.nrel.gov/signup/)
+
+2. Install Python 3.6+ interpreter:
+
+    - Ubuntu: `sudo apt-get install python3-dev`
+
+    - Mac OSX: Download and install version 3.6+ from
+      [here](https://www.python.org/downloads/mac-osx/)
+
+    - Windows: Download and install version 3.6+ from
+      [here](https://www.python.org/downloads/windows/)
+
+3. Install [pip](https://pip.pypa.io/en/stable/installing/)
+
+    > Recommended: use a [virtual
+    > environment](https://virtualenv.pypa.io/en/stable/installation/)
+
+4. Add the required python packages:
+
+    - *If using `virtualenv`*: [activate
+      the environment](https://virtualenv.pypa.io/en/stable/userguide/)
+
+    - `pip install -r requirements.txt`
+
+    > NOTE: The `requirements.txt` does not include dependecies for the *jupyter
+    > notebooks*
+
+5. (OPTIONAL) Install git: - https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+
+
+### Running the code
+
+1.  Clone (or download) the repository:
+
+    ``` bash
+    git clone https://github.com/nrel/REopt-API-Analysis.git
+    ```
+
+2.  Follow the `README.md` instructions in the
+    [multi\_site](multi_site/README.md) or
+    [single\_site](single_site/README.md) directories

@@ -1,0 +1,3 @@
+﻿site_number,description,latitude,longitude,PV|max_kw,urdb_label,load_file,Wind|max_kw
+1,site3-No-PV,34.1404,-118.2764,0,5a3821035457a32645d2dd80,site3_8760_loads_kw.csv,0
+2,site3-With-PV,34.1404,-118.2764,,5a3821035457a32645d2dd80,site3_8760_loads_kw.csv,0
