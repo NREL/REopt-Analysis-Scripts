@@ -60,13 +60,5 @@ below.**
 
 
 ### Running the code
-
-1.  Clone (or download) the repository:
-
-    ``` bash
-    git clone https://github.com/nrel/REopt-API-Analysis.git
-    ```
-
-2.  Follow the `README.md` instructions in the
-    [multi\_site](multi_site/README.md) or
-    [single\_site](single_site/README.md) directories
+1.  Clone, download, or fork the repository. 
+2.  See examples/single_and_multi_scenario_examples.ipynb
