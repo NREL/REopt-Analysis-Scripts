@@ -8,7 +8,7 @@ import os
 from src.logger import log
 
 
-def poller(url, poll_interval=2):
+def poller(url, poll_interval=5):
     """
     Function for polling the REopt API results URL until status is not "Optimizing..."
     :param url: results url to poll
