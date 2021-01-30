@@ -12,8 +12,8 @@ def get_nested_output(key, resp, obj=None):
         return resp['outputs']['Scenario']['Site'][obj][val]
 
     else:
-        site = resp['outputs']['Scenario']['Site']
-
+        site = {k: v for k, v in resp['outputs']['Scenario']['Site'].items() if k.isupper()}
+        # Site now has lower case keys that must be removed
         for d in site.values():
 
             if key in d.keys():
@@ -74,10 +74,13 @@ if __name__ == '__main__':
     """
     import os
     import json
-    resp1 = json.load(open(os.path.join('..', 'outputs', 'site3-No-PV.json'), 'rb'))
-    resp2 = json.load(open(os.path.join('..', 'outputs', 'site3-With-PV.json'), 'rb'))
+    resp1 = json.load(open(os.path.join('test_outputs', 'site3-No-PV.json'), 'rb'))
+    resp2 = json.load(open(os.path.join('test_outputs', 'site3-With-PV.json'), 'rb'))
 
-    parse_responses_to_csv_with_template(os.path.join('..', 'outputs', 'results_template.csv'), responses=[resp1, resp2],
-                                         output_csv='test_results.csv', input_csv=os.path.join('..', 'inputs', 'scenarios.csv'),
-                                         n_custom_columns=2)
+    parse_responses_to_csv_with_template(os.path.join('test_outputs', 'results_template.csv'),
+                                         responses=[resp1, resp2],
+                                         output_csv='test_results.csv',
+                                         input_csv=os.path.join('test_inputs', 'test_scenarios.csv'),
+                                         n_custom_columns=2
+                                         )
 
