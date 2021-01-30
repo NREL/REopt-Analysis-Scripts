@@ -13,9 +13,7 @@ programmatically.
 **Detailed documentation of REopt Lite API is available
 [here](https://developer.nrel.gov/docs/energy-optimization/reopt-v1/).**
 
-This repository has three different ways of interfacing with the api through the
-directories `single_site`, `multi_site` and `notebooks`. Each of these
-repositoris has a `README.md` file in them that describes the analysis workflow.
+See [examples/single_and_multi_scenario_examples.ipynb](https://github.com/NREL/REopt-API-Analysis/blob/master/examples/single_and_multi_scenario_examples.ipynb) for usage examples.
 
 
 ## Usage
