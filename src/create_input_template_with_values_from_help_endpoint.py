@@ -7,6 +7,16 @@ API_KEY = 'DEMO_KEY'
 api_url = 'https://developer.nrel.gov/api/reopt/v1'
 
 
+# these keys are excluded from the input template because their values are arrays that can't be in the DataFrame/CSV
+array_inputs_to_exclude = [
+    "FuelTariff|boiler_fuel_blended_monthly_rates_us_dollars_per_mmbtu",
+    "FuelTariff|chp_fuel_blended_monthly_rates_us_dollars_per_mmbtu",
+    "Site|outdoor_air_temp_degF",
+]
+# TODO figure out a work-around for including these values in all_api_inputs.csv that is compatible with multi_site
+#  analysis
+
+
 def set_default(nested_dict, flat_dict, k, piped_key):
     """
     Try to set a default value from nested_input_definitions. If there is no default value, set to None
@@ -72,6 +82,8 @@ def create_input_template_with_values_from_help_endpoint(api_url, API_KEY):
     flat_dict["LoadProfile|doe_reference_name"] = "LargeOffice"
     flat_dict["LoadProfile|annual_kwh"] = 1000000
     flat_dict.move_to_end("site_number", last=False)
+    for k in array_inputs_to_exclude:
+        flat_dict.pop(k, None)
     df = pd.DataFrame(flat_dict, index=[1])
     df.to_csv("all_api_inputs.csv", index=False)
 
