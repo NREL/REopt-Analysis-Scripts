@@ -12,7 +12,7 @@ def get_nested_output(key, resp, obj=None):
         return resp['outputs']['Scenario']['Site'][obj][val]
 
     else:
-        site = {k: v for k, v in resp['outputs']['Scenario']['Site'].items() if k.isupper()}
+        site = {k: v for k, v in resp['outputs']['Scenario']['Site'].items() if k[0].isupper()}
         # Site now has lower case keys that must be removed
         for d in site.values():
 
