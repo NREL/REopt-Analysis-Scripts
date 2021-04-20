@@ -67,6 +67,6 @@ if __name__ == '__main__':
     run_uuid = "my_run_id"
     file_name = "my_results.json"
     api_url = 'https://developer.nrel.gov/api/reopt/v1'
-    from keys import API_KEY
+    API_KEY = "DEMO_KEY"
 
     results = get_api_results(post={}, API_KEY=API_KEY, run_id=run_uuid, results_file=file_name, api_url=api_url)

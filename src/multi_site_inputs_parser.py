@@ -96,11 +96,8 @@ def add_load_profile_inputs(flat_dict, nested_dict, path_to_load_files="../input
             fp = os.path.join(path_to_load_files, flat_dict["load_file"])
             load_profile = pd.read_csv(fp, header=None, squeeze=True).tolist()
             load_profile = [float(v) for v in load_profile]  # numpy floats are not JSON serializable
-
             assert len(load_profile) in [8760, 17520, 35040]
-
             nested_dict['Scenario']['Site']['LoadProfile']['loads_kw'] = load_profile
-
     else:
         log.info("Using built-in profile for Site number {}.".format(flat_dict['site_number']))
 
@@ -112,8 +109,6 @@ def multi_site_csv_parser(path_to_csv, api_url, API_KEY, n_sites=None):
     :param n_sites: default=None. If integer value is passed then only that many sites will be processed.
     :return: list of dictionaries, with length equal to n_sites, which can be posted to API. Additional keys may be
     added for creating output summary csv.
-
-
     TODO: [ ] pass start row and end row for running scenarios.
     """
 
@@ -123,6 +118,8 @@ def multi_site_csv_parser(path_to_csv, api_url, API_KEY, n_sites=None):
         df = df.iloc[:n_sites]
 
     input_definitions = json.loads(requests.get(api_url + '/help?API_KEY=' + API_KEY).content)
+    if "error" in input_definitions.keys():
+        raise BlockingIOError(input_definitions["error"])
 
     posts = []
     for i in range(len(df)):
@@ -131,9 +128,18 @@ def multi_site_csv_parser(path_to_csv, api_url, API_KEY, n_sites=None):
         site_inputs = df.iloc[i].to_dict()
         posts.append(make_nested_dict(site_inputs, nested_dict))
 
-        add_load_profile_inputs(site_inputs, posts[-1], path_to_load_files=os.path.join(path_to_csv[:path_to_csv.index(os.sep)], 'load_profiles'))
+        path_to_load_files = "./load_profiles"
+        add_load_profile_inputs(site_inputs, posts[-1], path_to_load_files=path_to_load_files)
 
         posts[i]['Scenario']['Site']['Wind'] = {'max_kw': 0}  # hack for Wind not in help endpoint
 
     return posts
 
+
+test = False
+if test:
+    list_of_posts = multi_site_csv_parser(
+        './test_inputs/test_scenarios.csv',
+        api_url='https://developer.nrel.gov/api/reopt/v1',
+        API_KEY="DEMO_KEY"
+    )

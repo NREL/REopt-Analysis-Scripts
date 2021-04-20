@@ -1,0 +1,3 @@
+﻿site_number,description,npv_us_dollars,PV|size_kw,Storage|size_kw,Storage|size_kwh,year_one_bill_us_dollars,year_one_bill_bau_us_dollars,net_capital_costs_plus_om_us_dollars
+1,site3-No-PV,721.0,0.0,2.6778628012809786,3.531220154304939,69581.67,70015.66,3438.0
+2,site3-With-PV,93548.0,133.6816,12.553854746404015,29.782818710714263,43555.78,70015.66,159995.0
