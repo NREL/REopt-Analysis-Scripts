@@ -32,7 +32,7 @@ nbclient==0.5.1
 nbconvert==6.0.7
 nbformat==5.1.2
 nest-asyncio==1.5.1
-notebook==6.2.0
+notebook==6.4.1
 numpy==1.18.1
 openpyxl==3.0.3
 packaging==20.9
