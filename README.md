@@ -11,7 +11,7 @@ use REopt’s Application Programming Interface for running REopt analysis
 programmatically.
 
 **Detailed documentation of REopt Lite API is available
-[here](https://developer.nrel.gov/docs/energy-optimization/reopt-v1/).**
+[in this repo's wiki](https://github.com/NREL/REopt-API-Analysis/wiki).**
 
 See [examples/single_and_multi_scenario_examples.ipynb](https://github.com/NREL/REopt-API-Analysis/blob/master/examples/single_and_multi_scenario_examples.ipynb) for usage examples.
 
