@@ -1,9 +1,14 @@
-## REopt API Analysis Notebook
+# Notebook for REopt-API-Analysis
+Run REopt Lite API hosted locally or on a remote server
 
-This notebook outlines an analysis that explores how different load shapes
-affect the optimial sizing and dispatch of a solar PV system paired with battery
-energy storage. The easiest way to explore this notebook is through the
-[Binder](https://mybinder.org/v2/gh/NREL/REopt-API-Analysis/master?filepath=notebook%2FREopt_Lite_API_Demo.ipynb)
-implementation. Otherwise you will need to have jupyter installed on your
-machine with a kernel that has all of the `requirements.txt` dependencies
-installed.
+# Setup
+1. Install Docker (https://www.docker.com/get-started)
+2. Open a command line terminal (e.g. command prompt, bash terminal) and type `cd path/to/cloned/repo`
+3. Type `docker compose up --build` depending on the version of Docker
+4. Click the provided URL (starting with `http://127.0.0.1`) to open Jupyter Lab in your browser
+5. Click on the `work` folder in the left-hand project explorer and navigate to `/notebooks/<your notebook>`
+6. If running REopt **locally**, you will also need to spin up REopt Lite Docker containers (https://github.com/NREL/REopt_Lite_API)
+7. To shut down, cntrl+c in the terminal or shutdown using the Jupyter Lab controls
+
+## After initial setup
+1. To spin up again after you've already done `--build` in step 3. above, just type `docker compose up` and click the Jupyter URL
