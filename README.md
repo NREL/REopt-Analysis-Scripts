@@ -27,7 +27,7 @@ See the instructions below for each method.
 1. Obtain *API\_key* from [here](https://developer.nrel.gov/signup/)
 
 ### Use Docker to host a pre-configured Python environment
-1. Refer to the README.md file inside of the notebook directory.
+1. Refer to the [README.md](https://github.com/NREL/REopt-API-Analysis/blob/updates/notebook/README.md) file inside of the notebook directory.
 
 ### Setup a python environment
 1. Install Python 3.6+ interpreter:
