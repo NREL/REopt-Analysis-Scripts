@@ -5,3 +5,14 @@ env/
 venv/
 ENV/
 **.pyc
+
+notebook/posts/*
+notebook/responses/*
+notebook/*.ipynb
+!notebook/notebook_template.ipynb
+
+.vscode/
+__pycache__/
+
+examples/outputs/*
+!examples/outputs/results_template.csv
