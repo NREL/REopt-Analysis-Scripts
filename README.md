@@ -1,5 +1,3 @@
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/NREL/REopt-API-Analysis/master?filepath=notebook%2FREopt_Lite_API_Demo.ipynb)
-
 # REopt API Analysis using Python
 
 [REopt](https://reopt.nrel.gov/) is a techno-economic decision support model
@@ -17,19 +15,22 @@ See [examples/single_and_multi_scenario_examples.ipynb](https://github.com/NREL/
 
 
 ## Usage
+There are two ways to setup an environment from which to call the API:
 
-**The easiest way to get started using the REopt Lite API it to access it
-through the
-[Binder](https://mybinder.org/v2/gh/NREL/REopt-API-Analysis/master?filepath=notebook%2FREopt_Lite_API_Demo.ipynb)
-notebook. Otherwise you will need to set up your environment following the steps
-below.**
+1. Use Docker to host a pre-configured Python environment
+2. Install a Python environment natively on your operating system
 
+See the instructions below for each method.
 
 ### Prerequisites
 
 1. Obtain *API\_key* from [here](https://developer.nrel.gov/signup/)
 
-2. Install Python 3.6+ interpreter:
+### Use Docker to host a pre-configured Python environment
+1. Refer to the README.md file inside of the notebook directory.
+
+### Setup a python environment
+1. Install Python 3.6+ interpreter:
 
     - Ubuntu: `sudo apt-get install python3-dev`
 
@@ -39,12 +40,12 @@ below.**
     - Windows: Download and install version 3.6+ from
       [here](https://www.python.org/downloads/windows/)
 
-3. Install [pip](https://pip.pypa.io/en/stable/installing/)
+2. Install [pip](https://pip.pypa.io/en/stable/installing/)
 
     > Recommended: use a [virtual
     > environment](https://virtualenv.pypa.io/en/stable/installation/)
 
-4. Add the required python packages:
+3. Add the required python packages:
 
     - *If using `virtualenv`*: [activate
       the environment](https://virtualenv.pypa.io/en/stable/userguide/)
@@ -54,7 +55,7 @@ below.**
     > NOTE: The `requirements.txt` does not include dependecies for the *jupyter
     > notebooks*
 
-5. (OPTIONAL) Install git: - https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+4. (OPTIONAL) Install git: - https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 
 
 ### Running the code
