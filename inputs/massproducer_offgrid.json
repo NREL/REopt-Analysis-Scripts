@@ -1,0 +1,66 @@
+{
+    "Scenario": {
+      "off_grid_flag": true,
+      "optimality_tolerance_techs": 0.05,
+      "timeout_seconds": 3600,
+      "Site": {
+        "latitude": 34.5794343,
+        "longitude": -118.11646129999997,
+        "address": "Palmdale CA",
+        "Financial": {
+          "om_cost_escalation_pct": 0.0,
+          "escalation_pct": 0.023,
+          "generator_fuel_escalation_pct": 0.03,
+          "offtaker_tax_pct": 0.0,
+          "offtaker_discount_pct": 0.15,
+          "analysis_years": 25,
+          "other_capital_costs_us_dollars": 50000,
+          "other_annual_costs_us_dollars_per_year": 4000
+        },
+        "LoadProfile": {
+          "doe_reference_name": "RetailStore",
+          "annual_kwh": 7500000.0,
+          "year": 2017,
+          "min_load_met_pct": 0.98,
+          "sr_required_pct": 0.35
+        },
+        "PV": {
+          "existing_kw": 0.0,
+          "min_kw": 0.0,
+          "max_kw": 50000.0
+        },
+        "Storage": {
+          "min_kw": 0.0,
+          "max_kw": 20000.0,
+          "min_kwh": 0.0,
+          "max_kwh": 100000.0
+        },
+        "Generator": {
+          "useful_life_years": 5,
+          "existing_kw": 0.0,
+          "min_kw": 0.0,
+          "max_kw": 50000.0,
+          "installed_cost_us_dollars_per_kw": 500.0,
+          "om_cost_us_dollars_per_kw": 10.0,
+          "om_cost_us_dollars_per_kwh": 0.0,
+          "diesel_fuel_cost_us_dollars_per_gallon": 3.0
+        },
+        "MassProducer": {
+            "mass_units": "kg",
+            "time_units": "hr",
+            "min_mass_per_time": 10.0,
+            "max_mass_per_time": 10.0,
+            "electric_consumed_to_mass_produced_ratio_kwh_per_mass": 71.7,
+            "thermal_consumed_to_mass_produced_ratio_kwh_per_mass": 0.0,
+            "feedstock_consumed_to_mass_produced_ratio": 0.0,
+            "installed_cost_us_dollars_per_mass_per_time": 10.0,
+            "om_cost_us_dollars_per_mass_per_time": 1.5,
+            "om_cost_us_dollars_per_mass": 0.0,                         
+            "mass_value_us_dollars_per_mass": 5.0,
+            "feedstock_cost_us_dollars_per_mass": 0.0,
+            "macrs_option_years": 0,
+            "macrs_bonus_pct": 0
+          }
+      }
+    }
+  }

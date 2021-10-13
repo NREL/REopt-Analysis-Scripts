@@ -6,13 +6,15 @@ venv/
 ENV/
 **.pyc
 
-notebook/posts/*
-notebook/responses/*
-notebook/*.ipynb
-!notebook/notebook_template.ipynb
+# src/__pycache__/*
+# inputs/*
+# outputs/*
+*.ipynb
+!single_scenario_example.ipynb
+!multi_scenario_example.ipynb
 
-.vscode/
-__pycache__/
+# .vscode/
+# __pycache__/
 
-examples/outputs/*
-!examples/outputs/results_template.csv
+# examples/outputs/*
+# !examples/outputs/results_template.csv
