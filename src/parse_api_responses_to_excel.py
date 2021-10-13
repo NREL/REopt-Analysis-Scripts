@@ -1,4 +1,5 @@
 import openpyxl as xl
+import os
 
 
 def dict_to_worksheet(d, wb, row_idx, description, name):
@@ -58,17 +59,18 @@ def time_series_to_worksheet(d, wb, description):
             col_idx += 1
 
 
-def parse_api_responses_to_excel(responses, spreadsheet='results_summary.xlsx'):
+def parse_api_responses_to_excel(responses, template="template.xlsx", spreadsheet='results_summary.xlsx'):
     """
     Writes all inputs, outputs, and dispatches to separate worksheets in an Excel workbook.
     REopt object inputs and outputs are on separate sheets (eg. 'PV_inputs' and 'PV_outputs') with each row
     corresponding to a scenario.
     Dispatch time-series for each scenario are written to one worksheet per scenario.
     :param responses: list of dictionaries - one dict = one api response
-    :param spreadsheet: str, path/to/excel_spreadheet.xlsx to write results summary
+    :param template: str, path/to/template.xlsx which is the template file for the spreadsheet
+    :param spreadsheet: str, path/to/excel_spreadsheet.xlsx to write results summary
     :return: None
     """
-    wb = xl.load_workbook('template.xlsx')
+    wb = xl.load_workbook(template)
     ws_sites = wb.active
 
     for row_idx, resp in enumerate(responses):
