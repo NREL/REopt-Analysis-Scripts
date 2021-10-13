@@ -11,8 +11,7 @@ programmatically.
 **Detailed documentation of REopt Lite API is available
 [here](https://developer.nrel.gov/docs/energy-optimization/reopt-v1/).**
 
-See [examples/single_and_multi_scenario_examples.ipynb](https://github.com/NREL/REopt-API-Analysis/blob/master/examples/single_and_multi_scenario_examples.ipynb) for usage examples.
-
+This repository includes example scripts and notebooks for calling the API.
 
 ## Usage
 There are two ways to setup an environment from which to call the API:
@@ -69,4 +68,4 @@ See the instructions below for each method.
 
 ### Running the code
 1.  Clone, download, or fork the repository. 
-2.  See examples/single_and_multi_scenario_examples.ipynb
+2.  See single_scenario_example.ipynb and multi_scenario_example.ipynb
