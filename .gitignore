@@ -6,15 +6,17 @@ venv/
 ENV/
 **.pyc
 
-# src/__pycache__/*
-# inputs/*
-# outputs/*
+.vscode/
+
+src/__pycache__/*
+
+# Custom inputs/outputs files
+inputs/*
+outputs/*
+
+# Notebooks, except example/templates
 *.ipynb
 !single_scenario_example.ipynb
 !multi_scenario_example.ipynb
 
-# .vscode/
-# __pycache__/
 
-# examples/outputs/*
-# !examples/outputs/results_template.csv

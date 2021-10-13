@@ -105,13 +105,4 @@ def parse_api_responses_to_excel(responses, spreadsheet='results_summary.xlsx'):
         time_series_to_worksheet(time_series_dict, wb, description)
     wb.save(spreadsheet)
 
-
-if __name__ == '__main__':  # test script
-    import json
-    import os
-    resp1 = json.load(open(os.path.join('test_outputs', 'site3-No-PV.json'), 'rb'))
-    resp2 = json.load(open(os.path.join('test_outputs', 'site3-With-PV.json'), 'rb'))
-
-    responses = [resp1, resp2]
-    parse_api_responses_to_excel(responses, 'test.xlsx')
 # TODO address "UserWarning: Title is more than 31 characters. Some applications may not be able to read the file"
