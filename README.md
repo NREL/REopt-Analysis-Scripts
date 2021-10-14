@@ -51,12 +51,12 @@ See the instructions below for each method.
 2. Install [pip](https://pip.pypa.io/en/stable/installing/)
 
     > Recommended: use a [virtual
-    > environment](https://virtualenv.pypa.io/en/stable/installation/)
+    > environment with venv](https://docs.python.org/3/library/venv.html)
 
 3. Add the required python packages:
 
-    - *If using `virtualenv`*: [activate
-      the environment](https://virtualenv.pypa.io/en/stable/userguide/)
+    - *If using `venv`*: [activate
+      the environment](https://docs.python.org/3/library/venv.html)
 
     - `pip install -r requirements.txt`
 
