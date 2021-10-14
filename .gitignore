@@ -6,10 +6,6 @@ venv/
 ENV/
 **.pyc
 
-.vscode/
-
-src/__pycache__/*
-
 # Custom inputs/outputs files
 inputs/*
 outputs/*
