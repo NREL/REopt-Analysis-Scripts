@@ -1,5 +1,4 @@
 import openpyxl as xl
-import os
 
 
 def dict_to_worksheet(d, wb, row_idx, description, name):
