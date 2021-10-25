@@ -14,5 +14,3 @@ outputs/*
 *.ipynb
 !single_scenario_example.ipynb
 !multi_scenario_example.ipynb
-
-
