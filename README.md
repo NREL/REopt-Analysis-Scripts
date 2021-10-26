@@ -2,9 +2,10 @@
 
 [REopt](https://reopt.nrel.gov/) is a techno-economic decision support model
 from NREL which is used for optimizing energy systems for buildings, campuses,
-communities, and microgrids. [REopt Lite](https://reopt.nrel.gov/tool) offers a
-no-cost subset of features from NREL’s more comprehensive REopt model. REopt
-Lite also offers an application programming interface (API). This is a guide to
+communities, and microgrids. [REopt Lite](https://reopt.nrel.gov/tool) offers any
+user the capability to perform their own techno-economic analysis, but 
+customizable analysis solutions are also available by reaching out to NREL's 
+REopt team. REopt Lite also offers an application programming interface (API). This is a guide to
 use REopt’s Application Programming Interface for running REopt analysis
 programmatically.
 
