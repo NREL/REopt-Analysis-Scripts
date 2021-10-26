@@ -67,20 +67,3 @@ def parse_responses_to_csv_with_template(csv_template, responses, output_csv, in
     df.drop(df.columns[0], axis=1, inplace=True)
     df.to_csv(output_csv)
 
-
-if __name__ == '__main__':
-    """
-    Test script for response parser
-    """
-    import os
-    import json
-    resp1 = json.load(open(os.path.join('test_outputs', 'site3-No-PV.json'), 'rb'))
-    resp2 = json.load(open(os.path.join('test_outputs', 'site3-With-PV.json'), 'rb'))
-
-    parse_responses_to_csv_with_template(os.path.join('test_outputs', 'results_template.csv'),
-                                         responses=[resp1, resp2],
-                                         output_csv='test_results.csv',
-                                         input_csv=os.path.join('test_inputs', 'test_scenarios.csv'),
-                                         n_custom_columns=2
-                                         )
-

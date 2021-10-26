@@ -4,7 +4,6 @@ function for polling reopt api results url
 import requests
 import json
 import time
-import os
 from src.logger import log
 
 

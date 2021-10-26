@@ -5,3 +5,12 @@ env/
 venv/
 ENV/
 **.pyc
+
+# Custom inputs/outputs files
+inputs/*
+outputs/*
+
+# Notebooks, except example/templates
+*.ipynb
+!single_scenario_example.ipynb
+!multi_scenario_example.ipynb
