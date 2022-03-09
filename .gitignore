@@ -6,9 +6,12 @@ venv/
 ENV/
 **.pyc
 
-# Custom inputs/outputs files
+# Custom files for analysis
 inputs/*
 outputs/*
+load_profiles/*
+electric_rates/*
+
 
 # Notebooks, except example/templates
 *.ipynb
