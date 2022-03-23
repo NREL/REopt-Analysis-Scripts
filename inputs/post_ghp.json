@@ -1,0 +1,73 @@
+{
+    "Scenario": {
+        "timeout_seconds": 420,
+        "optimality_tolerance_techs": 0.001,
+        "off_grid_flag": false,
+        "webtool_uuid": "c35c1baa-9529-48ea-916f-18101d05d7cc",
+        "Site": {
+            "address": "Denver CO USA",
+            "latitude": "39.7392358",
+            "longitude": "-104.990251",
+            "ElectricTariff": {
+                "urdb_label": "5e1676e95457a3f87673e3b0"
+              },
+            "LoadProfile": {
+                "doe_reference_name": "LargeHotel",
+                "annual_kwh": "2313151.0"
+            },
+            "PV": {
+                "array_type": 0,
+                "can_net_meter": false,
+                "macrs_option_years": 5,
+                "macrs_bonus_pct": "1.0",
+                "max_kw": "0.0",
+                "module_type": 0
+            },
+            "Wind": {
+                "can_net_meter": false,
+                "max_kw": "0.0",
+                "macrs_option_years": 5,
+                "macrs_bonus_pct": 1,
+                "size_class": "commercial"
+            },
+            "Storage": {
+                "max_kw": "0.0",
+                "max_kwh": "0.0",
+                "canGridCharge": true,
+                "macrs_option_years": 7,
+                "macrs_bonus_pct": "1.0"
+            },
+            "Generator": {
+                "max_kw": "0.0"
+            },
+            "GHP": {
+                "installed_cost_heatpump_us_dollars_per_ton": "1.0",
+                "installed_cost_ghx_us_dollars_per_ft": "0.01",
+                "building_sqft": "150000.0",
+                "require_ghp_purchase": true,
+                "macrs_option_years": 5,
+                "macrs_bonus_pct": "1.0",
+                "ghpghx_inputs": [
+                    {}
+                ]
+            },
+            "LoadProfileBoilerFuel": {
+                "doe_reference_name": "LargeOffice",
+                "annual_mmbtu": "5267.0"
+            },
+            "LoadProfileChillerThermal": {
+                "annual_tonhour": null,
+                "monthly_tonhour": null,
+                "doe_reference_name": "SmallOffice",
+                "percent_share": null,
+                "loads_ton": null,
+                "annual_fraction": null,
+                "monthly_fraction": null,
+                "chiller_cop": null
+            },
+            "FuelTariff": {
+                "boiler_fuel_blended_annual_rates_us_dollars_per_mmbtu": "166.0"
+            }
+        }
+    }
+}

@@ -7,13 +7,13 @@ ENV/
 **.pyc
 
 # Custom files for analysis
-inputs/*
-outputs/*
-load_profiles/*
-electric_rates/*
+# inputs/*
+# outputs/*
+# load_profiles/*
+# electric_rates/*
 
 
 # Notebooks, except example/templates
-*.ipynb
-!single_scenario_example.ipynb
+# *.ipynb
+# !single_scenario_example.ipynb
 !multi_scenario_example.ipynb
