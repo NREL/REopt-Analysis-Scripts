@@ -1,7 +1,7 @@
 # REopt API Analysis using Python
 
 ## Updated for Multi-Scenario and Multi-Tariff Inputs
-This fork of the repository includes an updated version of `src.multi_site_input_parser.py`. In particular it allows the addition of a column in the multi-scenario input file titled `rate_file` that allows a specific electric tariff for each scenario. Below is an example of some inputs:
+This fork of the repository includes an updated version of `src.multi_site_input_parser.py`. In particular, it allows the addition of a column in the multi-scenario input file titled `rate_file` that allows a specific electric tariff to be specified for each scenario. Below is an example of some inputs:
 
 | description  | load_file | rate_file |
 | ------------- | ------------- | ------------- |
