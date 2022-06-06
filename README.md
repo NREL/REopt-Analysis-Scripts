@@ -1,5 +1,16 @@
 # REopt API Analysis using Python
 
+## Updated for Multi-Scenario and Multi-Tariff Inputs
+This version of the repository includes an updated version of `src.multi_site_input_parser.py`. In particular it allows the addition of a column in the multi-scenario input file titled `rate_file` that allows a specific electric tariff for each scenario. Below is an example of some inputs:
+
+| description  | load_file | rate_file |
+| ------------- | ------------- | ------------- |
+| 87104  | 87104_load_kw.csv  | 87104_electric_tariff.json  |
+| 87106  | 87106_load_kw.csv  | 87106_electric_tariff.json  |
+
+The multi-scenario example in the original repository notes that you must post a singular electric rate tariff, but this allows any number of tariffs to be posted as long as they are in the input file under this column header.
+
+#
 [REopt](https://reopt.nrel.gov/) is a techno-economic decision support model
 from NREL which is used for optimizing energy systems for buildings, campuses,
 communities, and microgrids. [REopt Lite](https://reopt.nrel.gov/tool) offers any
