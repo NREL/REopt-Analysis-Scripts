@@ -135,10 +135,7 @@ def multi_site_csv_parser(path_to_csv, api_url, API_KEY, n_sites=None):
         if "urdb_json_file" in df.columns:
             if pd.isnull(df.loc[i,"urdb_json_file"]) == False:
                 rate_i = json.load(open(os.path.join(path_to_rate_files, df["urdb_json_file"][i]), "r"))
-                posts[i]["Scenario"]["Site"]["ElectricTariff"]["urdb_response"] = rate_i
-            elif pd.isnull(df.loc[i,"urdb_json_file"]) == True and pd.isnull(df.loc[i,"urdb_label"]) == True:
-                print("Push Failed: Missing electric tariff information for Site Number",df['site_number'][i])
-                exit()            
+                posts[i]["Scenario"]["Site"]["ElectricTariff"]["urdb_response"] = rate_i           
             else:
                 pass
         else:
