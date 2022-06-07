@@ -1,14 +1,15 @@
 # REopt API Analysis using Python
 
 ## Updated for Multi-Scenario and Multi-Tariff Inputs
-This fork of the repository includes an updated version of `src.multi_site_input_parser.py`. In particular, it allows the addition of a column in the multi-scenario input file titled `rate_file` that allows a specific electric tariff to be specified for each scenario. Below is an example of some inputs:
+We now have now have the ability to use multiple custom electric tariffs with the multi-scenario version of the program. In particular, it allows the addition of a column in the multi-scenario input file titled `urdb_json_file` that allows a specific electric tariff to be specified for each scenario. Below is an example of some inputs:
 
-| description  | load_file | rate_file |
-| ------------- | ------------- | ------------- |
-| 87104  | 87104_load_kw.csv  | 87104_electric_tariff.json  |
-| 87106  | 87106_load_kw.csv  | 87106_electric_tariff.json  |
-
-The multi-scenario example in the original repository notes that you must post a singular electric rate tariff, but this allows any number of tariffs to be posted as long as they are in the input file under this column header.
+| description  | load_file | urdb_json_file | urdb_label |
+| ------------- | ------------- | ------------- | ------------- |
+| 87104  | 87104_load_kw.csv  | 87104_electric_tariff.json  | 87104_electric_tariff.json  |
+| 87106  | 87106_load_kw.csv  | 87106_electric_tariff.json  | 87106_electric_tariff.json  |
+| 87106  | 87106_load_kw.csv  |   | 5cc090b85457a3a43667107e  |
+ 
+The user can specify the location of a json file that is placed within `./electric_rates/` or a urdb_label as usual. This is useful for when users have scenarios looking at multiple different customer classes that may face different rate structures.
 
 #
 [REopt](https://reopt.nrel.gov/) is a techno-economic decision support model
