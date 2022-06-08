@@ -130,6 +130,16 @@ def multi_site_csv_parser(path_to_csv, api_url, API_KEY, n_sites=None):
 
         path_to_load_files = "./load_profiles"
         add_load_profile_inputs(site_inputs, posts[-1], path_to_load_files=path_to_load_files)
+        
+        path_to_rate_files = "./electric_rates"
+        if "urdb_json_file" in df.columns:
+            if pd.isnull(df.loc[i,"urdb_json_file"]) == False:
+                rate_i = json.load(open(os.path.join(path_to_rate_files, df["urdb_json_file"][i]), "r"))
+                posts[i]["Scenario"]["Site"]["ElectricTariff"]["urdb_response"] = rate_i           
+            else:
+                pass
+        else:
+            pass
 
         posts[i]['Scenario']['Site']['Wind'] = {'max_kw': 0}  # hack for Wind not in help endpoint
 
