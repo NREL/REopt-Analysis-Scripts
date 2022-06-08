@@ -5,8 +5,8 @@ We now have now have the ability to use multiple custom electric tariffs with th
 
 | description  | load_file | urdb_json_file | urdb_label |
 | ------------- | ------------- | ------------- | ------------- |
-| 87104  | 87104_load_kw.csv  | 87104_electric_tariff.json  | 87104_electric_tariff.json  |
-| 87106  | 87106_load_kw.csv  | 87106_electric_tariff.json  | 87106_electric_tariff.json  |
+| 87104  | 87104_load_kw.csv  | 87104_electric_tariff.json  |   |
+| 87106  | 87106_load_kw.csv  | 87106_electric_tariff.json  |   |
 | 87106  | 87106_load_kw.csv  |   | 5cc090b85457a3a43667107e  |
  
 The user can specify the location of a json file that is placed within `./electric_rates/` or a urdb_label as usual. This is useful for when users have scenarios looking at multiple different customer classes that may face different rate structures.
