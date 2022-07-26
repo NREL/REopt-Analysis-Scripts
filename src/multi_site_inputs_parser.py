@@ -150,6 +150,6 @@ test = False
 if test:
     list_of_posts = multi_site_csv_parser(
         './test_inputs/test_scenarios.csv',
-        api_url='https://developer.nrel.gov/api/reopt/v1',
+        api_url='https://developer.nrel.gov/api/reopt/stable',
         API_KEY="DEMO_KEY"
     )

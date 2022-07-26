@@ -4,7 +4,7 @@ import pandas as pd
 from src.logger import log
 from collections import OrderedDict
 API_KEY = 'DEMO_KEY'
-api_url = 'https://developer.nrel.gov/api/reopt/v1'
+api_url = 'https://developer.nrel.gov/api/reopt/stable'
 
 
 # these keys are excluded from the input template because their values are arrays that can't be in the DataFrame/CSV
