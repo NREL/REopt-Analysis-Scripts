@@ -1,7 +1,7 @@
 import requests
 import json
 from src.logger import log
-from src.results_poller import poller
+from src.results_poller import poller, poller_v3
 
 
 def get_api_results(post, API_KEY, api_url, results_file='results.json', run_id=None):
@@ -20,7 +20,10 @@ def get_api_results(post, API_KEY, api_url, results_file='results.json', run_id=
     if run_id is not None:
 
         results_url = api_url + '/job/<run_uuid>/results/?api_key=' + API_KEY
-        results = poller(url=results_url.replace('<run_uuid>', run_id))
+        if "dev" in api_url:
+            results = poller_v3(url=results_url.replace('<run_uuid>', run_id))
+        else:
+            results = poller(url=results_url.replace('<run_uuid>', run_id))
 
         with open(results_file, 'w') as fp:
             json.dump(obj=results, fp=fp)
