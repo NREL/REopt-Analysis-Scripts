@@ -1,0 +1,29 @@
+{
+    "Settings": {
+        "optimality_tolerance_techs": 0.001
+    },
+    "Site": {
+        "address": "San Francisco CA",
+        "latitude": "37.7749295",
+        "longitude": "-122.4194155"
+    },
+    "ElectricLoad": {
+        "doe_reference_name": "Hospital",
+        "annual_kwh": "7752817.0",
+        "outage_start_time_step": 6397,
+        "outage_end_time_step": 6445
+    },
+    "ElectricTariff": {
+        "urdb_label": "62d5b7fc4939f52c862151f9"
+    },
+    "ElectricUtility": {
+        "off_grid_flag": false
+    },
+    "Generator": {
+        "max_kw": 1000000000
+    },
+    "PV": {
+    },
+    "ElectricStorage": {
+    }
+}
