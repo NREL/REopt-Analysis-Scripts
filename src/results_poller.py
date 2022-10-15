@@ -76,3 +76,49 @@ def poller_v3(url, poll_interval=5):
 
     return resp_dict
 
+def poller_erp(url, poll_interval=5):
+    """
+    Function for polling the ERP API results URL until status is not "Simulating..."
+    :param url: results url to poll
+    :param poll_interval: seconds
+    :return: dictionary response (once status is not "Simulating...")
+    """
+
+    key_error_count = 0
+    key_error_threshold = 3
+    status = "Simulating..."
+    log.info("Polling {} for results with interval of {}s...".format(url, poll_interval))
+    while True:
+
+        resp = requests.get(url=url, verify=False)
+        resp_dict = json.loads(resp.content)
+            
+        try:
+            status = resp_dict['status']
+        except KeyError:
+            key_error_count += 1
+            log.info('KeyError count: {}'.format(key_error_count))
+            if key_error_count > key_error_threshold:
+                log.info('Breaking polling loop due to KeyError count threshold of {} exceeded.'
+                         .format(key_error_threshold))
+                break
+
+        if status != "Simulating...":
+            break
+        else:
+            time.sleep(poll_interval)
+
+        # try:
+        #     if resp_dict['outputs']: #not empty dict
+        #         break
+        #     else:
+        #         time.sleep(poll_interval)
+        # except KeyError:
+        #     key_error_count += 1
+        #     log.info('KeyError count: {}'.format(key_error_count))
+        #     if key_error_count > key_error_threshold:
+        #         log.info('Breaking polling loop due to KeyError count threshold of {} exceeded.'
+        #                  .format(key_error_threshold))
+        #         break
+
+    return resp_dict
