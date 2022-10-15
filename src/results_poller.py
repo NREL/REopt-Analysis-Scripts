@@ -108,17 +108,4 @@ def poller_erp(url, poll_interval=5):
         else:
             time.sleep(poll_interval)
 
-        # try:
-        #     if resp_dict['outputs']: #not empty dict
-        #         break
-        #     else:
-        #         time.sleep(poll_interval)
-        # except KeyError:
-        #     key_error_count += 1
-        #     log.info('KeyError count: {}'.format(key_error_count))
-        #     if key_error_count > key_error_threshold:
-        #         log.info('Breaking polling loop due to KeyError count threshold of {} exceeded.'
-        #                  .format(key_error_threshold))
-        #         break
-
     return resp_dict
