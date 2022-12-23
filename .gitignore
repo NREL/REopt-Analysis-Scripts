@@ -14,6 +14,6 @@ electric_rates/*
 
 
 # Notebooks, except example/templates
-*.ipynb
-!single_scenario_example.ipynb
-!multi_scenario_example.ipynb
+# *.ipynb
+# !single_scenario_example.ipynb
+# !multi_scenario_example.ipynb
