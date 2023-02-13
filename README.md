@@ -14,14 +14,14 @@ The user can specify the location of a json file that is placed within `./electr
 #
 [REopt](https://reopt.nrel.gov/) is a techno-economic decision support model
 from NREL which is used for optimizing energy systems for buildings, campuses,
-communities, and microgrids. [REopt Lite](https://reopt.nrel.gov/tool) offers any
+communities, and microgrids. [REopt](https://reopt.nrel.gov/tool) offers any
 user the capability to perform their own techno-economic analysis, but 
 customizable analysis solutions are also available by reaching out to NREL's 
-REopt team. REopt Lite also offers an application programming interface (API). This is a guide to
+REopt team. REopt also offers an application programming interface (API). This is a guide to
 use REopt’s Application Programming Interface for running REopt analysis
 programmatically.
 
-**Detailed documentation of REopt Lite API is available in [this repository's wiki](https://github.com/NREL/REopt-API-Analysis/wiki).**
+**Detailed documentation of REopt API is available in [this repository's wiki](https://github.com/NREL/REopt-API-Analysis/wiki).**
 
 This repository includes example scripts and notebooks for calling the API.
 
