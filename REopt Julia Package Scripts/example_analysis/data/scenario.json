@@ -1,0 +1,30 @@
+{
+    "Site": {
+        "longitude": -149.8514,
+        "latitude": 61.1975
+    },
+    "Thermosyphon": {},
+    "PV": {
+        "installed_cost_per_kw": 4800,
+        "om_cost_per_kw": 48,
+        "max_kw": 2,
+        "min_kw": 0.0,
+        "can_curtail": true
+    },
+    "ElectricStorage": {
+        "can_grid_charge": false,
+        "total_itc_pct": 0.0
+    },
+    "ElectricUtility": {
+        "outage_start_time_step": 1,
+        "outage_end_time_step": 8760
+    },
+    "ElectricTariff": {
+        "blended_annual_energy_rate": 10000,
+        "blended_annual_demand_rate": 10000
+    },
+    "Financial": {
+    },
+    "ElectricLoad": {
+    }
+}
