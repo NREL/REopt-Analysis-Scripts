@@ -20,7 +20,7 @@ def get_api_results(post, API_KEY, api_url, results_file='results.json', run_id=
     if run_id is not None:
 
         results_url = api_url + '/job/<run_uuid>/results/?api_key=' + API_KEY
-        if "stable" in results_url or "v3" in results_url or "dev" in results_url:
+        if "stable" in results_url or "v3" in results_url or "dev" in results_url: ## TODO change once v3 is stable
             results = poller_v3(url=results_url.replace('<run_uuid>', run_id))
         else:
             results = poller(url=results_url.replace('<run_uuid>', run_id))
