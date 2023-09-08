@@ -21,7 +21,7 @@ using JuMP
 # See documentation for also adding GhpGhx
 
 ## Run a single model with no business-as-usual (BAU) case: ##
-print("\nRunning a single REopt model with no BAU.\n")
+println("Running a single REopt model with no BAU.")
 m = Model(Cbc.Optimizer) # Another example, using Xpress: m = Model(optimizer_with_attributes(Xpress.Optimizer, "MIPRELSTOP" => 0.01, "OUTPUTLOG" => 0))
 data_file = "pv_retail.json" # Notice that just the PV key with an empty dictionary is provided to tell REopt to consider PV
 data = JSON.parsefile("scenarios/$data_file")
@@ -32,8 +32,8 @@ data["Financial"]["analysis_years"] = 20 # Example modifying the scenario
 results = run_reopt(m, data)
 
 # Print some results
-print("\nPV [kW]: ", results["PV"]["size_kw"])
-print("\nLifecycle cost [\$]: ", results["Financial"]["lcc"])
+println("PV [kW]: ", results["PV"]["size_kw"])
+println("Lifecycle cost [\$]: ", results["Financial"]["lcc"])
 
 # Save results json
 write("./results/$data_file", JSON.json(results))
