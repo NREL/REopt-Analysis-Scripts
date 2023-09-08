@@ -1,0 +1,26 @@
+{
+    "Site": {
+        "longitude": -95.94535,
+        "latitude": 38.9228
+    },
+    "Wind": {
+        "max_kw": 1500
+    },
+    "ElectricStorage":{
+    },
+    "ElectricLoad": {
+        "doe_reference_name": "Hospital",
+        "annual_kwh": 1000000.0,
+        "year": 2017
+    },
+    "ElectricTariff": {
+        "blended_annual_energy_rate": 0.12,
+        "blended_annual_demand_rate": 15
+    },
+    "Financial": {
+        "elec_cost_escalation_rate_fraction": 0.026,
+        "offtaker_discount_rate_fraction": 0.08,
+        "offtaker_tax_rate_fraction": 0.28,
+        "om_cost_escalation_rate_fraction": 0.025
+    }
+}
