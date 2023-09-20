@@ -1,51 +1,32 @@
 v2_key,v2_field,v3_key,v3_field
-CHP,derate_slope_pct_per_degF,---,(Removed in v3)
-CHP,derate_start_temp_degF,---,(Removed in v3)
-CHP,max_derate_factor,---,(Removed in v3)
-CHP,use_default_derate,---,(Removed in v3)
-LoadProfile,outage_end_hour,---,(Removed in v3)
-LoadProfile,outage_is_major_event,---,(Removed in v3)
-LoadProfile,outage_start_hour,---,(Removed in v3)
-Site,elevation_ft,---,(Removed in v3)
-Site,outdoor_air_temp_degF,---,(Removed in v3)
-LoadProfileBoilerFuel,addressable_load_fraction,(Changed in v3),"(Split into SpaceHeatingLoad and DomesticHotWaterLoad in v3 API, only one input used for the Webtool)"
-LoadProfileBoilerFuel,addressable_load_fraction,(Changed in v3),(Split into SpaceHeatingLoad and DomesticHotWaterLoad in v3)
-LoadProfileBoilerFuel,annual_mmbtu,(Changed in v3),(Split into SpaceHeatingLoad and DomesticHotWaterLoad in v3)
-LoadProfileBoilerFuel,doe_reference_name,(Changed in v3),(Split into SpaceHeatingLoad and DomesticHotWaterLoad in v3)
-LoadProfileBoilerFuel,loads_mmbtu_per_hour,(Changed in v3),(Split into SpaceHeatingLoad and DomesticHotWaterLoad in v3)
-LoadProfileBoilerFuel,monthly_mmbtu,(Changed in v3),(Split into SpaceHeatingLoad and DomesticHotWaterLoad in v3)
-LoadProfileBoilerFuel,percent_share,(Changed in v3),(Split into SpaceHeatingLoad and DomesticHotWaterLoad in v3)
-LoadProfileBoilerFuel,space_heating_fraction_of_heating_load,(Changed in v3),(Split into SpaceHeatingLoad and DomesticHotWaterLoad in v3)
----,(Added in v3),AbsorptionChiller (Not yet in v3),chp_prime_mover
-AbsorptionChiller,chiller_elec_cop,AbsorptionChiller (In dev branch),cop_electric
-AbsorptionChiller,chiller_cop,AbsorptionChiller (In dev branch),cop_thermal
-AbsorptionChiller,installed_cost_us_dollars_per_ton,AbsorptionChiller (In dev branch),installed_cost_per_ton
-AbsorptionChiller,macrs_bonus_pct,AbsorptionChiller (In dev branch),macrs_bonus_fraction
-AbsorptionChiller,macrs_option_years,AbsorptionChiller (In dev branch),macrs_option_years
-AbsorptionChiller,max_ton,AbsorptionChiller (In dev branch),max_ton
-AbsorptionChiller,min_ton,AbsorptionChiller (In dev branch),min_ton
----,(Added in v3),AbsorptionChiller (Not yet in v3),om_cost_per_kw
-AbsorptionChiller,om_cost_us_dollars_per_ton,AbsorptionChiller (In dev branch),om_cost_per_ton
----,(Added in v3),AbsorptionChiller (In dev branch),thermal_consumption_hot_water_or_steam
+AbsorptionChiller,chiller_elec_cop,AbsorptionChiller,cop_electric
+AbsorptionChiller,chiller_cop,AbsorptionChiller,cop_thermal
+AbsorptionChiller,installed_cost_us_dollars_per_ton,AbsorptionChiller,installed_cost_per_ton
+AbsorptionChiller,macrs_bonus_pct,AbsorptionChiller,macrs_bonus_fraction
+AbsorptionChiller,macrs_option_years,AbsorptionChiller,macrs_option_years
+AbsorptionChiller,max_ton,AbsorptionChiller,max_ton
+AbsorptionChiller,min_ton,AbsorptionChiller,min_ton
+AbsorptionChiller,om_cost_us_dollars_per_ton,AbsorptionChiller,om_cost_per_ton
+---,(Added in v3),AbsorptionChiller,thermal_consumption_hot_water_or_steam
 Scenario,user_uuid,APIMeta,user_uuid
 Scenario,webtool_uuid,APIMeta,webtool_uuid
-NewBoiler,can_supply_steam_turbine,Boiler (In dev branch),can_supply_steam_turbine
-NewBoiler,boiler_efficiency,Boiler (In dev branch),efficiency
-FuelTariff,newboiler_fuel_blended_annual_rates_us_dollars_per_mmbtu,Boiler (In dev branch),fuel_cost_per_mmbtu
-FuelTariff,newboiler_fuel_blended_monthly_rates_us_dollars_per_mmbtu,Boiler (In dev branch),fuel_cost_per_mmbtu
-FuelTariff,newboiler_fuel_type,Boiler (In dev branch),fuel_type
-FuelTariff,newboiler_fuel_percent_RE,Boiler (Not yet in v3),In the process of being updated
-NewBoiler,emissions_factor_lb_CO2_per_mmbtu,Boiler (Not yet in v3),In the process of being updated
-NewBoiler,emissions_factor_lb_NOx_per_mmbtu,Boiler (Not yet in v3),In the process of being updated
-NewBoiler,emissions_factor_lb_PM25_per_mmbtu,Boiler (Not yet in v3),In the process of being updated
-NewBoiler,emissions_factor_lb_SO2_per_mmbtu,Boiler (Not yet in v3),In the process of being updated
-NewBoiler,installed_cost_us_dollars_per_mmbtu_per_hr,Boiler (In dev branch),installed_cost_per_mmbtu_per_hour
-NewBoiler,macrs_bonus_pct,Boiler (In dev branch),macrs_bonus_fraction
-NewBoiler,macrs_option_years,Boiler (In dev branch),macrs_option_years
-NewBoiler,max_mmbtu_per_hr,Boiler (In dev branch),max_mmbtu_per_hour
-NewBoiler,min_mmbtu_per_hr,Boiler (In dev branch),min_mmbtu_per_hour
-NewBoiler,om_cost_us_dollars_per_mmbtu,Boiler (In dev branch),om_cost_per_mmbtu
-NewBoiler,om_cost_us_dollars_per_mmbtu_per_hr,Boiler (In dev branch),om_cost_per_mmbtu_per_hour
+NewBoiler,can_supply_steam_turbine,Boiler,can_supply_steam_turbine
+NewBoiler,boiler_efficiency,Boiler,efficiency
+FuelTariff,newboiler_fuel_blended_annual_rates_us_dollars_per_mmbtu,Boiler,fuel_cost_per_mmbtu
+FuelTariff,newboiler_fuel_blended_monthly_rates_us_dollars_per_mmbtu,Boiler,fuel_cost_per_mmbtu
+FuelTariff,newboiler_fuel_type,Boiler,fuel_type
+NewBoiler,installed_cost_us_dollars_per_mmbtu_per_hr,Boiler,installed_cost_per_mmbtu_per_hour
+NewBoiler,macrs_bonus_pct,Boiler,macrs_bonus_fraction
+NewBoiler,macrs_option_years,Boiler,macrs_option_years
+NewBoiler,max_mmbtu_per_hr,Boiler,max_mmbtu_per_hour
+NewBoiler,min_mmbtu_per_hr,Boiler,min_mmbtu_per_hour
+NewBoiler,om_cost_us_dollars_per_mmbtu,Boiler,om_cost_per_mmbtu
+NewBoiler,om_cost_us_dollars_per_mmbtu_per_hr,Boiler,om_cost_per_mmbtu_per_hour
+FuelTariff,newboiler_fuel_percent_RE,Boiler (not yet in v3),In the process of being updated
+NewBoiler,emissions_factor_lb_CO2_per_mmbtu,Boiler (not yet in v3),In the process of being updated
+NewBoiler,emissions_factor_lb_NOx_per_mmbtu,Boiler (not yet in v3),In the process of being updated
+NewBoiler,emissions_factor_lb_PM25_per_mmbtu,Boiler (not yet in v3),In the process of being updated
+NewBoiler,emissions_factor_lb_SO2_per_mmbtu,Boiler (not yet in v3),In the process of being updated
 CHP,can_curtail,CHP,can_curtail
 CHP,can_export_beyond_site_load,CHP,can_export_beyond_nem_limit
 CHP,can_net_meter,CHP,can_net_meter
@@ -132,7 +113,6 @@ LoadProfileChillerThermal,loads_ton,CoolingLoad,thermal_loads_ton
 LoadProfile,annual_kwh,ElectricLoad,annual_kwh
 ---,(Added in v3),ElectricLoad,blended_doe_reference_names
 LoadProfile,percent_share,ElectricLoad,blended_doe_reference_percents
----,(Added in v3),ElectricLoad,city
 LoadProfile,critical_load_pct,ElectricLoad,critical_load_fraction
 LoadProfile,critical_loads_kw,ElectricLoad,critical_loads_kw
 LoadProfile,critical_loads_kw_is_net,ElectricLoad,critical_loads_kw_is_net
@@ -165,12 +145,6 @@ Storage,soc_min_pct,ElectricStorage,soc_min_fraction
 Storage,total_itc_pct,ElectricStorage,total_itc_fraction
 Storage,total_rebate_us_dollars_per_kw,ElectricStorage,total_rebate_per_kw
 Storage,total_rebate_us_dollars_per_kwh,ElectricStorage,total_rebate_per_kwh
----,(Added in v3),ElectricStorage (Not yet in v3),charge_efficiency
----,(Added in v3),ElectricStorage (Not yet in v3),degradation
----,(Added in v3),ElectricStorage (Not yet in v3),discharge_efficiency
----,(Added in v3),ElectricStorage (Not yet in v3),grid_charge_efficiency
----,(Added in v3),ElectricStorage (Not yet in v3),minimum_avg_soc_fraction
----,(Added in v3),ElectricStorage (Not yet in v3),model_degradation
 ElectricTariff,add_blended_rates_to_urdb_rate,ElectricTariff,add_monthly_rates_to_urdb_rate
 ElectricTariff,add_tou_energy_rates_to_urdb_rate,ElectricTariff,add_tou_energy_rates_to_urdb_rate
 ElectricTariff,blended_annual_demand_charges_us_dollars_per_kw,ElectricTariff,blended_annual_demand_rate
@@ -186,10 +160,10 @@ ElectricTariff,urdb_rate_name,ElectricTariff,urdb_rate_name
 ElectricTariff,urdb_response,ElectricTariff,urdb_response
 ElectricTariff,urdb_utility_name,ElectricTariff,urdb_utility_name
 ElectricTariff,wholesale_rate_us_dollars_per_kwh,ElectricTariff,wholesale_rate
----,(Added in v3),ElectricTariff (Not yet in v3),demand_lookback_months
----,(Added in v3),ElectricTariff (Not yet in v3),demand_lookback_percent
----,(Added in v3),ElectricTariff (Not yet in v3),demand_lookback_range
----,(Added in v3),ElectricTariff (Not yet in v3),remove_tiers
+---,(Added in v3),ElectricTariff (not yet in v3),demand_lookback_months
+---,(Added in v3),ElectricTariff (not yet in v3),demand_lookback_percent
+---,(Added in v3),ElectricTariff (not yet in v3),demand_lookback_range
+---,(Added in v3),ElectricTariff (not yet in v3),remove_tiers
 ---,(Added in v3),ElectricUtility,allow_simultaneous_export_import
 ElectricTariff,emissions_factor_CO2_pct_decrease,ElectricUtility,emissions_factor_CO2_decrease_fraction
 ElectricTariff,emissions_factor_NOx_pct_decrease,ElectricUtility,emissions_factor_NOx_decrease_fraction
@@ -218,8 +192,14 @@ FuelTariff,boiler_fuel_percent_RE,ExistingBoiler,fuel_renewable_energy_fraction
 FuelTariff,existing_boiler_fuel_type,ExistingBoiler,fuel_type
 Boiler,max_thermal_factor_on_peak_load,ExistingBoiler,max_thermal_factor_on_peak_load
 Boiler,existing_boiler_production_type_steam_or_hw,ExistingBoiler,production_type
-Boiler,can_supply_steam_turbine,ExistingBoiler (In dev branch),can_supply_steam_turbine
----,(Added in v3),ExistingBoiler (Not yet in v3),max_heat_demand_kw
+Boiler,can_supply_steam_turbine,ExistingBoiler (not yet in v3),can_supply_steam_turbine
+LoadProfileBoilerFuel,addressable_load_fraction,(Changed in v3),"(Split into SpaceHeatingLoad and DomesticHotWaterLoad in v3 API, only one input used for the Webtool)"
+LoadProfileBoilerFuel,annual_mmbtu,(Changed in v3),(Split into SpaceHeatingLoad and DomesticHotWaterLoad in v3)
+LoadProfileBoilerFuel,doe_reference_name,(Changed in v3),(Split into SpaceHeatingLoad and DomesticHotWaterLoad in v3)
+LoadProfileBoilerFuel,loads_mmbtu_per_hour,(Changed in v3),(Split into SpaceHeatingLoad and DomesticHotWaterLoad in v3)
+LoadProfileBoilerFuel,monthly_mmbtu,(Changed in v3),(Split into SpaceHeatingLoad and DomesticHotWaterLoad in v3)
+LoadProfileBoilerFuel,percent_share,(Changed in v3),(Split into SpaceHeatingLoad and DomesticHotWaterLoad in v3)
+LoadProfileBoilerFuel,space_heating_fraction_of_heating_load,(Changed in v3),(Split into SpaceHeatingLoad and DomesticHotWaterLoad in v3)
 LoadProfileChillerThermal,chiller_cop,ExistingChiller,cop
 ---,(Added in v3),ExistingChiller,loads_kw_thermal
 ElectricChiller,max_thermal_factor_on_peak_load,ExistingChiller,max_thermal_factor_on_peak_load
@@ -250,14 +230,6 @@ Financial,so2_cost_us_dollars_per_tonne_grid,Financial,SO2_grid_cost_per_tonne
 Financial,so2_cost_us_dollars_per_tonne_onsite_fuelburn,Financial,SO2_onsite_fuelburn_cost_per_tonne
 Financial,third_party_ownership,Financial,third_party_ownership
 Financial,value_of_lost_load_us_dollars_per_kwh,Financial,value_of_lost_load_per_kwh
----,(Added in v3),FlexibleHVAC,control_node
----,(Added in v3),FlexibleHVAC,exogenous_inputs
----,(Added in v3),FlexibleHVAC,initial_temperatures
----,(Added in v3),FlexibleHVAC,input_matrix
----,(Added in v3),FlexibleHVAC,installed_cost
----,(Added in v3),FlexibleHVAC,system_matrix
----,(Added in v3),FlexibleHVAC,temperature_lower_bound_degC
----,(Added in v3),FlexibleHVAC,temperature_upper_bound_degC
 Generator,can_curtail,Generator,can_curtail
 Generator,can_export_beyond_site_load,Generator,can_export_beyond_nem_limit
 Generator,can_net_meter,Generator,can_net_meter
@@ -300,44 +272,36 @@ Generator,utility_ibi_pct,Generator,utility_ibi_fraction
 Generator,utility_ibi_max_us_dollars,Generator,utility_ibi_max
 Generator,utility_rebate_max_us_dollars,Generator,utility_rebate_max
 Generator,utility_rebate_us_dollars_per_kw,Generator,utility_rebate_per_kw
-GHP,building_sqft,GHP (In dev branch),building_sqft
-GHP,can_serve_dhw,GHP (In dev branch),can_serve_dhw
-GHP,cooling_efficiency_thermal_factor,GHP (In dev branch),cooling_efficiency_thermal_factor
----,(Added in v3),GHP (Not yet in v3),cooling_thermal_kw
-GHP,federal_itc_pct,GHP (In dev branch),federal_itc_fraction
----,(Added in v3),GHP (Not yet in v3),federal_rebate_per_kw
-GHP,federal_rebate_us_dollars_per_ton,GHP (In dev branch),federal_rebate_per_ton
----,(Added in v3),GHP (Not yet in v3),heating_thermal_kw
-GHP,heatpump_capacity_sizing_factor_on_peak_load,GHP (In dev branch),heatpump_capacity_sizing_factor_on_peak_load
----,(Added in v3),GHP (Not yet in v3),heatpump_capacity_ton
----,(Added in v3),GHP (Not yet in v3),installed_cost
-GHP,installed_cost_building_hydronic_loop_us_dollars_per_sqft,GHP (In dev branch),installed_cost_building_hydronic_loop_per_sqft
-GHP,installed_cost_ghx_us_dollars_per_ft,GHP (In dev branch),installed_cost_ghx_per_ft
-GHP,installed_cost_heatpump_us_dollars_per_ton,GHP (In dev branch),installed_cost_heatpump_per_ton
----,(Added in v3),GHP (Not yet in v3),installed_cost_per_kw
-GHP,macrs_bonus_pct,GHP (In dev branch),macrs_bonus_fraction
-GHP,macrs_itc_reduction,GHP (In dev branch),macrs_itc_reduction
-GHP,macrs_option_years,GHP (In dev branch),macrs_option_years
-GHP,om_cost_us_dollars_per_sqft_year,GHP (In dev branch),om_cost_per_sqft_year
----,(Added in v3),GHP (Not yet in v3),om_cost_year_one
----,(Added in v3),GHP (Not yet in v3),peak_combined_heatpump_thermal_ton
-GHP,require_ghp_purchase,GHP (In dev branch),require_ghp_purchase
-GHP,space_heating_efficiency_thermal_factor,GHP (In dev branch),space_heating_efficiency_thermal_factor
-GHP,state_ibi_pct,GHP (In dev branch),state_ibi_fraction
-GHP,state_ibi_max_us_dollars,GHP (In dev branch),state_ibi_max
-GHP,state_rebate_max_us_dollars,GHP (In dev branch),state_rebate_max
----,(Added in v3),GHP (Not yet in v3),state_rebate_per_kw
-GHP,state_rebate_us_dollars_per_ton,GHP (In dev branch),state_rebate_per_ton
----,(Added in v3),GHP (Not yet in v3),tech_sizes_for_cost_curve
-GHP,utility_ibi_pct,GHP (In dev branch),utility_ibi_fraction
-GHP,utility_ibi_max_us_dollars,GHP (In dev branch),utility_ibi_max
-GHP,utility_rebate_max_us_dollars,GHP (In dev branch),utility_rebate_max
----,(Added in v3),GHP (Not yet in v3),utility_rebate_per_kw
-GHP,utility_rebate_us_dollars_per_ton,GHP (In dev branch),utility_rebate_per_ton
----,(Added in v3),GHP (Not yet in v3),yearly_electric_consumption_kw
-GHP,ghpghx_inputs,GHP (In dev branch),ghpghx_inputs 
-GHP,ghpghx_response_uuids,GHP (In dev branch),ghpghx_response_uuids 
-GHP,ghpghx_responses,GHP (In dev branch),ghpghx_responses 
+GHP,building_sqft,GHP,building_sqft
+GHP,can_serve_dhw,GHP,can_serve_dhw
+GHP,cooling_efficiency_thermal_factor,GHP,cooling_efficiency_thermal_factor
+GHP,federal_itc_pct,GHP,federal_itc_fraction
+GHP,federal_rebate_us_dollars_per_ton,GHP,federal_rebate_per_ton
+GHP,ghpghx_inputs,GHP,ghpghx_inputs 
+GHP,ghpghx_response_uuids,GHP,ghpghx_response_uuids 
+GHP,ghpghx_responses,GHP,ghpghx_responses 
+GHP,heatpump_capacity_sizing_factor_on_peak_load,GHP,heatpump_capacity_sizing_factor_on_peak_load
+GHP,installed_cost_building_hydronic_loop_us_dollars_per_sqft,GHP,installed_cost_building_hydronic_loop_per_sqft
+GHP,installed_cost_ghx_us_dollars_per_ft,GHP,installed_cost_ghx_per_ft
+GHP,installed_cost_heatpump_us_dollars_per_ton,GHP,installed_cost_heatpump_per_ton
+GHP,macrs_bonus_pct,GHP,macrs_bonus_fraction
+GHP,macrs_itc_reduction,GHP,macrs_itc_reduction
+GHP,macrs_option_years,GHP,macrs_option_years
+GHP,om_cost_us_dollars_per_sqft_year,GHP,om_cost_per_sqft_year
+GHP,require_ghp_purchase,GHP,require_ghp_purchase
+GHP,space_heating_efficiency_thermal_factor,GHP,space_heating_efficiency_thermal_factor
+GHP,state_ibi_pct,GHP,state_ibi_fraction
+GHP,state_ibi_max_us_dollars,GHP,state_ibi_max
+GHP,state_rebate_max_us_dollars,GHP,state_rebate_max
+GHP,state_rebate_us_dollars_per_ton,GHP,state_rebate_per_ton
+GHP,utility_ibi_pct,GHP,utility_ibi_fraction
+GHP,utility_ibi_max_us_dollars,GHP,utility_ibi_max
+GHP,utility_rebate_max_us_dollars,GHP,utility_rebate_max
+GHP,utility_rebate_us_dollars_per_ton,GHP,utility_rebate_per_ton
+GHP,aux_heater_type,GHP (not yet in v3),
+GHP,aux_heater_installed_cost_us_dollars_per_mmbtu_per_hr,GHP (not yet in v3),
+GHP,aux_cooler_installed_cost_us_dollars_per_ton,GHP (not yet in v3),
+GHP,aux_unit_capacity_sizing_factor_on_peak_load,GHP (not yet in v3),
 HotTES,cooled_return_water_temp_degF,HotThermalStorage,cool_water_temp_degF
 HotTES,hot_supply_water_temp_degF,HotThermalStorage,hot_water_temp_degF
 HotTES,installed_cost_us_dollars_per_gal,HotThermalStorage,installed_cost_per_gal
@@ -353,8 +317,6 @@ HotTES,soc_min_pct,HotThermalStorage,soc_min_fraction
 HotTES,thermal_decay_rate_fraction,HotThermalStorage,thermal_decay_rate_fraction
 ---,(Added in v3),HotThermalStorage,total_itc_fraction
 ---,(Added in v3),HotThermalStorage,total_rebate_per_kwh
-Site,address,Meta,address
-Scenario,description,Meta,description
 PV,array_type,PV,array_type
 PV,azimuth,PV,azimuth
 PV,can_curtail,PV,can_curtail
@@ -395,8 +357,6 @@ PV,utility_ibi_pct,PV,utility_ibi_fraction
 PV,utility_ibi_max_us_dollars,PV,utility_ibi_max
 PV,utility_rebate_max_us_dollars,PV,utility_rebate_max
 PV,utility_rebate_us_dollars_per_kw,PV,utility_rebate_per_kw
----,(Added in v3),PV (Not yet in v3),acres_per_kw
----,(Added in v3),PV (Not yet in v3),kw_per_square_foot
 Scenario,add_soc_incentive,Settings,add_soc_incentive
 Scenario,include_climate_in_objective,Settings,include_climate_in_objective
 Scenario,include_health_in_objective,Settings,include_health_in_objective
@@ -406,8 +366,6 @@ Scenario,optimality_tolerance_techs,Settings,optimality_tolerance
 ,,Settings,run_bau
 Scenario,time_steps_per_hour,Settings,time_steps_per_hour
 Scenario,timeout_seconds,Settings,timeout_seconds
----,(Added in v3),Site,bau_emissions_lb_CO2_per_year
----,(Added in v3),Site,bau_grid_emissions_lb_CO2_per_year
 Site,co2_emissions_reduction_max_pct,Site,CO2_emissions_reduction_max_fraction
 Site,co2_emissions_reduction_min_pct,Site,CO2_emissions_reduction_min_fraction
 Site,include_exported_elec_emissions_in_total,Site,include_exported_elec_emissions_in_total
@@ -415,9 +373,7 @@ Site,include_exported_renewable_electricity_in_total,Site,include_exported_renew
 Site,land_acres,Site,land_acres
 Site,latitude,Site,latitude
 Site,longitude,Site,longitude
----,(Added in v3),Site,mg_tech_sizes_equal_grid_sizes
 ---,(Added in v3),Site,min_resil_time_steps
----,(Added in v3),Site,node
 Site,renewable_electricity_max_pct,Site,renewable_electricity_max_fraction
 Site,renewable_electricity_min_pct,Site,renewable_electricity_min_fraction
 Site,roof_squarefeet,Site,roof_squarefeet
@@ -428,31 +384,33 @@ Site,roof_squarefeet,Site,roof_squarefeet
 ---,(Added in v3),SpaceHeatingLoad,doe_reference_name
 ---,(Added in v3),SpaceHeatingLoad,fuel_loads_mmbtu_per_hour
 ---,(Added in v3),SpaceHeatingLoad,monthly_mmbtu
-SteamTurbine,can_curtail,SteamTurbine (In dev branch),can_curtail
-SteamTurbine,can_export_beyond_site_load,SteamTurbine (In dev branch),can_export_beyond_nem_limit
-SteamTurbine,can_net_meter,SteamTurbine (In dev branch),can_net_meter
-SteamTurbine,can_wholesale,SteamTurbine (In dev branch),can_wholesale
-SteamTurbine,electric_produced_to_thermal_consumed_ratio,SteamTurbine (In dev branch),electric_produced_to_thermal_consumed_ratio
-SteamTurbine,gearbox_generator_efficiency,SteamTurbine (In dev branch),gearbox_generator_efficiency
-SteamTurbine,inlet_steam_pressure_psig,SteamTurbine (In dev branch),inlet_steam_pressure_psig
-SteamTurbine,inlet_steam_superheat_degF,SteamTurbine (In dev branch),inlet_steam_superheat_degF
-SteamTurbine,inlet_steam_temperature_degF,SteamTurbine (In dev branch),inlet_steam_temperature_degF
-SteamTurbine,installed_cost_us_dollars_per_kw,SteamTurbine (In dev branch),installed_cost_per_kw
-SteamTurbine,is_condensing,SteamTurbine (In dev branch),is_condensing
-SteamTurbine,isentropic_efficiency,SteamTurbine (In dev branch),isentropic_efficiency
-SteamTurbine,macrs_bonus_pct,SteamTurbine (In dev branch),macrs_bonus_fraction
-SteamTurbine,macrs_option_years,SteamTurbine (In dev branch),macrs_option_years
-SteamTurbine,max_kw,SteamTurbine (In dev branch),max_kw
-SteamTurbine,min_kw,SteamTurbine (In dev branch),min_kw
-SteamTurbine,net_to_gross_electric_ratio,SteamTurbine (In dev branch),net_to_gross_electric_ratio
-SteamTurbine,om_cost_us_dollars_per_kw,SteamTurbine (In dev branch),om_cost_per_kw
-SteamTurbine,om_cost_us_dollars_per_kwh,SteamTurbine (In dev branch),om_cost_per_kwh
-SteamTurbine,outlet_steam_min_vapor_fraction,SteamTurbine (In dev branch),outlet_steam_min_vapor_fraction
-SteamTurbine,outlet_steam_pressure_psig,SteamTurbine (In dev branch),outlet_steam_pressure_psig
-SteamTurbine,size_class,SteamTurbine (In dev branch),size_class
-SteamTurbine,thermal_produced_to_thermal_consumed_ratio,SteamTurbine (In dev branch),thermal_produced_to_thermal_consumed_ratio
-,,UserProvidedMeta,description 
+SteamTurbine,can_curtail,SteamTurbine,can_curtail
+SteamTurbine,can_export_beyond_site_load,SteamTurbine,can_export_beyond_nem_limit
+SteamTurbine,can_net_meter,SteamTurbine,can_net_meter
+SteamTurbine,can_wholesale,SteamTurbine,can_wholesale
+SteamTurbine,electric_produced_to_thermal_consumed_ratio,SteamTurbine,electric_produced_to_thermal_consumed_ratio
+SteamTurbine,gearbox_generator_efficiency,SteamTurbine,gearbox_generator_efficiency
+SteamTurbine,inlet_steam_pressure_psig,SteamTurbine,inlet_steam_pressure_psig
+SteamTurbine,inlet_steam_superheat_degF,SteamTurbine,inlet_steam_superheat_degF
+SteamTurbine,inlet_steam_temperature_degF,SteamTurbine,inlet_steam_temperature_degF
+SteamTurbine,installed_cost_us_dollars_per_kw,SteamTurbine,installed_cost_per_kw
+SteamTurbine,is_condensing,SteamTurbine,is_condensing
+SteamTurbine,isentropic_efficiency,SteamTurbine,isentropic_efficiency
+SteamTurbine,macrs_bonus_pct,SteamTurbine,macrs_bonus_fraction
+SteamTurbine,macrs_option_years,SteamTurbine,macrs_option_years
+SteamTurbine,max_kw,SteamTurbine,max_kw
+SteamTurbine,min_kw,SteamTurbine,min_kw
+SteamTurbine,net_to_gross_electric_ratio,SteamTurbine,net_to_gross_electric_ratio
+SteamTurbine,om_cost_us_dollars_per_kw,SteamTurbine,om_cost_per_kw
+SteamTurbine,om_cost_us_dollars_per_kwh,SteamTurbine,om_cost_per_kwh
+SteamTurbine,outlet_steam_min_vapor_fraction,SteamTurbine,outlet_steam_min_vapor_fraction
+SteamTurbine,outlet_steam_pressure_psig,SteamTurbine,outlet_steam_pressure_psig
+SteamTurbine,size_class,SteamTurbine,size_class
+SteamTurbine,thermal_produced_to_thermal_consumed_ratio,SteamTurbine,thermal_produced_to_thermal_consumed_ratio
+Site,address,UserProvidedMeta,address
 ,,UserProvidedMeta,address 
+Scenario,description,UserProvidedMeta,description
+,,UserProvidedMeta,description 
 ,,UserUnlinkedRuns,run_uuid 
 ,,UserUnlinkedRuns,user_uuid 
 Wind,can_curtail,Wind,can_curtail
@@ -487,7 +445,12 @@ Wind,utility_rebate_max_us_dollars,Wind,utility_rebate_max
 Wind,utility_rebate_us_dollars_per_kw,Wind,utility_rebate_per_kw
 Wind,wind_direction_degrees,Wind,wind_direction_degrees
 Wind,wind_meters_per_sec,Wind,wind_meters_per_sec
-GHP,aux_heater_type,,
-GHP,aux_heater_installed_cost_us_dollars_per_mmbtu_per_hr,,
-GHP,aux_cooler_installed_cost_us_dollars_per_ton,,
-GHP,aux_unit_capacity_sizing_factor_on_peak_load,,
+CHP,derate_slope_pct_per_degF,---,(Removed in v3)
+CHP,derate_start_temp_degF,---,(Removed in v3)
+CHP,max_derate_factor,---,(Removed in v3)
+CHP,use_default_derate,---,(Removed in v3)
+LoadProfile,outage_end_hour,---,(Removed in v3)
+LoadProfile,outage_is_major_event,---,(Removed in v3)
+LoadProfile,outage_start_hour,---,(Removed in v3)
+Site,elevation_ft,---,(Removed in v3)
+Site,outdoor_air_temp_degF,---,(Removed in v3)
