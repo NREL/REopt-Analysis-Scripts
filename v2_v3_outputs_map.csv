@@ -1,4 +1,18 @@
 v2_key,v2_name,v3_key,v3_name
+Generator,average_yearly_energy_exported_kwh,---,(Removed in v3)
+LoadProfile,bau_sustained_time_steps,---,(Removed in v3)
+LoadProfile,resilience_check_flag,---,(Removed in v3)
+LoadProfile,sr_required_series_kw,---,(Removed in v3)
+LoadProfile,sustain_hours,---,(Removed in v3)
+LoadProfile,total_sr_provided,---,(Removed in v3)
+Wind,year_one_energy_produced_kwh,---,(Removed in v3)
+Profile,parse_run_outputs_seconds,---,(Removed in v3)
+Profile,pre_setup_scenario_seconds,---,(Removed in v3)
+Profile,reopt_bau_seconds,(not yet in v3),
+Profile,reopt_seconds,(not yet in v3),
+Profile,setup_scenario_seconds,---,(Removed in v3)
+Scenario,lower_bound,(not yet in v3),
+Scenario,optimality_gap,(not yet in v3),
 AbsorptionChiller,year_one_absorp_chl_electric_consumption_kwh,AbsorptionChiller,annual_electric_consumption_kwh
 AbsorptionChiller,year_one_absorp_chl_thermal_consumption_mmbtu,AbsorptionChiller,annual_thermal_consumption_mmbtu
 AbsorptionChiller,year_one_absorp_chl_thermal_production_tonhr,AbsorptionChiller,annual_thermal_production_tonhour
@@ -8,22 +22,22 @@ AbsorptionChiller,size_ton,AbsorptionChiller,size_ton
 AbsorptionChiller,year_one_absorp_chl_thermal_consumption_series_mmbtu_per_hr,AbsorptionChiller,thermal_consumption_series_mmbtu_per_hour
 AbsorptionChiller,year_one_absorp_chl_thermal_to_load_series_ton,AbsorptionChiller,thermal_to_load_series_ton
 AbsorptionChiller,year_one_absorp_chl_thermal_to_tes_series_ton,AbsorptionChiller,thermal_to_storage_series_ton
+Scenario,status,APIMeta (no key),status 
 Scenario,api_version,APIMeta (no key),api_version 
 Scenario,run_uuid,APIMeta (no key),run_uuid 
-Scenario,status,APIMeta (no key),status 
 NewBoiler,year_one_boiler_fuel_consumption_mmbtu,Boiler,annual_fuel_consumption_mmbtu
 NewBoiler,year_one_boiler_thermal_production_mmbtu,Boiler,annual_thermal_production_mmbtu
 NewBoiler,year_one_boiler_fuel_consumption_series_mmbtu_per_hr,Boiler,fuel_consumption_series_mmbtu_per_hour
 FuelTariff,total_newboiler_fuel_cost_us_dollars,Boiler,lifecycle_fuel_cost_after_tax
 ,,Boiler,lifecycle_fuel_cost_after_tax_bau
-,,Boiler,thermal_production_series_mmbtu_per_hour
-FuelTariff,year_one_newboiler_fuel_cost_us_dollars,Boiler,year_one_fuel_cost_before_tax
 ---,(Added in v3),Boiler (not in v3 master),lifecycle_per_unit_prod_om_costs
 NewBoiler,size_mmbtu_per_hr,Boiler (not in v3 master),size_mmbtu_per_hour
 NewBoiler,year_one_boiler_thermal_production_series_mmbtu_per_hr,Boiler (not in v3 master),thermal_production_series_mmbtu_per_hour
 NewBoiler,year_one_thermal_to_load_series_mmbtu_per_hour,Boiler (not in v3 master),thermal_to_load_series_mmbtu_per_hour
 NewBoiler,year_one_thermal_to_steamturbine_series_mmbtu_per_hour,Boiler (not in v3 master),thermal_to_steamturbine_series_mmbtu_per_hour
 NewBoiler,year_one_thermal_to_tes_series_mmbtu_per_hour,Boiler (not in v3 master),thermal_to_storage_series_mmbtu_per_hour
+FuelTariff,year_one_newboiler_fuel_cost_us_dollars,Boiler,year_one_fuel_cost_before_tax
+,,Boiler,thermal_production_series_mmbtu_per_hour
 CHP,year_one_electric_energy_produced_kwh,CHP,annual_electric_production_kwh
 CHP,year_one_fuel_used_mmbtu,CHP,annual_fuel_consumption_mmbtu
 CHP,year_one_thermal_energy_produced_mmbtu,CHP,annual_thermal_production_mmbtu
@@ -66,6 +80,8 @@ Storage,size_kwh,ElectricStorage,size_kwh
 Storage,year_one_soc_series_pct,ElectricStorage,soc_series_fraction
 ---,(Added in v3),ElectricStorage,state_of_health
 Storage,year_one_to_load_series_kw,ElectricStorage,storage_to_load_series_kw
+Storage,sr_provided_series_kw,---,(Removed in v3)
+Storage,year_one_to_grid_series_kw,---,(Removed in v3)
 ,,ElectricTariff,lifecycle_chp_standby_cost_after_tax 
 ElectricTariff,total_coincident_peak_cost_us_dollars,ElectricTariff,lifecycle_coincident_peak_cost_after_tax
 ElectricTariff,total_coincident_peak_cost_bau_us_dollars,ElectricTariff,lifecycle_coincident_peak_cost_after_tax_bau
@@ -122,6 +138,8 @@ ElectricTariff,lifecycle_emissions_tSO2_bau,ElectricUtility,lifecycle_emissions_
 Boiler,year_one_boiler_fuel_consumption_mmbtu,ExistingBoiler,annual_fuel_consumption_mmbtu
 Boiler,year_one_boiler_thermal_production_mmbtu,ExistingBoiler,annual_thermal_production_mmbtu
 Boiler,year_one_boiler_fuel_consumption_series_mmbtu_per_hr,ExistingBoiler,fuel_consumption_series_mmbtu_per_hour
+FuelTariff,total_boiler_fuel_cost_us_dollars,---,(No corresponding v3 output)
+FuelTariff,total_boiler_fuel_cost_bau_us_dollars,---,(No corresponding v3 output)
 Boiler,year_one_boiler_thermal_production_series_mmbtu_per_hr,ExistingBoiler,thermal_production_series_mmbtu_per_hour
 Boiler,year_one_thermal_to_load_series_mmbtu_per_hour,ExistingBoiler,thermal_to_load_series_mmbtu_per_hour
 Boiler,year_one_thermal_to_steamturbine_series_mmbtu_per_hour,ExistingBoiler,thermal_to_steamturbine_series_mmbtu_per_hour
@@ -129,6 +147,9 @@ Boiler,year_one_thermal_to_tes_series_mmbtu_per_hour,ExistingBoiler,thermal_to_s
 FuelTariff,year_one_boiler_fuel_cost_us_dollars,ExistingBoiler,year_one_fuel_cost_before_tax
 FuelTariff,year_one_boiler_fuel_cost_bau_us_dollars,ExistingBoiler,year_one_fuel_cost_before_tax
 Boiler,year_one_boiler_fuel_consumption_mmbtu_bau,ExistingBoiler (not yet in v3),
+LoadProfileBoilerFuel,annual_calculated_boiler_fuel_load_mmbtu_bau,HeatingOutputs,annual_calculated_total_heating_thermal_load_mmbtu
+LoadProfileBoilerFuel,year_one_boiler_fuel_load_series_mmbtu_per_hr,HeatingOutputs,total_heating_boiler_fuel_load_series_mmbtu_per_hour
+LoadProfileBoilerFuel,year_one_boiler_thermal_load_series_mmbtu_per_hr,HeatingOutputs,total_heating_thermal_load_series_mmbtu_per_hour
 ElectricChiller,year_one_electric_chiller_electric_consumption_kwh,ExistingChiller,annual_electric_consumption_kwh
 ElectricChiller,year_one_electric_chiller_thermal_production_tonhr,ExistingChiller,annual_thermal_production_tonhour
 ElectricChiller,year_one_electric_chiller_electric_consumption_series_kw,ExistingChiller,electric_consumption_series_kw
@@ -157,6 +178,7 @@ Financial,microgrid_upgrade_cost_us_dollars,Financial,lifecycle_MG_upgrade_and_f
 Financial,total_annual_cost_us_dollars,Financial,lifecycle_offgrid_other_annual_costs_after_tax
 Financial,additional_cap_costs_us_dollars,Financial,lifecycle_offgrid_other_capital_costs
 Financial,total_om_costs_us_dollars,Financial,lifecycle_om_costs_after_tax
+Financial,total_om_costs_bau_us_dollars,Financial (not yet in v3),lifecycle_om_costs_after_tax_bau
 ---,(Added in v3),Financial,lifecycle_om_costs_before_tax
 ---,(Added in v3),Financial,lifecycle_om_costs_before_tax_bau
 ---,(Added in v3),Financial,lifecycle_outage_cost
@@ -177,23 +199,19 @@ Financial,simple_payback_years,Financial,simple_payback_years
 Financial,year_one_om_costs_us_dollars,Financial,year_one_om_costs_after_tax
 Financial,year_one_om_costs_before_tax_us_dollars,Financial,year_one_om_costs_before_tax
 Financial,year_one_om_costs_before_tax_bau_us_dollars,Financial,year_one_om_costs_before_tax_bau
-Financial,total_om_costs_bau_us_dollars,Financial (not yet in v3),lifecycle_om_costs_after_tax_bau
----,(Added in v3),Financial (not yet in v3),year_one_om_costs_before_tax_bau
 Financial,lcoe_component_diesel_capex_us_dollars_per_kwh,Financial (not yet in v3),
 Financial,lcoe_component_fuel_us_dollars_per_kwh,Financial (not yet in v3),
 Financial,lcoe_component_om_us_dollars_per_kwh,Financial (not yet in v3),
 Financial,lcoe_component_other_annual_costs_us_dollars_per_kwh,Financial (not yet in v3),
 Financial,lcoe_component_other_capex_us_dollars_per_kwh,Financial (not yet in v3),
 Financial,lcoe_component_re_capex_us_dollars_per_kwh,Financial (not yet in v3),
-Generator,year_one_power_production_series_kw,---,(Removed in v3)
+Financial,net_om_us_dollars_bau,---,(Removed in v3)
 Generator,average_yearly_energy_produced_kwh,Generator,annual_energy_produced_kwh
-Generator,year_one_energy_produced_kwh,Generator,annual_energy_produced_kwh
 Generator,fuel_used_gal,Generator,annual_fuel_consumption_gal
-Generator,fuel_used_series_gal,Generator,annual_fuel_consumption_gal_bau
-Generator,fuel_used_gal_bau,Generator,annual_fuel_consumption_gal_bau 
 Generator,year_one_to_grid_series_kw,Generator,electric_to_grid_series_kw
 Generator,year_one_to_load_series_kw,Generator,electric_to_load_series_kw
 Generator,year_one_to_battery_series_kw,Generator,electric_to_storage_series_kw
+Generator,fuel_used_gal_bau,Generator,annual_fuel_consumption_gal_bau 
 Generator,total_fixed_om_cost_us_dollars,Generator,lifecycle_fixed_om_cost_after_tax
 Generator,existing_gen_total_fixed_om_cost_us_dollars,Generator,lifecycle_fixed_om_cost_bau
 Generator,total_fuel_cost_us_dollars,Generator,lifecycle_fuel_cost_after_tax
@@ -201,18 +219,23 @@ Generator,existing_gen_total_fuel_cost_us_dollars,Generator,lifecycle_fuel_cost_
 Generator,total_variable_om_cost_us_dollars,Generator,lifecycle_variable_om_cost_after_tax
 Generator,existing_gen_total_variable_om_cost_us_dollars,Generator,lifecycle_variable_om_cost_after_tax_bau
 Generator,size_kw,Generator,size_kw
+Generator,year_one_energy_produced_kwh,Generator,annual_energy_produced_kwh
 Generator,year_one_fixed_om_cost_us_dollars,Generator,year_one_fixed_om_cost_before_tax
 ---,(Added in v3),Generator,year_one_fixed_om_cost_before_tax_bau
 Generator,year_one_fuel_cost_us_dollars,Generator,year_one_fuel_cost_before_tax
 Generator,existing_gen_year_one_fuel_cost_us_dollars,Generator,year_one_fuel_cost_before_tax_bau
 Generator,year_one_variable_om_cost_us_dollars,Generator,year_one_variable_om_cost_before_tax
 Generator,existing_gen_year_one_variable_om_cost_us_dollars,Generator,year_one_variable_om_cost_before_tax_bau
+Generator,fuel_used_series_gal,Generator,annual_fuel_consumption_gal_bau
+Generator,sr_provided_series_kw,---,(Removed in v3)
+Generator,year_one_power_production_series_kw,Generator,(Removed in v3)
 ---,(Added in v3),GHP,cooling_thermal_load_reduction_with_ghp_kw
-GHP,cooling_thermal_reduction_series_ton,GHP,cooling_thermal_load_reduction_with_ghp_ton 
 ---,(Added in v3),GHP,ghp_option_chosen
+GHP,cooling_thermal_reduction_series_ton,GHP,cooling_thermal_load_reduction_with_ghp_ton 
 GHP,ghpghx_chosen_outputs,GHP,ghpghx_chosen_outputs 
 GHP,size_heat_pump_ton,GHP,size_heat_pump_ton 
 GHP,space_heating_thermal_reduction_series_mmbtu_per_hr,GHP,space_heating_thermal_load_reduction_with_ghp_mmbtu_per_hour 
+GHP,ghp_chosen_uuid,---,(Removed in v3)
 ,,HeatingLoadOutputs,annual_calculated_dhw_boiler_fuel_load_mmbtu 
 ---,(Added in v3),HeatingLoadOutputs,annual_calculated_dhw_thermal_load_mmbtu
 ,,HeatingLoadOutputs,annual_calculated_space_heating_boiler_fuel_load_mmbtu 
@@ -225,9 +248,6 @@ GHP,space_heating_thermal_reduction_series_mmbtu_per_hr,GHP,space_heating_therma
 ---,(Added in v3),HeatingLoadOutputs,space_heating_thermal_load_series_mmbtu_per_hour
 ,,HeatingLoadOutputs,total_heating_boiler_fuel_load_series_mmbtu_per_hour 
 ---,(Added in v3),HeatingLoadOutputs,total_heating_thermal_load_series_mmbtu_per_hour
-LoadProfileBoilerFuel,annual_calculated_boiler_fuel_load_mmbtu_bau,HeatingOutputs,annual_calculated_total_heating_thermal_load_mmbtu
-LoadProfileBoilerFuel,year_one_boiler_fuel_load_series_mmbtu_per_hr,HeatingOutputs,total_heating_boiler_fuel_load_series_mmbtu_per_hour
-LoadProfileBoilerFuel,year_one_boiler_thermal_load_series_mmbtu_per_hr,HeatingOutputs,total_heating_thermal_load_series_mmbtu_per_hour
 HotTES,size_gal,HotThermalStorage,size_gal
 HotTES,year_one_hot_tes_soc_series_pct,HotThermalStorage,soc_series_fraction
 HotTES,year_one_thermal_from_hot_tes_series_mmbtu_per_hr,HotThermalStorage,storage_to_load_series_mmbtu_per_hour
@@ -237,22 +257,22 @@ HotTES,year_one_thermal_from_hot_tes_series_mmbtu_per_hr,HotThermalStorage,stora
 ,,Outages,chp_microgrid_upgrade_cost 
 ,,Outages,chp_to_load_series_kw 
 ,,Outages,chp_to_storage_series_kw 
+---,(Added in v3),Outages,storage_discharge_series_kw 
 ---,(Added in v3),Outages,expected_outage_cost
----,(Added in v3),Outages,generator_curtailed_series_kw 
----,(Added in v3),Outages,generator_fuel_used_per_outage_gal 
 ---,(Added in v3),Outages,generator_microgrid_size_kw 
+---,(Added in v3),Outages,max_outage_cost_per_outage_duration 
+---,(Added in v3),Outages,generator_fuel_used_per_outage_gal 
 ---,(Added in v3),Outages,generator_microgrid_upgrade_cost 
+---,(Added in v3),Outages,pv_microgrid_upgrade_cost 
+---,(Added in v3),Outages,mg_storage_upgrade_cost
+---,(Added in v3),Outages,generator_curtailed_series_kw 
 ---,(Added in v3),Outages,generator_to_load_series_kw 
 ---,(Added in v3),Outages,generator_to_storage_series_kw 
----,(Added in v3),Outages,max_outage_cost_per_outage_duration 
----,(Added in v3),Outages,mg_storage_upgrade_cost
-,,Outages,microgrid_upgrade_capital_cost 
 ---,(Added in v3),Outages,pv_curtailed_series_kw 
----,(Added in v3),Outages,pv_microgrid_size_kw 
----,(Added in v3),Outages,pv_microgrid_upgrade_cost 
 ---,(Added in v3),Outages,pv_to_load_series_kw 
 ---,(Added in v3),Outages,pv_to_storage_series_kw 
----,(Added in v3),Outages,storage_discharge_series_kw 
+,,Outages,microgrid_upgrade_capital_cost 
+---,(Added in v3),Outages,pv_microgrid_size_kw 
 ---,(Added in v3),Outages,storage_microgrid_upgrade_cost 
 ---,(Added in v3),Outages,unserved_load_per_outage_kwh 
 ---,(Added in v3),Outages,unserved_load_series_kw 
@@ -263,15 +283,21 @@ PV,year_one_curtailed_production_series_kw,PV,electric_curtailed_series_kw
 PV,year_one_to_grid_series_kw,PV,electric_to_grid_series_kw
 PV,year_one_to_load_series_kw,PV,electric_to_load_series_kw
 PV,year_one_to_battery_series_kw,PV,electric_to_storage_series_kw
-,,PV,lcoe_per_kwh 
+---,(Added in v3),PV,lcoe_per_kwh 
 ---,(Added in v3),PV,lifecycle_om_cost_after_tax
 PV,existing_pv_om_cost_us_dollars,PV,lifecycle_om_cost_after_tax_bau
-,,PV,lifecycle_om_cost_bau 
+---,(Added in v3),PV,lifecycle_om_cost_bau 
 PV,pv_name,PV,name
+---,(Added in v3),PV,production_factor_series 
 PV,size_kw,PV,size_kw
 PV,year_one_energy_produced_kwh,PV,year_one_energy_produced_kwh
 PV,year_one_energy_produced_bau_kwh,PV,year_one_energy_produced_kwh_bau
-PV,year_one_power_production_series_kw,PV (not in v3),
+PV,sr_provided_series_kw,---,(Removed in v3)
+PV,sr_required_series_kw,---,(Removed in v3)
+PV,station_distance_km,---,(Removed in v3)
+PV,station_latitude,---,(Removed in v3)
+PV,station_longitude,---,(Removed in v3)
+PV,year_one_power_production_series_kw,---,(Removed in v3)
 Site,year_one_emissions_from_fuelburn_tCO2,Site,annual_emissions_from_fuelburn_tonnes_CO2
 Site,year_one_emissions_from_fuelburn_tCO2_bau,Site,annual_emissions_from_fuelburn_tonnes_CO2_bau
 Site,year_one_emissions_from_fuelburn_tNOx,Site,annual_emissions_from_fuelburn_tonnes_NOx
@@ -332,30 +358,4 @@ Wind,year_one_to_battery_series_kw,Wind,electric_to_storage_series_kw
 ---,(Added in v3),Wind,lifecycle_om_cost_after_tax
 Wind,size_kw,Wind,size_kw
 ---,(Added in v3),Wind,year_one_om_cost_before_tax
-Profile,reopt_bau_seconds,(not yet in v3),
-Profile,reopt_seconds,(not yet in v3),
-Scenario,lower_bound,(not yet in v3),
-Scenario,optimality_gap,(not yet in v3),
-FuelTariff,total_boiler_fuel_cost_us_dollars,---,(No corresponding v3 output)
-FuelTariff,total_boiler_fuel_cost_bau_us_dollars,---,(No corresponding v3 output)
-Generator,average_yearly_energy_exported_kwh,---,(Removed in v3)
-LoadProfile,bau_sustained_time_steps,---,(Removed in v3)
-LoadProfile,resilience_check_flag,---,(Removed in v3)
-LoadProfile,sr_required_series_kw,---,(Removed in v3)
-LoadProfile,sustain_hours,---,(Removed in v3)
-LoadProfile,total_sr_provided,---,(Removed in v3)
-Wind,year_one_energy_produced_kwh,---,(Removed in v3)
-Profile,parse_run_outputs_seconds,---,(Removed in v3)
-Profile,pre_setup_scenario_seconds,---,(Removed in v3)
-Profile,setup_scenario_seconds,---,(Removed in v3)
-Storage,sr_provided_series_kw,---,(Removed in v3)
-Storage,year_one_to_grid_series_kw,---,(Removed in v3)
-Generator,sr_provided_series_kw,---,(Removed in v3)
-GHP,ghp_chosen_uuid,---,(Removed in v3)
-PV,sr_provided_series_kw,---,(Removed in v3)
-PV,sr_required_series_kw,---,(Removed in v3)
-PV,station_distance_km,---,(Removed in v3)
-PV,station_latitude,---,(Removed in v3)
-PV,station_longitude,---,(Removed in v3)
 Wind,year_one_power_production_series_kw,---,(Removed in v3)
-Financial,net_om_us_dollars_bau,---,(Removed in v3)
