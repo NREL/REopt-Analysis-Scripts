@@ -53,7 +53,9 @@ long = [-88.044, -71.0589, -95.3698, -122.4194]
 #list of string containing the names of the regions
 regions = ["Midwest", "Northeast", "South", "West"]
 avg_elec_load = [10, 10, 10, 10]
-avg_ng_load = [7, 7, 7, 7]
+#Creating a 5280 hour load 
+fuel_loads_mmbtu_per_hour = fill(0.0, 8760)  # Initialize array with zeros
+fuel_loads_mmbtu_per_hour[1:5280] .= 4.1844  # Assign 4.1844 to the first 5,280 hours
 elec_cost_industrial = [0.0849, 0.1855, 0.0923, 0.0626, 0.0638] #this is in $/kWh
 elec_cost_industrial_regional = [20.35, 24.47, 17.63, 24.09] #this is in $/MMBtu
 ng_cf3_to_mmbtu = 1.038
@@ -68,14 +70,12 @@ for i in sites_iter
     input_data_site["Site"]["latitude"] = lat[i]
     input_data_site["Site"]["longitude"] = long[i]
     input_data_site["ElectricLoad"]["annual_kwh"] = avg_elec_load[i] * 5280.0
-    input_data_site["DomesticHotWaterLoad"]["annual_mmbtu"] = avg_ng_load[i] * 5280.0
+    input_data_site["DomesticHotWaterLoad"]["fuel_loads_mmbtu_per_hour"] = fuel_loads_mmbtu_per_hour
     #below we convert elec_cost_industrial_regional to $/kWh from $/MMBtu bc that's the input necessary
     #for the ElectricTariff.blended ...
     input_data_site["ElectricTariff"]["blended_annual_energy_rate"] = elec_cost_industrial_regional[i] .* 0.003412
     input_data_site["ExistingBoiler"]["fuel_cost_per_mmbtu"] = ng_cost_industrial_regional[i]
-    #ignore below 
-    #input_data_site["ElectricHeater"]["annual_electric_consumption_kwh"] = avg_elec_load[i] * 5280.0 
-
+    
     s = Scenario(input_data_site)
     inputs = REoptInputs(s)
 

@@ -16,7 +16,7 @@
         "min_mmbtu_per_hour": 0.0,
         "max_mmbtu_per_hour": 100000,
         "cop": 0.99,
-        "installed_cost_per_mmbtu_per_hour": 24667.71,
+        "installed_cost_per_mmbtu_per_hour": 16089.62,
         "om_cost_per_mmbtu_per_hour": 0.0,
 		"macrs_option_years": 0,
 		"macrs_bonus_fraction": 0.0,
@@ -35,11 +35,8 @@
         "analysis_years": 25
     },
     "ElectricLoad": {
-        "doe_reference_name": "FlatLoad",
-        "annual_kwh": 87600.0
-    },
-    "SpaceHeatingLoad": {
         "doe_reference_name": "FlatLoad"
+    
     },
     "DomesticHotWaterLoad": {
         "doe_reference_name": "FlatLoad"
