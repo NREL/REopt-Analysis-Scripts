@@ -15,7 +15,7 @@
     "ElectricHeater": {
         "min_mmbtu_per_hour": 0.0,
         "max_mmbtu_per_hour": 100000,
-        "cop": 0.99,
+        "cop": 1.0,
         "installed_cost_per_mmbtu_per_hour": 16089.62,
         "om_cost_per_mmbtu_per_hour": 0.0,
 		"macrs_option_years": 0,

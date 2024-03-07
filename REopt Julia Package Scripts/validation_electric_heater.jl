@@ -61,6 +61,8 @@ elec_cost_industrial_regional = [20.35, 24.47, 17.63, 24.09] #this is in $/MMBtu
 ng_cf3_to_mmbtu = 1.038
 ng_cost_industrial = [7.41, 13.73, 5.92, 11.41, 2.72] ./ ng_cf3_to_mmbtu
 ng_cost_industrial_regional = [5.37, 7.87, 3.80, 6.20] #this is in $/MMBtu 
+#cop for electric heater manual input
+e_heater_cop = [0.5, 0.5, 0.5, 0.5]
 site_analysis = []
 
 sites_iter = eachindex(lat)
@@ -75,6 +77,8 @@ for i in sites_iter
     #for the ElectricTariff.blended ...
     input_data_site["ElectricTariff"]["blended_annual_energy_rate"] = elec_cost_industrial_regional[i] .* 0.003412
     input_data_site["ExistingBoiler"]["fuel_cost_per_mmbtu"] = ng_cost_industrial_regional[i]
+    #test for e heater, COP
+    input_data_site["ElectricHeater"]["cop"] = e_heater_cop[i]
     
     s = Scenario(input_data_site)
     inputs = REoptInputs(s)
