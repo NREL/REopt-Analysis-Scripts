@@ -26,7 +26,7 @@ using JuMP
 println("Running a single REopt model with no BAU.")
 
 # Setup inputs
-data_file = "pv_retail.json" # Notice that just the PV key with an empty dictionary is provided to tell REopt to consider PV
+data_file = "pv_retail1.json" # Notice that just the PV key with an empty dictionary is provided to tell REopt to consider PV
 data = JSON.parsefile("scenarios/$data_file")
 data["Financial"]["analysis_years"] = 20 # Example modifying the scenario
 
@@ -50,7 +50,7 @@ using HiGHS # HiGHS is a free solver
 println("Running a REopt model with a BAU.")
 
 # Setup inputs
-data_file = "wind_battery_hospital.json" 
+data_file = "electric_heater.json" 
 data = JSON.parsefile("scenarios/$data_file")
 
 # Define models
@@ -61,7 +61,7 @@ m2 = Model(HiGHS.Optimizer)
 results = run_reopt([m1,m2], data) # Must supply two models to run the BAU (BAU scenario automatically generated based on inputs)
 
 # Print some results
-println("Wind [kW]: ", results["Wind"]["size_kw"])
+println("Wind [kW]: ", results["ElectricHeater"]["size_kw"])
 println("Battery [kW]: ", results["ElectricStorage"]["size_kw"])
 println("Battery [hours]: ", results["ElectricStorage"]["size_kwh"] / results["ElectricStorage"]["size_kw"])
 println("Lifecycle cost [\$]: ", results["Financial"]["lcc"])
