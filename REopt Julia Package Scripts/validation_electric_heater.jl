@@ -121,12 +121,12 @@ end
 # Populate the DataFrame with the results produced and inputs
 df = DataFrame(
     Region = regions,
-    ElectricHeater_size_MMBtu_per_hr = [round(site_analysis[i][2]["ElectricHeater"]["size_mmbtu_per_hour"], digits=2) for i in 1:length(regions)],
+    ElectricHeater_size_MMBtu_per_hr = [round(site_analysis[i][2]["ElectricHeater"]["size_mmbtu_per_hour"], digits=4) for i in 1:length(regions)],
     Purchase_Price = [round(site_analysis[i][2]["ElectricHeater"]["size_mmbtu_per_hour"] * input_data["ElectricHeater"]["installed_cost_per_mmbtu_per_hour"], digits=2) for i in 1:length(regions)],
     Electricity_Price_per_MMBtu = elec_cost_industrial_regional,
-    Hourly_Cost = [round(site_analysis[i][2]["ElectricHeater"]["size_mmbtu_per_hour"] * elec_cost_industrial_regional[i], digits=2) for i in 1:length(regions)],
-    First_Year_Cost = [round(df.Purchase_Price[i] + (df.Hourly_Cost[i] * 5280), digits=2) for i in 1:length(regions)]
+    Hourly_Cost = [round(site_analysis[i][2]["ElectricHeater"]["size_mmbtu_per_hour"] * elec_cost_industrial_regional[i], digits=2) for i in 1:length(regions)] 
 )
+df.First_Year_Cost = [round(df.Purchase_Price[i] + (df.Hourly_Cost[i] * 5280), digits=2) for i in 1:length(regions)]
 println(df)
 
 # Define path to xlsx file

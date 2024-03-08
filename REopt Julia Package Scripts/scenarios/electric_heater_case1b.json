@@ -1,10 +1,6 @@
 {
     "Site":{
-        
-    } 
-    
-    ,
-    
+    },
     "ExistingBoiler":{
         "production_type": "steam",
         "efficiency": 0.8,
