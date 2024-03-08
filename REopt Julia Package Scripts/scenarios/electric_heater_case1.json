@@ -1,19 +1,18 @@
 {
-    "Site": {
-
+    "Site":{
     },
-    
-    "ExistingBoiler": {
+    "ExistingBoiler":{
         "production_type": "steam",
         "efficiency": 0.8,
         "fuel_type": "natural_gas",
-                
+        "retire_in_optimal": true
+               
     },
     "ElectricHeater": {
-        "min_mmbtu_per_hour": 10.0,
+        "min_mmbtu_per_hour": 0.0,
         "max_mmbtu_per_hour": 100000,
         "cop": 1.0,
-        "installed_cost_per_mmbtu_per_hour": 47380,
+        "installed_cost_per_mmbtu_per_hour": 16089.62,
         "om_cost_per_mmbtu_per_hour": 0.0,
 		"macrs_option_years": 0,
 		"macrs_bonus_fraction": 0.0,
@@ -32,11 +31,8 @@
         "analysis_years": 25
     },
     "ElectricLoad": {
-        "doe_reference_name": "FlatLoad",
-        "annual_kwh": 87600.0
-    },
-    "SpaceHeatingLoad": {
         "doe_reference_name": "FlatLoad"
+    
     },
     "DomesticHotWaterLoad": {
         "doe_reference_name": "FlatLoad"

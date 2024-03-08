@@ -41,7 +41,7 @@ using XLSX
 
 
 # Setup inputs for Case Study 1
-data_file = "electric_heater_case1b.json" 
+data_file = "electric_heater_case1.json" 
 input_data = JSON.parsefile("scenarios/$data_file")
 
 println("Correctly obtained data_file")
@@ -56,13 +56,12 @@ avg_elec_load = [10, 10, 10, 10]
 #Creating a 5280 hour load 
 fuel_loads_mmbtu_per_hour = fill(0.0, 8760)  # Initialize array with zeros
 fuel_loads_mmbtu_per_hour[1:5280] .= 4.1844  # Assign 4.1844 to the first 5,280 hours
-elec_cost_industrial = [0.0849, 0.1855, 0.0923, 0.0626, 0.0638] #this is in $/kWh
+#electricity costs per region for industry
 elec_cost_industrial_regional = [20.35, 24.47, 17.63, 24.09] #this is in $/MMBtu
-ng_cf3_to_mmbtu = 1.038
-ng_cost_industrial = [7.41, 13.73, 5.92, 11.41, 2.72] ./ ng_cf3_to_mmbtu
+#natural gas costs per region for industry
 ng_cost_industrial_regional = [5.37, 7.87, 3.80, 6.20] #this is in $/MMBtu 
 #cop for electric heater manual input
-e_heater_cop = [0.5, 0.5, 0.5, 0.5]
+e_heater_cop = [0.99, 0.99, 0.99, 0.99]
 site_analysis = []
 
 sites_iter = eachindex(lat)
@@ -101,18 +100,14 @@ for i in sites_iter
 end
 println("Completed optimization")
 
-# Print tech sizes
+# Print tech size and other desired outputs
 for i in sites_iter
     for tech in ["ElectricHeater"]
         if haskey(site_analysis[i][2], tech)
             println("Site $i $tech size (MMBtu/hr) = ", site_analysis[i][2][tech]["size_mmbtu_per_hour"])
             println("Site $i $tech Thermal Production (MMBtu) = ", site_analysis[i][2][tech]["annual_thermal_production_mmbtu"])
-        end
-    end
-    for tech in ["ExistingBoiler"]
-        if haskey(site_analysis[i][2], tech)
-            println("Site $i $tech Annual Fuel Consumption (MMBtu) = ", site_analysis[i][2][tech]["annual_fuel_consumption_mmbtu"])
-            println("Site $i $tech Thermal Production (MMBtu) = ", site_analysis[i][2][tech]["annual_thermal_production_mmbtu"])
+            println("Site $i $tech Electric Consumption (kWh) = ", site_analysis[i][2][tech]["annual_electric_consumption_kwh"])
+            println("Site $i $tech Hourly Cost (\$) = ", site_analysis[i][2][tech]["size_mmbtu_per_hour"] * elec_cost_industrial_regional[i] / e_heater_cop[i])
         end
     end
 end
@@ -124,7 +119,7 @@ df = DataFrame(
     ElectricHeater_size_MMBtu_per_hr = [round(site_analysis[i][2]["ElectricHeater"]["size_mmbtu_per_hour"], digits=4) for i in 1:length(regions)],
     Purchase_Price = [round(site_analysis[i][2]["ElectricHeater"]["size_mmbtu_per_hour"] * input_data["ElectricHeater"]["installed_cost_per_mmbtu_per_hour"], digits=2) for i in 1:length(regions)],
     Electricity_Price_per_MMBtu = elec_cost_industrial_regional,
-    Hourly_Cost = [round(site_analysis[i][2]["ElectricHeater"]["size_mmbtu_per_hour"] * elec_cost_industrial_regional[i], digits=2) for i in 1:length(regions)] 
+    Hourly_Cost = [round(site_analysis[i][2]["ElectricHeater"]["size_mmbtu_per_hour"] * elec_cost_industrial_regional[i] / e_heater_cop[i], digits=2) for i in 1:length(regions)] 
 )
 df.First_Year_Cost = [round(df.Purchase_Price[i] + (df.Hourly_Cost[i] * 5280), digits=2) for i in 1:length(regions)]
 println(df)
