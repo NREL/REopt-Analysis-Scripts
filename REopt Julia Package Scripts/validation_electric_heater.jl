@@ -52,7 +52,7 @@ lat = [41.834, 42.3601, 29.7604, 37.7749]
 long = [-88.044, -71.0589, -95.3698, -122.4194]
 #list of string containing the names of the regions
 regions = ["Midwest", "Northeast", "South", "West"]
-avg_elec_load = [10, 10, 10, 10]
+avg_elec_load = [1, 1, 1, 1]
 #Creating a 5280 hour load 
 fuel_loads_mmbtu_per_hour = fill(0.0, 8760)  # Initialize array with zeros
 fuel_loads_mmbtu_per_hour[1:5280] .= 4.1844  # Assign 4.1844 to the first 5,280 hours
@@ -70,7 +70,7 @@ for i in sites_iter
     # Site Specific
     input_data_site["Site"]["latitude"] = lat[i]
     input_data_site["Site"]["longitude"] = long[i]
-    input_data_site["ElectricLoad"]["annual_kwh"] = avg_elec_load[i] * 5280.0
+    input_data_site["ElectricLoad"]["annual_kwh"] = avg_elec_load[i] * 1.0
     input_data_site["DomesticHotWaterLoad"]["fuel_loads_mmbtu_per_hour"] = fuel_loads_mmbtu_per_hour
     #below we convert elec_cost_industrial_regional to $/kWh from $/MMBtu bc that's the input necessary
     #for the ElectricTariff.blended ...
@@ -85,12 +85,14 @@ for i in sites_iter
      # HiGHS solver
      m1 = Model(optimizer_with_attributes(HiGHS.Optimizer, 
      "time_limit" => 450.0,
+     "mip_rel_gap" => 0.01,
      "output_flag" => false, 
      "log_to_console" => false)
      )
 
     m2 = Model(optimizer_with_attributes(HiGHS.Optimizer, 
      "time_limit" => 450.0,
+     "mip_rel_gap" => 0.01,
      "output_flag" => false, 
      "log_to_console" => false)
      )            
@@ -117,15 +119,15 @@ end
 df = DataFrame(
     Region = regions,
     ElectricHeater_size_MMBtu_per_hr = [round(site_analysis[i][2]["ElectricHeater"]["size_mmbtu_per_hour"], digits=4) for i in 1:length(regions)],
-    Purchase_Price = [round(site_analysis[i][2]["ElectricHeater"]["size_mmbtu_per_hour"] * input_data["ElectricHeater"]["installed_cost_per_mmbtu_per_hour"], digits=2) for i in 1:length(regions)],
+    Purchase_Price = [round(site_analysis[i][2]["Financial"]["initial_capital_costs_after_incentives"], digits=2) for i in 1:length(regions)],
     Electricity_Price_per_MMBtu = elec_cost_industrial_regional,
-    Hourly_Cost = [round(site_analysis[i][2]["ElectricHeater"]["size_mmbtu_per_hour"] * elec_cost_industrial_regional[i] / e_heater_cop[i], digits=2) for i in 1:length(regions)] 
+    Hourly_Cost = [round(site_analysis[i][2]["ElectricTariff"]["year_one_energy_cost_before_tax"]/5280.0, digits=2) for i in 1:length(regions)] 
 )
 df.First_Year_Cost = [round(df.Purchase_Price[i] + (df.Hourly_Cost[i] * 5280), digits=2) for i in 1:length(regions)]
 println(df)
 
 # Define path to xlsx file
-file_storage_location = "C:\\Users\\dbernal\\OneDrive - NREL\\Non-shared files\\IEDO\\REopt Electric Heater\\ElectricHeater.jl Results\\results_retire_existingboiler.xlsx"
+file_storage_location = "results/results_retire_existingboiler.xlsx"
 
 # Check if the Excel file already exists
 if isfile(file_storage_location)
