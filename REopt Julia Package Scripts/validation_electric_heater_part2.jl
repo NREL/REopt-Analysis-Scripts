@@ -24,7 +24,7 @@ The COP of the Electric Heater was changed to 0.99.
 
 The case studies are mentioned below.
 
-    Case Study 2: Part A: Have a minimum emissions reduction target.
+    Case Study 2: Part A: Focus on Emissions Reduction of validation_electric_heater.jl Task
                   Part B: Add PV and ElectricStorage to the model. Evaluate again with 
                           emission reduction target.
                   Part C: Focus on a single site and increase reduction target over 4 scenarios.
@@ -114,11 +114,23 @@ println("Successfully printed results on JSON file")
 # Populate the DataFrame with the results produced and inputs
 df = DataFrame(
     City = cities,
+    Electric_Heater_kWh_consumption_annual = [round(site_analysis[i][2]["ElectricHeater"]["annual_electric_consumption_kwh"], digits=0) for i in sites_iter],
+    Grid_Electricity_Supplied_kWh_annual = [round(site_analysis[i][2]["ElectricUtility"]["annual_energy_supplied_kwh"], digits=0) for i in sites_iter],
+    Electric_Heater_Thermal_Production_MMBtu_annual = [round(site_analysis[i][2]["ElectricHeater"]["annual_thermal_production_mmbtu"], digits=0) for i in sites_iter],
+    Annual_Total_HeatingLoad_MMBtu = [round(site_analysis[i][2]["HeatingLoad"]["annual_calculated_total_heating_thermal_load_mmbtu"], digits=0) for i in sites_iter],
+    Annual_Boiler_Fuel_HeatingLoad_MMBtu = [round(site_analysis[i][2]["HeatingLoad"]["annual_calculated_total_heating_boiler_fuel_load_mmbtu"], digits=0) for i in sites_iter],
+    BAU_Existing_Boiler_Fuel_Consump_MMBtu = [round(site_analysis[i][2]["ExistingBoiler"]["annual_fuel_consumption_mmbtu_bau"], digits=0) for i in sites_iter],
+    BAU_Existing_Boiler_Thermal_Prod_MMBtu = [round(site_analysis[i][2]["ExistingBoiler"]["annual_thermal_production_mmbtu_bau"], digits=0) for i in sites_iter],
     Total_Annual_Emissions_CO2 = [round(site_analysis[i][2]["Site"]["annual_emissions_tonnes_CO2"], digits=4) for i in sites_iter],
+    ElecUtility_Annual_Emissions_CO2 = [round(site_analysis[i][2]["ElectricUtility"]["annual_emissions_tonnes_CO2"], digits=4) for i in sites_iter],
+    BAU_Total_Annual_Emissions_CO2 = [round(site_analysis[i][2]["Site"]["annual_emissions_tonnes_CO2_bau"], digits=4) for i in sites_iter],
     LifeCycle_Emissions_CO2 = [round(site_analysis[i][2]["Site"]["lifecycle_emissions_tonnes_CO2"], digits=2) for i in sites_iter],
+    BAU_LifeCycle_Emissions_CO2 = [round(site_analysis[i][2]["Site"]["lifecycle_emissions_tonnes_CO2_bau"], digits=2) for i in sites_iter],
     NG_LifeCycle_Emissions_CO2 = [round(site_analysis[i][2]["Site"]["lifecycle_emissions_from_fuelburn_tonnes_CO2"], digits=2) for i in sites_iter],
-    LifeCycle_Emission_Reduction_Fraction = [round(site_analysis[i][2]["Site"]["lifecycle_emissions_reduction_CO2_fraction"], digits=2) for i in sites_iter]
-    )
+    LifeCycle_Emission_Reduction_Fraction = [round(site_analysis[i][2]["Site"]["lifecycle_emissions_reduction_CO2_fraction"], digits=2) for i in sites_iter],
+    Breakeven_Cost_of_Emissions_Reduction = [round(site_analysis[i][2]["Financial"]["breakeven_cost_of_emissions_reduction_per_tonne_CO2"], digits=4) for i in sites_iter],
+    npv = [round(site_analysis[i][2]["Financial"]["npv"], digits=2) for i in sites_iter]
+)
 println(df)
 
 # Define path to xlsx file
@@ -151,6 +163,12 @@ else
 end
 
 println("Successful write into XLSX file: $file_storage_location")
+
+"""
+=============================
+        This is Part B.
+=============================
+"""
 
 # Setup inputs for Case Study 2 Part B
 data_file = "electric_heater_case3.json" 
@@ -226,11 +244,24 @@ write.("./results/electric_heater_results_part3.json", JSON.json(site_analysis))
 # Populate the DataFrame with the results produced and inputs
 df = DataFrame(
     City = cities,
-    PV_size = [round(site_analysis[i][2]["PV"]["size_kw"], digits=2) for i in sites_iter],
-    Battery_size = [round(site_analysis[i][2]["ElectricStorage"]["size_kwh"], digits=2) for i in sites_iter],
+    PV_size_kW = [round(site_analysis[i][2]["PV"]["size_kw"], digits=0) for i in sites_iter],
+    PV_Production_kWh = [round(site_analysis[i][2]["PV"]["annual_energy_produced_kwh"], digits=0) for i in sites_iter],
+    Battery_size_kWh = [round(site_analysis[i][2]["ElectricStorage"]["size_kwh"], digits=0) for i in sites_iter], 
+    Electric_Heater_kWh_consumption_annual = [round(site_analysis[i][2]["ElectricHeater"]["annual_electric_consumption_kwh"], digits=0) for i in sites_iter],
+    Grid_Electricity_Supplied_kWh_annual = [round(site_analysis[i][2]["ElectricUtility"]["annual_energy_supplied_kwh"], digits=0) for i in sites_iter],
+    Electric_Heater_Thermal_Production_MMBtu_annual = [round(site_analysis[i][2]["ElectricHeater"]["annual_thermal_production_mmbtu"], digits=0) for i in sites_iter],
+    Annual_Total_HeatingLoad_MMBtu = [round(site_analysis[i][2]["HeatingLoad"]["annual_calculated_total_heating_thermal_load_mmbtu"], digits=0) for i in sites_iter],
+    Annual_Boiler_Fuel_HeatingLoad_MMBtu = [round(site_analysis[i][2]["HeatingLoad"]["annual_calculated_total_heating_boiler_fuel_load_mmbtu"], digits=0) for i in sites_iter],
+    BAU_Existing_Boiler_Fuel_Consump_MMBtu = [round(site_analysis[i][2]["ExistingBoiler"]["annual_fuel_consumption_mmbtu_bau"], digits=0) for i in sites_iter],
+    BAU_Existing_Boiler_Thermal_Prod_MMBtu = [round(site_analysis[i][2]["ExistingBoiler"]["annual_thermal_production_mmbtu_bau"], digits=0) for i in sites_iter],
+    NG_Annual_Consumption_MMBtu = [round(site_analysis[i][2]["ExistingBoiler"]["annual_fuel_consumption_mmbtu"], digits=0) for i in sites_iter],
     Total_Annual_Emissions_CO2 = [round(site_analysis[i][2]["Site"]["annual_emissions_tonnes_CO2"], digits=4) for i in sites_iter],
+    ElecUtility_Annual_Emissions_CO2 = [round(site_analysis[i][2]["ElectricUtility"]["annual_emissions_tonnes_CO2"], digits=4) for i in sites_iter],
+    BAU_Total_Annual_Emissions_CO2 = [round(site_analysis[i][2]["Site"]["annual_emissions_tonnes_CO2_bau"], digits=4) for i in sites_iter],
     LifeCycle_Emissions_CO2 = [round(site_analysis[i][2]["Site"]["lifecycle_emissions_tonnes_CO2"], digits=2) for i in sites_iter],
+    BAU_LifeCycle_Emissions_CO2 = [round(site_analysis[i][2]["Site"]["lifecycle_emissions_tonnes_CO2_bau"], digits=2) for i in sites_iter],
     NG_LifeCycle_Emissions_CO2 = [round(site_analysis[i][2]["Site"]["lifecycle_emissions_from_fuelburn_tonnes_CO2"], digits=2) for i in sites_iter],
+    Breakeven_Cost_of_Emissions_Reduction = [round(site_analysis[i][2]["Financial"]["breakeven_cost_of_emissions_reduction_per_tonne_CO2"], digits=4) for i in sites_iter], 
     LifeCycle_Emission_Reduction_Fraction = [round(site_analysis[i][2]["Site"]["lifecycle_emissions_reduction_CO2_fraction"], digits=2) for i in sites_iter],
     npv = [round(site_analysis[i][2]["Financial"]["npv"], digits=2) for i in sites_iter]
     )
@@ -238,7 +269,6 @@ println(df)
 
 # Define path to xlsx file
 file_storage_location = "results/results_emissions_reductions.xlsx"
-#file_storage_location = "C:\\Users\\dbernal\\OneDrive - NREL\\Non-shared files\\IEDO\\REopt Electric Heater\\ElectricHeater.jl Results\\results_emission_reductions.xlsx"
 
 # Check if the Excel file already exists
 if isfile(file_storage_location)
@@ -295,7 +325,7 @@ site_analysis = []
 
 # emissions reduction goal of 5%
 emission_reduction_goal = [0.25, 0.5, 0.75, 1.00]
-max_emissions = [1.0, 1.0, 1.0, 1.0]
+max_emissions = [0.26, 0.51, 0.76, 1.0]
 
 sites_iter = eachindex(lat)
 for i in sites_iter
@@ -344,19 +374,31 @@ write.("./results/electric_heater_results_part4.json", JSON.json(site_analysis))
 # Populate the DataFrame with the results produced and inputs
 df = DataFrame(
     City = cities,
-    PV_size = [round(site_analysis[i][2]["PV"]["size_kw"], digits=2) for i in sites_iter],
-    Battery_size = [round(site_analysis[i][2]["ElectricStorage"]["size_kwh"], digits=2) for i in sites_iter],
+    PV_size_kW = [round(site_analysis[i][2]["PV"]["size_kw"], digits=0) for i in sites_iter],
+    PV_Production_kWh = [round(site_analysis[i][2]["PV"]["annual_energy_produced_kwh"], digits=0) for i in sites_iter],
+    Battery_size_kWh = [round(site_analysis[i][2]["ElectricStorage"]["size_kwh"], digits=0) for i in sites_iter], 
+    Electric_Heater_kWh_consumption_annual = [round(site_analysis[i][2]["ElectricHeater"]["annual_electric_consumption_kwh"], digits=0) for i in sites_iter],
+    Grid_Electricity_Supplied_kWh_annual = [round(site_analysis[i][2]["ElectricUtility"]["annual_energy_supplied_kwh"], digits=0) for i in sites_iter],
+    Electric_Heater_Thermal_Production_MMBtu_annual = [round(site_analysis[i][2]["ElectricHeater"]["annual_thermal_production_mmbtu"], digits=0) for i in sites_iter],
+    Annual_Total_HeatingLoad_MMBtu = [round(site_analysis[i][2]["HeatingLoad"]["annual_calculated_total_heating_thermal_load_mmbtu"], digits=0) for i in sites_iter],
+    Annual_Boiler_Fuel_HeatingLoad_MMBtu = [round(site_analysis[i][2]["HeatingLoad"]["annual_calculated_total_heating_boiler_fuel_load_mmbtu"], digits=0) for i in sites_iter],
+    BAU_Existing_Boiler_Fuel_Consump_MMBtu = [round(site_analysis[i][2]["ExistingBoiler"]["annual_fuel_consumption_mmbtu_bau"], digits=0) for i in sites_iter],
+    BAU_Existing_Boiler_Thermal_Prod_MMBtu = [round(site_analysis[i][2]["ExistingBoiler"]["annual_thermal_production_mmbtu_bau"], digits=0) for i in sites_iter],
+    NG_Annual_Consumption_MMBtu = [round(site_analysis[i][2]["ExistingBoiler"]["annual_fuel_consumption_mmbtu"], digits=0) for i in sites_iter],
     Total_Annual_Emissions_CO2 = [round(site_analysis[i][2]["Site"]["annual_emissions_tonnes_CO2"], digits=4) for i in sites_iter],
+    ElecUtility_Annual_Emissions_CO2 = [round(site_analysis[i][2]["ElectricUtility"]["annual_emissions_tonnes_CO2"], digits=4) for i in sites_iter],
+    BAU_Total_Annual_Emissions_CO2 = [round(site_analysis[i][2]["Site"]["annual_emissions_tonnes_CO2_bau"], digits=4) for i in sites_iter],
     LifeCycle_Emissions_CO2 = [round(site_analysis[i][2]["Site"]["lifecycle_emissions_tonnes_CO2"], digits=2) for i in sites_iter],
+    BAU_LifeCycle_Emissions_CO2 = [round(site_analysis[i][2]["Site"]["lifecycle_emissions_tonnes_CO2_bau"], digits=2) for i in sites_iter],
     NG_LifeCycle_Emissions_CO2 = [round(site_analysis[i][2]["Site"]["lifecycle_emissions_from_fuelburn_tonnes_CO2"], digits=2) for i in sites_iter],
+    Breakeven_Cost_of_Emissions_Reduction = [round(site_analysis[i][2]["Financial"]["breakeven_cost_of_emissions_reduction_per_tonne_CO2"], digits=4) for i in sites_iter], 
     LifeCycle_Emission_Reduction_Fraction = [round(site_analysis[i][2]["Site"]["lifecycle_emissions_reduction_CO2_fraction"], digits=2) for i in sites_iter],
     npv = [round(site_analysis[i][2]["Financial"]["npv"], digits=2) for i in sites_iter]
     )
 println(df)
-
+ 
 # Define path to xlsx file
 file_storage_location = "results/results_emissions_reductions.xlsx"
-#file_storage_location = "C:\\Users\\dbernal\\OneDrive - NREL\\Non-shared files\\IEDO\\REopt Electric Heater\\ElectricHeater.jl Results\\results_emission_reductions.xlsx"
 
 # Check if the Excel file already exists
 if isfile(file_storage_location)
