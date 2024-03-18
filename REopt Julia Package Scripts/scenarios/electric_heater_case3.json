@@ -1,13 +1,13 @@
 {
     "Site": {
-        "CO2_emissions_reduction_min_fraction": 0.05        
+        "CO2_emissions_reduction_min_fraction": 0.25        
     },
     
     "ExistingBoiler": {
         "production_type": "steam",
-        "efficiency": 0.8,
-        "fuel_type": "natural_gas"
-                        
+        "efficiency": 0.75,
+        "fuel_type": "natural_gas",
+        "retire_in_optimal": true  
     },
     "ElectricHeater": {
         "min_mmbtu_per_hour": 1.0,
@@ -36,14 +36,18 @@
         
     },
     "PV":{
-        
+        "max_kw": 10000.0
     },
     "ElectricStorage":{
 
     },
     "DomesticHotWaterLoad": {
         "doe_reference_name": "FlatLoad"
-    },    
+    },
+    "SpaceHeatingLoad": {
+        "doe_reference_name": "FlatLoad",
+        "annual_mmbtu": 0.0
+    },      
     "ElectricTariff": {},
     "ElectricUtility": {}
   }
