@@ -193,8 +193,8 @@ ng_cost_industrial_regional = [5.37, 7.87, 3.80, 6.20] #this is in $/MMBtu
 e_heater_cop = [0.99, 0.99, 0.99, 0.99]
 site_analysis = []
 
-# emissions reduction goal of 5%
-emission_reduction_goal = [0.05, 0.05, 0.05, 0.05]
+# emissions reduction goal of 25%
+emission_reduction_goal = [0.25, 0.25, 0.25, 0.25]
 max_emissions = [1.0, 1.0, 1.0, 1.0]
 
 sites_iter = eachindex(lat)
