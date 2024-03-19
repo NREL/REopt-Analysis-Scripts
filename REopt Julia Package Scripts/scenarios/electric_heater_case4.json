@@ -2,12 +2,11 @@
     "Site": {
         
     },
-    
     "ExistingBoiler": {
         "production_type": "steam",
-        "efficiency": 0.8,
+        "efficiency": 0.75,
         "fuel_type": "natural_gas",
-        "retire_in_optimal": false
+        "retire_in_optimal": true
                 
     },
     "ElectricHeater": {
