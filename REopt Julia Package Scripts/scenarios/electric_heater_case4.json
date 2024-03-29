@@ -12,7 +12,7 @@
     "ElectricHeater": {
         "min_mmbtu_per_hour": 1.0,
         "max_mmbtu_per_hour": 100000,
-        "cop": 0.99,
+        "cop": 1.0,
         "installed_cost_per_mmbtu_per_hour": 24677.71,
         "om_cost_per_mmbtu_per_hour": 0.0,
 		"macrs_option_years": 0,
@@ -45,5 +45,9 @@
         "doe_reference_name": "FlatLoad"
     },    
     "ElectricTariff": {},
-    "ElectricUtility": {}
+    "ElectricUtility": {},
+    "Site":{
+        "include_exported_elec_emissions_in_total": true,
+        "include_exported_renewable_electricity_in_total": true
+    }
   }

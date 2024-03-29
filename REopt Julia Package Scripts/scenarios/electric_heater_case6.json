@@ -46,5 +46,9 @@
         "doe_reference_name": "FlatLoad"
     },    
     "ElectricTariff": {},
-    "ElectricUtility": {}
+    "ElectricUtility": {},
+    "Site":{
+        "include_exported_elec_emissions_in_total": true,
+        "include_exported_renewable_electricity_in_total": true
+    }
   }

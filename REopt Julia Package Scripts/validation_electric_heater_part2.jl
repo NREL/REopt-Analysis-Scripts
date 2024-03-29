@@ -127,9 +127,10 @@ df = DataFrame(
     LifeCycle_Emissions_CO2 = [round(site_analysis[i][2]["Site"]["lifecycle_emissions_tonnes_CO2"], digits=2) for i in sites_iter],
     BAU_LifeCycle_Emissions_CO2 = [round(site_analysis[i][2]["Site"]["lifecycle_emissions_tonnes_CO2_bau"], digits=2) for i in sites_iter],
     NG_LifeCycle_Emissions_CO2 = [round(site_analysis[i][2]["Site"]["lifecycle_emissions_from_fuelburn_tonnes_CO2"], digits=2) for i in sites_iter],
+    Emissions_from_NG = [round(site_analysis[i][2]["Site"]["annual_emissions_from_fuelburn_tonnes_CO2"], digits=0) for i in sites_iter],
     LifeCycle_Emission_Reduction_Fraction = [round(site_analysis[i][2]["Site"]["lifecycle_emissions_reduction_CO2_fraction"], digits=2) for i in sites_iter],
     Breakeven_Cost_of_Emissions_Reduction = [round(site_analysis[i][2]["Financial"]["breakeven_cost_of_emissions_reduction_per_tonne_CO2"], digits=4) for i in sites_iter],
-    npv = [round(site_analysis[i][2]["Financial"]["npv"], digits=2) for i in sites_iter]
+    npv = [round(site_analysis[i][2]["Financial"]["npv"], digits=2) for i in sites_iter] 
 )
 println(df)
 
@@ -261,6 +262,7 @@ df = DataFrame(
     LifeCycle_Emissions_CO2 = [round(site_analysis[i][2]["Site"]["lifecycle_emissions_tonnes_CO2"], digits=2) for i in sites_iter],
     BAU_LifeCycle_Emissions_CO2 = [round(site_analysis[i][2]["Site"]["lifecycle_emissions_tonnes_CO2_bau"], digits=2) for i in sites_iter],
     NG_LifeCycle_Emissions_CO2 = [round(site_analysis[i][2]["Site"]["lifecycle_emissions_from_fuelburn_tonnes_CO2"], digits=2) for i in sites_iter],
+    Emissions_from_NG = [round(site_analysis[i][2]["Site"]["annual_emissions_from_fuelburn_tonnes_CO2"], digits=0) for i in sites_iter],
     Breakeven_Cost_of_Emissions_Reduction = [round(site_analysis[i][2]["Financial"]["breakeven_cost_of_emissions_reduction_per_tonne_CO2"], digits=4) for i in sites_iter], 
     LifeCycle_Emission_Reduction_Fraction = [round(site_analysis[i][2]["Site"]["lifecycle_emissions_reduction_CO2_fraction"], digits=2) for i in sites_iter],
     npv = [round(site_analysis[i][2]["Financial"]["npv"], digits=2) for i in sites_iter]
@@ -324,8 +326,8 @@ e_heater_cop = [0.99, 0.99, 0.99, 0.99]
 site_analysis = []
 
 # emissions reduction goal of 5%
-emission_reduction_goal = [0.25, 0.5, 0.75, 1.00]
-max_emissions = [0.26, 0.51, 0.76, 1.0]
+emission_reduction_goal = [0.25, 0.5, 0.75, 0.99]
+max_emissions = [1.0, 1.0, 1.0, 1.0]
 
 sites_iter = eachindex(lat)
 for i in sites_iter
@@ -391,6 +393,7 @@ df = DataFrame(
     LifeCycle_Emissions_CO2 = [round(site_analysis[i][2]["Site"]["lifecycle_emissions_tonnes_CO2"], digits=2) for i in sites_iter],
     BAU_LifeCycle_Emissions_CO2 = [round(site_analysis[i][2]["Site"]["lifecycle_emissions_tonnes_CO2_bau"], digits=2) for i in sites_iter],
     NG_LifeCycle_Emissions_CO2 = [round(site_analysis[i][2]["Site"]["lifecycle_emissions_from_fuelburn_tonnes_CO2"], digits=2) for i in sites_iter],
+    Emissions_from_NG = [round(site_analysis[i][2]["Site"]["annual_emissions_from_fuelburn_tonnes_CO2"], digits=0) for i in sites_iter],
     Breakeven_Cost_of_Emissions_Reduction = [round(site_analysis[i][2]["Financial"]["breakeven_cost_of_emissions_reduction_per_tonne_CO2"], digits=4) for i in sites_iter], 
     LifeCycle_Emission_Reduction_Fraction = [round(site_analysis[i][2]["Site"]["lifecycle_emissions_reduction_CO2_fraction"], digits=2) for i in sites_iter],
     npv = [round(site_analysis[i][2]["Financial"]["npv"], digits=2) for i in sites_iter]
@@ -527,6 +530,7 @@ df = DataFrame(
     LifeCycle_Emissions_CO2 = [round(site_analysis[i][2]["Site"]["lifecycle_emissions_tonnes_CO2"], digits=2) for i in sites_iter],
     BAU_LifeCycle_Emissions_CO2 = [round(site_analysis[i][2]["Site"]["lifecycle_emissions_tonnes_CO2_bau"], digits=2) for i in sites_iter],
     NG_LifeCycle_Emissions_CO2 = [round(site_analysis[i][2]["Site"]["lifecycle_emissions_from_fuelburn_tonnes_CO2"], digits=2) for i in sites_iter],
+    Emissions_from_NG = [round(site_analysis[i][2]["Site"]["annual_emissions_from_fuelburn_tonnes_CO2"], digits=0) for i in sites_iter],
     Breakeven_Cost_of_Emissions_Reduction = [round(site_analysis[i][2]["Financial"]["breakeven_cost_of_emissions_reduction_per_tonne_CO2"], digits=4) for i in sites_iter], 
     LifeCycle_Emission_Reduction_Fraction = [round(site_analysis[i][2]["Site"]["lifecycle_emissions_reduction_CO2_fraction"], digits=2) for i in sites_iter],
     npv = [round(site_analysis[i][2]["Financial"]["npv"], digits=2) for i in sites_iter]
@@ -591,7 +595,7 @@ site_analysis = []
 
 # emissions reduction goal of 5%
 emission_reduction_goal = [0.25, 0.5, 0.75, 1.00]
-max_emissions = [0.26, 0.51, 0.76, 1.0]
+max_emissions = [1.0, 1.0, 1.0, 1.0]
 
 sites_iter = eachindex(lat)
 for i in sites_iter
@@ -657,6 +661,7 @@ df = DataFrame(
     LifeCycle_Emissions_CO2 = [round(site_analysis[i][2]["Site"]["lifecycle_emissions_tonnes_CO2"], digits=2) for i in sites_iter],
     BAU_LifeCycle_Emissions_CO2 = [round(site_analysis[i][2]["Site"]["lifecycle_emissions_tonnes_CO2_bau"], digits=2) for i in sites_iter],
     NG_LifeCycle_Emissions_CO2 = [round(site_analysis[i][2]["Site"]["lifecycle_emissions_from_fuelburn_tonnes_CO2"], digits=2) for i in sites_iter],
+    Emissions_from_NG = [round(site_analysis[i][2]["Site"]["annual_emissions_from_fuelburn_tonnes_CO2"], digits=0) for i in sites_iter],
     Breakeven_Cost_of_Emissions_Reduction = [round(site_analysis[i][2]["Financial"]["breakeven_cost_of_emissions_reduction_per_tonne_CO2"], digits=4) for i in sites_iter], 
     LifeCycle_Emission_Reduction_Fraction = [round(site_analysis[i][2]["Site"]["lifecycle_emissions_reduction_CO2_fraction"], digits=2) for i in sites_iter],
     npv = [round(site_analysis[i][2]["Financial"]["npv"], digits=2) for i in sites_iter]
