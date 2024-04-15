@@ -1,0 +1,17 @@
+{
+    "Site": {
+        "latitude": 30.3054,
+        "longitude": -97.8401
+    },
+    "PV": {},    
+    "ElectricStorage": {},
+    "ElectricTariff":{},
+    "ElectricLoad":{},
+    "EVSupplyEquipment": {
+        "installed_cost": [
+            500.0
+        ],
+        "v2g": false
+    },
+    "ElectricVehicle": []
+}
