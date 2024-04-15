@@ -5,7 +5,7 @@ using JuMP
 using Xpress
 using HiGHS
 using REopt
-# ENV["NREL_DEVELOPER_API_KEY"] = ""
+ENV["NREL_DEVELOPER_API_KEY"]="CuZkq9itm7sUAkuJF6lpUYd9HVw2c7ZCCyxAeVp8"
 
 # EV testing notes
 # Error when you force ElectricStorage to zero
@@ -64,5 +64,21 @@ results = run_reopt(m1, inputs)
 
 println("Storage to load kWh = ", round(sum(results["ElectricStorage"]["storage_to_load_series_kw"]), digits=0))
 println("Storage to EV kWh = ", round(sum(results["EV1"]["on_site_storage_to_ev_series_kw"]), digits=0))
+
 println("Grid to storage kWh = ", round(sum(results["ElectricUtility"]["electric_to_storage_series_kw"]), digits=0))
 println("Grid to EV kWh = ", round(sum(results["ElectricUtility"]["electric_to_electricvehicle_series_kw"]), digits=0))
+
+println("EV energy requirements = ", 80*260) # 80 kWh for 260 days (excludes weekends)
+
+println("Total power to EV = ", sum(results["EV1"]["on_site_storage_to_ev_series_kw"])+sum(results["ElectricUtility"]["electric_to_electricvehicle_series_kw"]))
+
+max_soc_idx = findfirst(x -> x > 0, inputs.s.storage.attr["EV1"].electric_vehicle.leaving_next_time_step_soc_min)
+
+min_soc_idx = findfirst(x -> x > 0, inputs.s.storage.attr["EV1"].electric_vehicle.back_on_site_time_step_soc_drained)
+
+ann_kwh = 260*(inputs.s.storage.attr["EV1"].electric_vehicle.leaving_next_time_step_soc_min[max_soc_idx]-
+inputs.s.storage.attr["EV1"].electric_vehicle.back_on_site_time_step_soc_drained[min_soc_idx])*inputs.s.storage.attr["EV1"].electric_vehicle.energy_capacity_kwh
+
+println("Anticipated ann kwh = ", ann_kwh)
+
+println("Anticipated ann kwh with losses = ", ann_kwh/(inputs.s.storage.attr["EV1"].discharge_efficiency*inputs.s.storage.attr["EV1"].charge_efficiency))
