@@ -1,5 +1,8 @@
 {
     "Site": {  
+        "include_exported_elec_emissions_in_total": true,
+        "include_exported_renewable_electricity_in_total": true,
+        "CO2_emissions_reduction_max_fraction": 1.00
     },
     "ExistingBoiler": {
         "production_type": "steam",
@@ -39,9 +42,7 @@
         "doe_reference_name": "FlatLoad"
     },    
     "ElectricTariff": {},
-    "ElectricUtility": {},
-    "Site":{
-        "include_exported_elec_emissions_in_total": true,
-        "include_exported_renewable_electricity_in_total": true
-    }
+    "ElectricUtility": {
+        "net_metering_limit_kw": 0
+    }    
   }

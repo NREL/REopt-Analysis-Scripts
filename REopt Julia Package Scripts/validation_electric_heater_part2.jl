@@ -121,6 +121,7 @@ df = DataFrame(
     Annual_Boiler_Fuel_HeatingLoad_MMBtu = [round(site_analysis[i][2]["HeatingLoad"]["annual_calculated_total_heating_boiler_fuel_load_mmbtu"], digits=0) for i in sites_iter],
     BAU_Existing_Boiler_Fuel_Consump_MMBtu = [round(site_analysis[i][2]["ExistingBoiler"]["annual_fuel_consumption_mmbtu_bau"], digits=0) for i in sites_iter],
     BAU_Existing_Boiler_Thermal_Prod_MMBtu = [round(site_analysis[i][2]["ExistingBoiler"]["annual_thermal_production_mmbtu_bau"], digits=0) for i in sites_iter],
+    NG_Annual_Consumption_MMBtu = [round(site_analysis[i][2]["ExistingBoiler"]["annual_fuel_consumption_mmbtu"], digits=0) for i in sites_iter],
     Total_Annual_Emissions_CO2 = [round(site_analysis[i][2]["Site"]["annual_emissions_tonnes_CO2"], digits=4) for i in sites_iter],
     ElecUtility_Annual_Emissions_CO2 = [round(site_analysis[i][2]["ElectricUtility"]["annual_emissions_tonnes_CO2"], digits=4) for i in sites_iter],
     BAU_Total_Annual_Emissions_CO2 = [round(site_analysis[i][2]["Site"]["annual_emissions_tonnes_CO2_bau"], digits=4) for i in sites_iter],
@@ -129,9 +130,8 @@ df = DataFrame(
     NG_LifeCycle_Emissions_CO2 = [round(site_analysis[i][2]["Site"]["lifecycle_emissions_from_fuelburn_tonnes_CO2"], digits=2) for i in sites_iter],
     Emissions_from_NG = [round(site_analysis[i][2]["Site"]["annual_emissions_from_fuelburn_tonnes_CO2"], digits=0) for i in sites_iter],
     LifeCycle_Emission_Reduction_Fraction = [round(site_analysis[i][2]["Site"]["lifecycle_emissions_reduction_CO2_fraction"], digits=2) for i in sites_iter],
-    Breakeven_Cost_of_Emissions_Reduction = [round(site_analysis[i][2]["Financial"]["breakeven_cost_of_emissions_reduction_per_tonne_CO2"], digits=4) for i in sites_iter],
-    npv = [round(site_analysis[i][2]["Financial"]["npv"], digits=2) for i in sites_iter] 
-)
+    npv = [round(site_analysis[i][2]["Financial"]["npv"], digits=2) for i in sites_iter]
+    )
 println(df)
 
 # Define path to xlsx file
@@ -190,6 +190,8 @@ avg_ng_load = [7.0, 7.0, 7.0, 7.0]
 elec_cost_industrial_regional = [20.35, 24.47, 17.63, 24.09] #this is in $/MMBtu
 #natural gas costs per region for industry
 ng_cost_industrial_regional = [5.37, 7.87, 3.80, 6.20] #this is in $/MMBtu 
+#wholesale_rate
+wholesale_rate = [20.35, 24.47, 17.63, 24.09] #this is in $/MMBtu
 #cop for electric heater manual input
 e_heater_cop = [0.99, 0.99, 0.99, 0.99]
 site_analysis = []
@@ -210,6 +212,8 @@ for i in sites_iter
     #for the ElectricTariff.blended ...
     input_data_site["ElectricTariff"]["blended_annual_energy_rate"] = elec_cost_industrial_regional[i] .* 0.003412
     input_data_site["ExistingBoiler"]["fuel_cost_per_mmbtu"] = ng_cost_industrial_regional[i]
+    #wholesale rate to equal to the cost above
+    input_data_site["ElectricTariff"]["wholesale_rate"] = wholesale_rate[i] .* 0.003412
     #test for e heater, COP
     input_data_site["ElectricHeater"]["cop"] = e_heater_cop[i]
     #data for emissions reductions 
@@ -250,6 +254,8 @@ df = DataFrame(
     Battery_size_kWh = [round(site_analysis[i][2]["ElectricStorage"]["size_kwh"], digits=0) for i in sites_iter], 
     Electric_Heater_kWh_consumption_annual = [round(site_analysis[i][2]["ElectricHeater"]["annual_electric_consumption_kwh"], digits=0) for i in sites_iter],
     Grid_Electricity_Supplied_kWh_annual = [round(site_analysis[i][2]["ElectricUtility"]["annual_energy_supplied_kwh"], digits=0) for i in sites_iter],
+    PV_energy_curtailed = [sum(site_analysis[i][2]["PV"]["electric_curtailed_series_kw"]) for i in sites_iter],
+    PV_energy_export_to_grid = [round(site_analysis[i][2]["PV"]["annual_energy_exported_kwh"], digits=0) for i in sites_iter],
     Electric_Heater_Thermal_Production_MMBtu_annual = [round(site_analysis[i][2]["ElectricHeater"]["annual_thermal_production_mmbtu"], digits=0) for i in sites_iter],
     Annual_Total_HeatingLoad_MMBtu = [round(site_analysis[i][2]["HeatingLoad"]["annual_calculated_total_heating_thermal_load_mmbtu"], digits=0) for i in sites_iter],
     Annual_Boiler_Fuel_HeatingLoad_MMBtu = [round(site_analysis[i][2]["HeatingLoad"]["annual_calculated_total_heating_boiler_fuel_load_mmbtu"], digits=0) for i in sites_iter],
@@ -263,7 +269,6 @@ df = DataFrame(
     BAU_LifeCycle_Emissions_CO2 = [round(site_analysis[i][2]["Site"]["lifecycle_emissions_tonnes_CO2_bau"], digits=2) for i in sites_iter],
     NG_LifeCycle_Emissions_CO2 = [round(site_analysis[i][2]["Site"]["lifecycle_emissions_from_fuelburn_tonnes_CO2"], digits=2) for i in sites_iter],
     Emissions_from_NG = [round(site_analysis[i][2]["Site"]["annual_emissions_from_fuelburn_tonnes_CO2"], digits=0) for i in sites_iter],
-    Breakeven_Cost_of_Emissions_Reduction = [round(site_analysis[i][2]["Financial"]["breakeven_cost_of_emissions_reduction_per_tonne_CO2"], digits=4) for i in sites_iter], 
     LifeCycle_Emission_Reduction_Fraction = [round(site_analysis[i][2]["Site"]["lifecycle_emissions_reduction_CO2_fraction"], digits=2) for i in sites_iter],
     npv = [round(site_analysis[i][2]["Financial"]["npv"], digits=2) for i in sites_iter]
     )
@@ -318,15 +323,17 @@ long = [-88.044, -88.044, -88.044, -88.044]
 avg_elec_load = [1, 1, 1, 1]
 avg_ng_load = [7.0, 7.0, 7.0, 7.0]
 #electricity costs per region for industry
-elec_cost_industrial_regional = [20.35, 24.47, 17.63, 24.09] #this is in $/MMBtu
+elec_cost_industrial_regional = [20.35, 20.35, 20.35, 20.35] #this is in $/MMBtu
 #natural gas costs per region for industry
-ng_cost_industrial_regional = [5.37, 7.87, 3.80, 6.20] #this is in $/MMBtu 
+ng_cost_industrial_regional = [5.37, 5.37, 5.37, 5.37] #this is in $/MMBtu
+#wholesale_rate
+wholesale_rate = [20.349, 20.349, 20.349, 20.349] #this is in $/MMBtu
 #cop for electric heater manual input
 e_heater_cop = [0.99, 0.99, 0.99, 0.99]
 site_analysis = []
 
-# emissions reduction goal of 5%
-emission_reduction_goal = [0.25, 0.5, 0.75, 0.99]
+# emissions reduction goal
+emission_reduction_goal = [0.25, 0.5, 0.75, 1.00]
 max_emissions = [1.0, 1.0, 1.0, 1.0]
 
 sites_iter = eachindex(lat)
@@ -341,6 +348,8 @@ for i in sites_iter
     #for the ElectricTariff.blended ...
     input_data_site["ElectricTariff"]["blended_annual_energy_rate"] = elec_cost_industrial_regional[i] .* 0.003412
     input_data_site["ExistingBoiler"]["fuel_cost_per_mmbtu"] = ng_cost_industrial_regional[i]
+    #wholesale rate to equal to the cost above
+    input_data_site["ElectricTariff"]["wholesale_rate"] = wholesale_rate[i] .* 0.003412
     #test for e heater, COP
     input_data_site["ElectricHeater"]["cop"] = e_heater_cop[i]
     #data for emissions reductions 
@@ -381,6 +390,8 @@ df = DataFrame(
     Battery_size_kWh = [round(site_analysis[i][2]["ElectricStorage"]["size_kwh"], digits=0) for i in sites_iter], 
     Electric_Heater_kWh_consumption_annual = [round(site_analysis[i][2]["ElectricHeater"]["annual_electric_consumption_kwh"], digits=0) for i in sites_iter],
     Grid_Electricity_Supplied_kWh_annual = [round(site_analysis[i][2]["ElectricUtility"]["annual_energy_supplied_kwh"], digits=0) for i in sites_iter],
+    PV_energy_curtailed = [sum(site_analysis[i][2]["PV"]["electric_curtailed_series_kw"]) for i in sites_iter],
+    PV_energy_export_to_grid = [round(site_analysis[i][2]["PV"]["annual_energy_exported_kwh"], digits=0) for i in sites_iter],
     Electric_Heater_Thermal_Production_MMBtu_annual = [round(site_analysis[i][2]["ElectricHeater"]["annual_thermal_production_mmbtu"], digits=0) for i in sites_iter],
     Annual_Total_HeatingLoad_MMBtu = [round(site_analysis[i][2]["HeatingLoad"]["annual_calculated_total_heating_thermal_load_mmbtu"], digits=0) for i in sites_iter],
     Annual_Boiler_Fuel_HeatingLoad_MMBtu = [round(site_analysis[i][2]["HeatingLoad"]["annual_calculated_total_heating_boiler_fuel_load_mmbtu"], digits=0) for i in sites_iter],
@@ -394,7 +405,6 @@ df = DataFrame(
     BAU_LifeCycle_Emissions_CO2 = [round(site_analysis[i][2]["Site"]["lifecycle_emissions_tonnes_CO2_bau"], digits=2) for i in sites_iter],
     NG_LifeCycle_Emissions_CO2 = [round(site_analysis[i][2]["Site"]["lifecycle_emissions_from_fuelburn_tonnes_CO2"], digits=2) for i in sites_iter],
     Emissions_from_NG = [round(site_analysis[i][2]["Site"]["annual_emissions_from_fuelburn_tonnes_CO2"], digits=0) for i in sites_iter],
-    Breakeven_Cost_of_Emissions_Reduction = [round(site_analysis[i][2]["Financial"]["breakeven_cost_of_emissions_reduction_per_tonne_CO2"], digits=4) for i in sites_iter], 
     LifeCycle_Emission_Reduction_Fraction = [round(site_analysis[i][2]["Site"]["lifecycle_emissions_reduction_CO2_fraction"], digits=2) for i in sites_iter],
     npv = [round(site_analysis[i][2]["Financial"]["npv"], digits=2) for i in sites_iter]
     )
@@ -458,6 +468,8 @@ avg_ng_load = [7.0, 7.0, 7.0, 7.0]
 elec_cost_industrial_regional = [20.35, 24.47, 17.63, 24.09] #this is in $/MMBtu
 #natural gas costs per region for industry
 ng_cost_industrial_regional = [5.37, 7.87, 3.80, 6.20] #this is in $/MMBtu 
+#wholesale_rate
+wholesale_rate = [20.35, 24.47, 17.63, 24.09] #this is in $/MMBtu
 #cop for electric heater manual input
 e_heater_cop = [0.99, 0.99, 0.99, 0.99]
 site_analysis = []
@@ -478,6 +490,8 @@ for i in sites_iter
     #for the ElectricTariff.blended ...
     input_data_site["ElectricTariff"]["blended_annual_energy_rate"] = elec_cost_industrial_regional[i] .* 0.003412
     input_data_site["ExistingBoiler"]["fuel_cost_per_mmbtu"] = ng_cost_industrial_regional[i]
+    #wholesale rate to equal to the cost above
+    input_data_site["ElectricTariff"]["wholesale_rate"] = wholesale_rate[i] .* 0.003412
     #test for e heater, COP
     input_data_site["ElectricHeater"]["cop"] = e_heater_cop[i]
     #data for emissions reductions 
@@ -518,9 +532,11 @@ df = DataFrame(
     Battery_size_kWh = [round(site_analysis[i][2]["ElectricStorage"]["size_kwh"], digits=0) for i in sites_iter], 
     Electric_Heater_kWh_consumption_annual = [round(site_analysis[i][2]["ElectricHeater"]["annual_electric_consumption_kwh"], digits=0) for i in sites_iter],
     Grid_Electricity_Supplied_kWh_annual = [round(site_analysis[i][2]["ElectricUtility"]["annual_energy_supplied_kwh"], digits=0) for i in sites_iter],
+    PV_energy_curtailed = [sum(site_analysis[i][2]["PV"]["electric_curtailed_series_kw"]) for i in sites_iter],
+    PV_energy_export_to_grid = [round(site_analysis[i][2]["PV"]["annual_energy_exported_kwh"], digits=0) for i in sites_iter],
     Electric_Heater_Thermal_Production_MMBtu_annual = [round(site_analysis[i][2]["ElectricHeater"]["annual_thermal_production_mmbtu"], digits=0) for i in sites_iter],
     Annual_Total_HeatingLoad_MMBtu = [round(site_analysis[i][2]["HeatingLoad"]["annual_calculated_total_heating_thermal_load_mmbtu"], digits=0) for i in sites_iter],
-    Annual_Boiler_Fuel_HeatingLoad_MMBtu = [round(site_analysis[i][2]["HeatingLoad"]["annual_calculated_total_heating_boiler_fuel_load_mmbtu"], digits=0) for i in sites_iter],
+    Annual_Boiler_Fuel_HeatingLoad_MMBtu = [round(site_analysis[i][2]["ExistingBoiler"]["annual_fuel_consumption_mmbtu"], digits=0) for i in sites_iter],
     BAU_Existing_Boiler_Fuel_Consump_MMBtu = [round(site_analysis[i][2]["ExistingBoiler"]["annual_fuel_consumption_mmbtu_bau"], digits=0) for i in sites_iter],
     BAU_Existing_Boiler_Thermal_Prod_MMBtu = [round(site_analysis[i][2]["ExistingBoiler"]["annual_thermal_production_mmbtu_bau"], digits=0) for i in sites_iter],
     NG_Annual_Consumption_MMBtu = [round(site_analysis[i][2]["ExistingBoiler"]["annual_fuel_consumption_mmbtu"], digits=0) for i in sites_iter],
@@ -531,7 +547,6 @@ df = DataFrame(
     BAU_LifeCycle_Emissions_CO2 = [round(site_analysis[i][2]["Site"]["lifecycle_emissions_tonnes_CO2_bau"], digits=2) for i in sites_iter],
     NG_LifeCycle_Emissions_CO2 = [round(site_analysis[i][2]["Site"]["lifecycle_emissions_from_fuelburn_tonnes_CO2"], digits=2) for i in sites_iter],
     Emissions_from_NG = [round(site_analysis[i][2]["Site"]["annual_emissions_from_fuelburn_tonnes_CO2"], digits=0) for i in sites_iter],
-    Breakeven_Cost_of_Emissions_Reduction = [round(site_analysis[i][2]["Financial"]["breakeven_cost_of_emissions_reduction_per_tonne_CO2"], digits=4) for i in sites_iter], 
     LifeCycle_Emission_Reduction_Fraction = [round(site_analysis[i][2]["Site"]["lifecycle_emissions_reduction_CO2_fraction"], digits=2) for i in sites_iter],
     npv = [round(site_analysis[i][2]["Financial"]["npv"], digits=2) for i in sites_iter]
     )
@@ -569,7 +584,10 @@ println("Successful write into XLSX file: $file_storage_location")
 
 """
 =============================
-        This is Part C.
+        This is Part E.
+        Same as Part C except 
+        allow use of ExistingBoiler
+        in optimal.
 =============================
 """
 
@@ -586,9 +604,11 @@ long = [-88.044, -88.044, -88.044, -88.044]
 avg_elec_load = [1, 1, 1, 1]
 avg_ng_load = [7.0, 7.0, 7.0, 7.0]
 #electricity costs per region for industry
-elec_cost_industrial_regional = [20.35, 24.47, 17.63, 24.09] #this is in $/MMBtu
+elec_cost_industrial_regional = [20.35, 20.35, 20.35, 20.35] #this is in $/MMBtu
 #natural gas costs per region for industry
-ng_cost_industrial_regional = [5.37, 7.87, 3.80, 6.20] #this is in $/MMBtu 
+ng_cost_industrial_regional = [5.37, 5.37, 5.37, 5.37] #this is in $/MMBtu
+#wholesale_rate
+wholesale_rate = [20.35, 20.35, 20.35, 20.35] #this is in $/MMBtu
 #cop for electric heater manual input
 e_heater_cop = [0.99, 0.99, 0.99, 0.99]
 site_analysis = []
@@ -609,6 +629,8 @@ for i in sites_iter
     #for the ElectricTariff.blended ...
     input_data_site["ElectricTariff"]["blended_annual_energy_rate"] = elec_cost_industrial_regional[i] .* 0.003412
     input_data_site["ExistingBoiler"]["fuel_cost_per_mmbtu"] = ng_cost_industrial_regional[i]
+    #wholesale rate to equal to the cost above
+    input_data_site["ElectricTariff"]["wholesale_rate"] = wholesale_rate[i] .* 0.003412
     #test for e heater, COP
     input_data_site["ElectricHeater"]["cop"] = e_heater_cop[i]
     #data for emissions reductions 
@@ -649,6 +671,8 @@ df = DataFrame(
     Battery_size_kWh = [round(site_analysis[i][2]["ElectricStorage"]["size_kwh"], digits=0) for i in sites_iter], 
     Electric_Heater_kWh_consumption_annual = [round(site_analysis[i][2]["ElectricHeater"]["annual_electric_consumption_kwh"], digits=0) for i in sites_iter],
     Grid_Electricity_Supplied_kWh_annual = [round(site_analysis[i][2]["ElectricUtility"]["annual_energy_supplied_kwh"], digits=0) for i in sites_iter],
+    PV_energy_curtailed = [sum(site_analysis[i][2]["PV"]["electric_curtailed_series_kw"]) for i in sites_iter],
+    PV_energy_export_to_grid = [round(site_analysis[i][2]["PV"]["annual_energy_exported_kwh"], digits=0) for i in sites_iter],
     Electric_Heater_Thermal_Production_MMBtu_annual = [round(site_analysis[i][2]["ElectricHeater"]["annual_thermal_production_mmbtu"], digits=0) for i in sites_iter],
     Annual_Total_HeatingLoad_MMBtu = [round(site_analysis[i][2]["HeatingLoad"]["annual_calculated_total_heating_thermal_load_mmbtu"], digits=0) for i in sites_iter],
     Annual_Boiler_Fuel_HeatingLoad_MMBtu = [round(site_analysis[i][2]["HeatingLoad"]["annual_calculated_total_heating_boiler_fuel_load_mmbtu"], digits=0) for i in sites_iter],
@@ -662,7 +686,6 @@ df = DataFrame(
     BAU_LifeCycle_Emissions_CO2 = [round(site_analysis[i][2]["Site"]["lifecycle_emissions_tonnes_CO2_bau"], digits=2) for i in sites_iter],
     NG_LifeCycle_Emissions_CO2 = [round(site_analysis[i][2]["Site"]["lifecycle_emissions_from_fuelburn_tonnes_CO2"], digits=2) for i in sites_iter],
     Emissions_from_NG = [round(site_analysis[i][2]["Site"]["annual_emissions_from_fuelburn_tonnes_CO2"], digits=0) for i in sites_iter],
-    Breakeven_Cost_of_Emissions_Reduction = [round(site_analysis[i][2]["Financial"]["breakeven_cost_of_emissions_reduction_per_tonne_CO2"], digits=4) for i in sites_iter], 
     LifeCycle_Emission_Reduction_Fraction = [round(site_analysis[i][2]["Site"]["lifecycle_emissions_reduction_CO2_fraction"], digits=2) for i in sites_iter],
     npv = [round(site_analysis[i][2]["Financial"]["npv"], digits=2) for i in sites_iter]
     )

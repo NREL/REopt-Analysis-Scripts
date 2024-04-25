@@ -1,5 +1,7 @@
 {
     "Site": {
+        "include_exported_elec_emissions_in_total": true,
+        "include_exported_renewable_electricity_in_total": true,
         "CO2_emissions_reduction_min_fraction": 0.25        
     },
     
@@ -45,9 +47,8 @@
         "doe_reference_name": "FlatLoad"
     },      
     "ElectricTariff": {},
-    "ElectricUtility": {},
-    "Site":{
-        "include_exported_elec_emissions_in_total": true,
-        "include_exported_renewable_electricity_in_total": true
+    "ElectricUtility": {
+        "net_metering_limit_kw": 0
     }
+    
   }
