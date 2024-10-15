@@ -16,6 +16,9 @@ Step 3: Run this file (leave the package manager with the backspace button)
  julia> include("simple_examples.jl")
 """
 
+# Replace with your API Key
+ENV["NREL_DEVELOPER_API_KEY"] = "DEMO_KEY"
+
 ## Example 1: Run a single model with no business-as-usual (BAU) case with Cbc solver: ##
 using REopt
 using Cbc # Cbc is a free solver. It may be slow with models that involve binary variables. Replace with your own solver (e.g., Xpress) if desired.
@@ -54,8 +57,8 @@ data_file = "wind_battery_hospital.json"
 data = JSON.parsefile("scenarios/$data_file")
 
 # Define models
-m1 = Model(HiGHS.Optimizer) 
-m2 = Model(HiGHS.Optimizer) 
+m1 = Model(optimizer_with_attributes(HiGHS.Optimizer, "output_flag" => false, "log_to_console" => false))
+m2 = Model(optimizer_with_attributes(HiGHS.Optimizer, "output_flag" => false, "log_to_console" => false))
 
 # Run REopt
 results = run_reopt([m1,m2], data) # Must supply two models to run the BAU (BAU scenario automatically generated based on inputs)
