@@ -26,6 +26,10 @@ using JSON
 using JuMP
 # See documentation for also adding GhpGhx
 
+# Ensure latest REopt version is used
+using Pkg
+Pkg.update("REopt")
+
 println("Running a single REopt model with no BAU.")
 
 # Setup inputs
