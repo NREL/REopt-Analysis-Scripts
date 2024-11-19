@@ -317,24 +317,24 @@ input_data = JSON.parsefile("scenarios/$data_file")
 println("Correctly obtained data_file")
 
 #Decided on Chicago to be the single location of analyses
-cities = ["Chicago", "Chicago", "Chicago", "Chicago"]
-lat = [41.834, 41.834, 41.834, 41.834]
-long = [-88.044, -88.044, -88.044, -88.044]
-avg_elec_load = [1, 1, 1, 1]
-avg_ng_load = [7.0, 7.0, 7.0, 7.0]
+cities = ["Chicago", "Chicago", "Chicago", "Chicago", "Chicago"]
+lat = [41.834, 41.834, 41.834, 41.834, 41.834]
+long = [-88.044, -88.044, -88.044, -88.044, -88.044]
+avg_elec_load = [1, 1, 1, 1, 1]
+avg_ng_load = [7.0, 7.0, 7.0, 7.0, 7.0]
 #electricity costs per region for industry
-elec_cost_industrial_regional = [20.35, 20.35, 20.35, 20.35] #this is in $/MMBtu
+elec_cost_industrial_regional = [20.35, 20.35, 20.35, 20.35, 20.35] #this is in $/MMBtu
 #natural gas costs per region for industry
-ng_cost_industrial_regional = [5.37, 5.37, 5.37, 5.37] #this is in $/MMBtu
+ng_cost_industrial_regional = [5.37, 5.37, 5.37, 5.37, 5.37] #this is in $/MMBtu
 #wholesale_rate
-wholesale_rate = [20.349, 20.349, 20.349, 20.349] #this is in $/MMBtu
+wholesale_rate = [20.349, 20.349, 20.349, 20.349, 20.349] #this is in $/MMBtu
 #cop for electric heater manual input
-e_heater_cop = [0.99, 0.99, 0.99, 0.99]
+e_heater_cop = [0.99, 0.99, 0.99, 0.99, 0.99]
 site_analysis = []
 
-# emissions reduction goal
-emission_reduction_goal = [0.25, 0.5, 0.75, 1.00]
-max_emissions = [1.0, 1.0, 1.0, 1.0]
+# emissions reduction goal of 5%
+emission_reduction_goal = [0.00, 0.25, 0.5, 0.75, 1.00]
+max_emissions = [1.0, 1.0, 1.0, 1.0, 1.0]
 
 sites_iter = eachindex(lat)
 for i in sites_iter
@@ -598,24 +598,24 @@ input_data = JSON.parsefile("scenarios/$data_file")
 println("Correctly obtained data_file")
 
 #Decided on Chicago to be the single location of analyses
-cities = ["Chicago", "Chicago", "Chicago", "Chicago"]
-lat = [41.834, 41.834, 41.834, 41.834]
-long = [-88.044, -88.044, -88.044, -88.044]
-avg_elec_load = [1, 1, 1, 1]
-avg_ng_load = [7.0, 7.0, 7.0, 7.0]
+cities = ["Chicago", "Chicago", "Chicago", "Chicago", "Chicago"]
+lat = [41.834, 41.834, 41.834, 41.834, 41.834]
+long = [-88.044, -88.044, -88.044, -88.044, -88.044]
+avg_elec_load = [1, 1, 1, 1, 1]
+avg_ng_load = [7.0, 7.0, 7.0, 7.0, 7.0]
 #electricity costs per region for industry
-elec_cost_industrial_regional = [20.35, 20.35, 20.35, 20.35] #this is in $/MMBtu
+elec_cost_industrial_regional = [20.35, 20.35, 20.35, 20.35, 20.35] #this is in $/MMBtu
 #natural gas costs per region for industry
-ng_cost_industrial_regional = [5.37, 5.37, 5.37, 5.37] #this is in $/MMBtu
+ng_cost_industrial_regional = [5.37, 5.37, 5.37, 5.37, 5.37] #this is in $/MMBtu
 #wholesale_rate
-wholesale_rate = [20.35, 20.35, 20.35, 20.35] #this is in $/MMBtu
+wholesale_rate = [20.35, 20.35, 20.35, 20.35, 20.35] #this is in $/MMBtu
 #cop for electric heater manual input
-e_heater_cop = [0.99, 0.99, 0.99, 0.99]
+e_heater_cop = [0.99, 0.99, 0.99, 0.99, 0.99]
 site_analysis = []
 
 # emissions reduction goal of 5%
-emission_reduction_goal = [0.25, 0.5, 0.75, 1.00]
-max_emissions = [1.0, 1.0, 1.0, 1.0]
+emission_reduction_goal = [0.00, 0.25, 0.5, 0.75, 1.00]
+max_emissions = [1.0, 1.0, 1.0, 1.0, 1.0]
 
 sites_iter = eachindex(lat)
 for i in sites_iter
